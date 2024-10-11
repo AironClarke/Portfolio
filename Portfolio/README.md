@@ -1,4 +1,0 @@
-# React + TypeScript 
-
-Portfolio webpage
-```
