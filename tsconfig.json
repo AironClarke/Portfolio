@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,23 +13,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.json",
+    "**/*.ts", // This will include all TypeScript files in the project
+    "**/*.tsx", // This will include all TSX files in the project
     "**/*.js",
     "**/*.jsx",
     "**/*.tsx",
     ".eslintrc.js",
-    ".prettierignore",
-    "pages/_document.jsx",
+    ".prettierignore"
   ],
   "exclude": ["node_modules"]
 }
