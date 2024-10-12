@@ -1,6 +1,6 @@
-import 'src/css/heroFeature/taskbar.css';
+import '../../../css/heroFeature.css';
 
-import WindowIcon from 'src/components/system/taskbar/icons';
+import { WindowIcon } from 'src/components/system/taskbar/icons';
 
 const StartButton = (): JSX.Element => (
   <button className="startButton" title="Start">
