@@ -2,8 +2,8 @@ import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from 'src/App';
-import './index.css';
-import './styles/normalize.css';
+import './css/normalize.css';
+import './css/global.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
