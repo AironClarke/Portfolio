@@ -23,6 +23,7 @@ type UserContextType = {
   >;
   inlineStyle: (name: string) => CSSProperties;
   inlineStyleExpand: (name: string) => CSSProperties;
+  deleteTap: (name: string) => void;
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);

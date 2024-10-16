@@ -3,6 +3,7 @@ import { MaximizeIcon } from '../taskbar/icons';
 import { CloseIcon } from '../taskbar/icons';
 import { Dispatch, SetStateAction, useContext } from 'react';
 import UserContext from 'src/context/UserContext';
+import { motion } from 'framer-motion';
 
 type TitlebarProps = {
   icon: string;
@@ -41,7 +42,15 @@ const Titlebar = ({
     throw new Error('userContext is undefined');
   }
 
-  const { inlineStyleExpand, inlineStyle } = userContext;
+  const { inlineStyleExpand, inlineStyle, deleteTap } = userContext;
+
+  function handleExpandStateToggle() {
+    setResumeExpand((prevState) => ({
+      ...prevState,
+      expand: !prevState.expand
+    }));
+  }
+
   return (
     <header className="titlebarHeader">
       <h1
@@ -67,10 +76,20 @@ const Titlebar = ({
         >
           <MinimizeIcon />
         </button>
-        <button type="button">
+        <button onClick={() => handleExpandStateToggle()} type="button">
           <MaximizeIcon />
+          <motion.div
+            className={`expand ${ResumeExpand.expand ? 'full' : ''}`}
+          ></motion.div>
+          {ResumeExpand.expand ? <div className="expand_2"></div> : null}
         </button>
-        <button type="button" className="close">
+        <button
+          type="button"
+          className="close"
+          onClick={() => {
+            deleteTap('Resume');
+          }}
+        >
           <CloseIcon />
         </button>
       </nav>
