@@ -89,6 +89,8 @@ const HeroFeature = (): JSX.Element => {
           hide: false
         }));
 
+        console.log('setter tiggered');
+
         setTap((prevTap) =>
           prevTap.filter((tapItem: string) => {
             // get prevTap to prevent error

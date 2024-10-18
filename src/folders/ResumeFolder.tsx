@@ -12,8 +12,6 @@ function ResumeFolder() {
   const { ResumeExpand, setResumeExpand, inlineStyleExpand, inlineStyle } =
     userContext;
 
-  console.log(ResumeExpand);
-
   return (
     <section
       className="window"

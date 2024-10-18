@@ -137,7 +137,6 @@
 .window {
   background-color: grey;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 50%);
-  display: block;
   height: 500px;
   outline: 1px solid rgba(0, 0, 0, 25%);
   position: absolute;

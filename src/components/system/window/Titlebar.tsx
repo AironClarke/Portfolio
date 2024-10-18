@@ -87,6 +87,7 @@ const Titlebar = ({
           type="button"
           className="close"
           onClick={() => {
+            console.log('closed clicked');
             deleteTap('Resume');
           }}
         >
