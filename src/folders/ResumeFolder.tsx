@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import Titlebar from 'src/components/system/window/Titlebar';
-import UserContext from 'src/context/UserContext';
+import { UserContext } from 'src/context/UserContext';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);

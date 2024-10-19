@@ -1,6 +1,6 @@
 import { createContext, CSSProperties, Dispatch, SetStateAction } from 'react';
 
-type UserContextType = {
+export type UserContextType = {
   ResumeExpand: {
     expand: boolean;
     show: boolean;
@@ -24,8 +24,14 @@ type UserContextType = {
   inlineStyle: (name: string) => CSSProperties;
   inlineStyleExpand: (name: string) => CSSProperties;
   deleteTap: (name: string) => void;
+  iconState: { name: string; pic: string }[]; //why?
+  setIconState: React.Dispatch<
+    React.SetStateAction<{ name: string; pic: string }[]>
+  >; // State setter for updating iconState why??
+  imageMapping: (name: string) => string | null;
+  handleShow: (name: string) => void;
 };
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
-
-export default UserContext;
+export const UserContext = createContext<UserContextType | undefined>(
+  undefined
+);

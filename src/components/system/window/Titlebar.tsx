@@ -2,7 +2,7 @@ import { MinimizeIcon } from '../taskbar/icons';
 import { MaximizeIcon } from '../taskbar/icons';
 import { CloseIcon } from '../taskbar/icons';
 import { Dispatch, SetStateAction, useContext } from 'react';
-import UserContext from 'src/context/UserContext';
+import { UserContext } from 'src/context/UserContext';
 import { motion } from 'framer-motion';
 
 type TitlebarProps = {

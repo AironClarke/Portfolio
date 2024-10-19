@@ -3,7 +3,9 @@ import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
 import ResumeFolder from 'src/folders/ResumeFolder';
 import { useState } from 'react';
-import UserContext from 'src/context/UserContext';
+import { UserContext } from 'src/context/UserContext';
+import iconInfo from 'src/icon.json';
+import { imageMapping } from 'src/functions/AppFunction';
 
 const HeroFeature = (): JSX.Element => {
   const [ResumeExpand, setResumeExpand] = useState({
@@ -16,7 +18,7 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
-  const [tap, setTap] = useState([]);
+  const [tap, setTap] = useState<string[]>([]);
 
   function ObjectState() {
     return [
@@ -102,12 +104,59 @@ const HeroFeature = (): JSX.Element => {
     });
   }
 
+  function handleShow(name: string) {
+    const lowerCaseName = name.toLowerCase().split(' ').join('');
+
+    const allSetItems = ObjectState(); // call all usestate object
+
+    allSetItems.forEach((item) => {
+      const itemName = item.name.toLowerCase().trim();
+
+      if (itemName === lowerCaseName) {
+        setTimeout(() => {
+          item.setter((prev) => ({
+            ...prev,
+            show: true,
+            focusItem: true,
+            hide: false
+          }));
+        }, 100);
+      }
+      if (itemName !== lowerCaseName) {
+        item.setter((prev) => ({ ...prev, focusItem: false }));
+      }
+      if (itemName === lowerCaseName) {
+        item.setter((prev) => ({ ...prev, hide: false }));
+        return;
+      }
+    });
+    if (tap.includes(name)) return;
+
+    if (name === 'Run') return; // not showing run on tap
+
+    setTap((prevTap) => [...prevTap, name]);
+    setIconState((prevIcons) =>
+      prevIcons.map((icon) => ({ ...icon, focus: false }))
+    );
+  }
+
+  //getting icons to work
+  const [iconState, setIconState] = useState(() =>
+    iconInfo.map((icon) => ({
+      ...icon
+    }))
+  );
+
   const contextValue = {
     ResumeExpand,
     setResumeExpand,
     inlineStyle,
     inlineStyleExpand,
-    deleteTap
+    deleteTap,
+    iconState,
+    setIconState,
+    imageMapping,
+    handleShow
   };
 
   return (
