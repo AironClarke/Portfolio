@@ -18,7 +18,7 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
-  const [tap, setTap] = useState<string[]>([]);
+  const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   function ObjectState() {
     return [
@@ -94,9 +94,9 @@ const HeroFeature = (): JSX.Element => {
         console.log('setter tiggered');
 
         setTap((prevTap) =>
-          prevTap.filter((tapItem: string) => {
+          prevTap.filter((tapItem) => {
             // get prevTap to prevent error
-            const tapItemName = tapItem.toLowerCase().split(' ').join('');
+            const tapItemName = tapItem.title.toLowerCase().split(' ').join('');
             return tapItemName !== passedName;
           })
         );
@@ -130,11 +130,15 @@ const HeroFeature = (): JSX.Element => {
         return;
       }
     });
-    if (tap.includes(name)) return;
+    if (tap.some((tapItem) => tapItem.title == name)) return;
 
     if (name === 'Run') return; // not showing run on tap
 
-    setTap((prevTap) => [...prevTap, name]);
+    setTap((prevTap) => [
+      ...prevTap,
+      { title: name, icon: name } // create a new object for tap
+    ]);
+
     setIconState((prevIcons) =>
       prevIcons.map((icon) => ({ ...icon, focus: false }))
     );
@@ -147,6 +151,33 @@ const HeroFeature = (): JSX.Element => {
     }))
   );
 
+  //taskbar
+
+  function handleHideFolder(index: number) {
+    // unhide icon from tap
+
+    const lowerCaseName = tap[index].title.toLowerCase().split(' ').join('');
+
+    const allSetItems = ObjectState(); // all the usestate name to toggle
+
+    allSetItems.forEach((item) => {
+      const itemName = item.name.toLowerCase().trim();
+
+      if (itemName === lowerCaseName) {
+        item.setter((prev) => ({ ...prev, focusItem: true }));
+        if (item.usestate.hide) {
+          item.setter((prev) => ({ ...prev, hide: false }));
+        }
+      }
+
+      if (itemName !== lowerCaseName) {
+        item.setter((prev) => ({ ...prev, focusItem: false }));
+      }
+    });
+  }
+
+  //context
+
   const contextValue = {
     ResumeExpand,
     setResumeExpand,
@@ -156,7 +187,10 @@ const HeroFeature = (): JSX.Element => {
     iconState,
     setIconState,
     imageMapping,
-    handleShow
+    handleShow,
+    tap,
+    setTap,
+    handleHideFolder
   };
 
   return (

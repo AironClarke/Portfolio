@@ -1,5 +1,10 @@
 import { createContext, CSSProperties, Dispatch, SetStateAction } from 'react';
 
+type TapItem = {
+  title: string;
+  icon: string;
+};
+
 export type UserContextType = {
   ResumeExpand: {
     expand: boolean;
@@ -30,6 +35,9 @@ export type UserContextType = {
   >; // State setter for updating iconState why??
   imageMapping: (name: string) => string | null;
   handleShow: (name: string) => void;
+  tap: TapItem[];
+  setTap: React.Dispatch<React.SetStateAction<TapItem[]>>;
+  handleHideFolder: (indeX: number) => void;
 };
 
 export const UserContext = createContext<UserContextType | undefined>(
