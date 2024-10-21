@@ -18,7 +18,9 @@ const TaskbarEntry = ({
     throw new Error('userContext not found');
   }
 
-  const { handleHideFolder } = userContext;
+  const { handleHideFolder, imageMapping } = userContext;
+
+  console.log(icon);
 
   return (
     <li
@@ -29,7 +31,7 @@ const TaskbarEntry = ({
       }}
     >
       <figure>
-        <img src={icon} alt={title} />
+        <img src={imageMapping(icon) || '|| operator test'} alt={title} />
         <figcaption>{title}</figcaption>
       </figure>
     </li>
