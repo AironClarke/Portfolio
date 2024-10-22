@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import FileEntry from './FileEntry';
 import { UserContext, UserContextType } from 'src/context/UserContext';
-import Draggable from 'react-draggable';
+import { Rnd } from 'react-rnd';
 
 const FileManager = (): JSX.Element => {
   const userContext = useContext(UserContext);
@@ -12,24 +12,32 @@ const FileManager = (): JSX.Element => {
 
   const { iconState, imageMapping, handleShow } = userContext;
 
+  const style = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'solid 1px #ddd',
+    background: '#f0f0f0'
+  };
+
   return (
     <ol className="fileManager">
       {iconState.map((icon) => (
-        <Draggable
-          key={icon.name}
-          cancel=""
-          axis="both"
-          handle={'.icon'}
-          grid={[10, 10]}
-          scale={1}
-          bounds=".bound"
+        <Rnd
+          style={style}
+          default={{
+            x: 0,
+            y: 0,
+            width: 320,
+            height: 200
+          }}
         >
           <FileEntry
             name={icon.name}
             icon={imageMapping(icon.pic) || '|| operator test'}
             onDoubleClick={() => handleShow(icon.name)}
           />
-        </Draggable>
+        </Rnd>
       ))}
     </ol>
   );
