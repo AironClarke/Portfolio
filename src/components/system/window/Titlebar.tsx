@@ -60,7 +60,7 @@ const Titlebar = ({
         }
       >
         <figure>
-          <img src={icon} alt={title} />
+          <img src={icon} alt={title} draggable={false} />
           <figcaption>{title}</figcaption>
         </figure>
       </h1>

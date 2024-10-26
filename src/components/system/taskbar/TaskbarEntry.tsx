@@ -31,7 +31,11 @@ const TaskbarEntry = ({
       }}
     >
       <figure>
-        <img src={imageMapping(icon) || '|| operator test'} alt={title} />
+        <img
+          src={imageMapping(icon) || '|| operator test'}
+          alt={title}
+          draggable={false}
+        />
         <figcaption>{title}</figcaption>
       </figure>
     </li>

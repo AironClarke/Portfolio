@@ -9,7 +9,7 @@ const FileEntry = ({ name, icon, onDoubleClick }: FileEntryProps) => {
     <li>
       <button type="button" onDoubleClick={onDoubleClick}>
         <figure>
-          <img src={icon} alt={name} />
+          <img src={icon} alt={name} draggable={false} />
           <figcaption>{name}</figcaption>
         </figure>
       </button>
