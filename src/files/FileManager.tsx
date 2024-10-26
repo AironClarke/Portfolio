@@ -23,21 +23,21 @@ const FileManager = (): JSX.Element => {
   return (
     <ol className="fileManager">
       {iconState.map((icon) => (
-        <Rnd
-          style={style}
-          default={{
-            x: 0,
-            y: 0,
-            width: 320,
-            height: 200
-          }}
-        >
-          <FileEntry
-            name={icon.name}
-            icon={imageMapping(icon.pic) || '|| operator test'}
-            onDoubleClick={() => handleShow(icon.name)}
-          />
-        </Rnd>
+        // <Rnd
+        //   style={style}
+        //   default={{
+        //     x: 0,
+        //     y: 0,
+        //     width: 320,
+        //     height: 200
+        //   }}
+        // >
+        <FileEntry
+          name={icon.name}
+          icon={imageMapping(icon.pic) || '|| operator test'}
+          onDoubleClick={() => handleShow(icon.name)}
+        />
+        // </Rnd>
       ))}
     </ol>
   );
