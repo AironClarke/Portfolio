@@ -44,8 +44,9 @@ const HeroFeature = (): JSX.Element => {
         maxWidth: 'none',
         width: '100%',
         height: 'calc(100% - 37px)',
-        left: `${item.usestate.x <= 0 ? Math.abs(item.usestate.x) * 2 + item.usestate.x : -item.usestate.x}px`,
-        top: `${item.usestate.y <= 0 ? Math.abs(item.usestate.y) * 2 + item.usestate.y : -item.usestate.y}px`,
+        // if this app works at the end, remove the bellow code
+        // left: `${item.usestate.x <= 0 ? Math.abs(item.usestate.x) * 2 + item.usestate.x : -item.usestate.x}px`,
+        // top: `${item.usestate.y <= 0 ? Math.abs(item.usestate.y) * 2 + item.usestate.y : -item.usestate.y}px`,
         opacity: item.usestate.hide ? '0' : '1',
         zIndex: item.usestate.hide
           ? '-1'
