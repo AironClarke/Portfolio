@@ -49,6 +49,7 @@ const Titlebar = ({
       ...prevState,
       expand: !prevState.expand
     }));
+    console.log('handle expand triggered');
   }
 
   return (
@@ -76,12 +77,13 @@ const Titlebar = ({
         >
           <MinimizeIcon />
         </button>
-        <button onClick={() => handleExpandStateToggle()} type="button">
+        <button
+          onClick={() => {
+            handleExpandStateToggle();
+          }}
+          type="button"
+        >
           <MaximizeIcon />
-          <motion.div
-            className={`expand ${ResumeExpand.expand ? 'full' : ''}`}
-          ></motion.div>
-          {ResumeExpand.expand ? <div className="expand_2"></div> : null}
         </button>
         <button
           type="button"

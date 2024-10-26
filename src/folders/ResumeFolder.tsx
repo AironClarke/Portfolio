@@ -1,9 +1,10 @@
-import { useCallback, useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Rnd, RndResizeCallback } from 'react-rnd';
 import Titlebar from 'src/components/system/window/Titlebar';
 import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
 import rndDefaults from 'src/utils/rndDefaults';
+import useDraggable from 'src/hooks/useDraggable';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);
@@ -18,14 +19,18 @@ function ResumeFolder() {
   const maximized = ResumeExpand.expand;
 
   const { height, width, updateSize } = useResizable(maximized);
+  const { x, y, updatePosition } = useDraggable(maximized);
 
-  console.log(maximized);
+  console.log(x, y);
 
   return (
     <Rnd
+      disableDragging={maximized}
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
+      position={{ x, y }}
+      onDragStop={updatePosition}
       {...rndDefaults}
     >
       <section

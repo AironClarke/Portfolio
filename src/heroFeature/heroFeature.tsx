@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
+import { transform } from 'typescript';
 
 const HeroFeature = (): JSX.Element => {
   const [ResumeExpand, setResumeExpand] = useState({
@@ -34,6 +35,8 @@ const HeroFeature = (): JSX.Element => {
       const itemName = item.name.split(' ').join('').toLowerCase();
       return itemName === passedName;
     });
+
+    console.log('riggered');
 
     if (item) {
       return {
