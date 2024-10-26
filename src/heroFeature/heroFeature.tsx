@@ -43,7 +43,7 @@ const HeroFeature = (): JSX.Element => {
         display: item.usestate.show ? 'block' : '',
         maxWidth: 'none',
         width: '100%',
-        height: 'calc(100% - 37px)',
+        height: 'calc(100% - 30px)',
         // if this app works at the end, remove the bellow code
         // left: `${item.usestate.x <= 0 ? Math.abs(item.usestate.x) * 2 + item.usestate.x : -item.usestate.x}px`,
         // top: `${item.usestate.y <= 0 ? Math.abs(item.usestate.y) * 2 + item.usestate.y : -item.usestate.y}px`,
