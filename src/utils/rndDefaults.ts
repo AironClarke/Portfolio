@@ -1,4 +1,5 @@
 const rndDefaults = {
+  bounds: '.heroContainer',
   enableUserSelectHack: false,
   resizeHandleStyles: {
     bottom: {
