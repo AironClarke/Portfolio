@@ -27,10 +27,6 @@
   }
 }
 
-.heroContainer li {
-  width: fit-content;
-}
-
 /* taskbar */
 .startButton {
   display: flex;
@@ -191,4 +187,27 @@
   column-gap: 1px;
   row-gap: 28px;
   padding: 5px 0;
+}
+
+.fileEntry {
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.fileEntry figure figcaption {
+  color: rgba(255, 255, 255, 80%);
+  font-size: 12px;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.8),
+    /* Dark shadow effect */ -1px -1px 1px rgba(0, 0, 0, 0.3); /* Additional light shadow for contrast */
+}
+
+.fileEntry button figure img {
+  height: 48px;
+  width: 48px;
+}
+
+.fileEntry:hover {
+  background-color: rgba(0, 120, 215, 0.3);
 }
