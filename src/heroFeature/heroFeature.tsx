@@ -95,7 +95,7 @@ const HeroFeature = (): JSX.Element => {
           hide: false
         }));
 
-        console.log('setter tiggered');
+        console.log('tasaddsasad');
 
         setTap((prevTap) =>
           prevTap.filter((tapItem) => {
@@ -200,7 +200,6 @@ const HeroFeature = (): JSX.Element => {
   return (
     <UserContext.Provider value={contextValue}>
       <section className="heroContainer">
-        <h1>Hello, world!</h1>;
         <FileManager />
         <ResumeFolder />
         <Taskbar />

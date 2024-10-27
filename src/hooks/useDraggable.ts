@@ -16,7 +16,7 @@ const defaultWindowPosition = {
   y: 0
 };
 
-const useDraggable = (maximized = false): Draggable => {
+export const useDraggable = (maximized = false): Draggable => {
   const [{ x, y }, setPosition] = useState<Position>(defaultWindowPosition);
   const updatePosition = useCallback<DraggableEventHandler>(
     (_event, { x: elementX, y: elementY }) =>
@@ -24,7 +24,18 @@ const useDraggable = (maximized = false): Draggable => {
     []
   );
 
-  return { x: maximized ? 0 : x, y: maximized ? 0 : y, updatePosition };
+  const resetPosition = useCallback(() => {
+    setPosition({ x: 0, y: 0 });
+
+    return { x: x, y: y };
+  }, []);
+
+  return {
+    x: maximized ? 0 : x,
+    y: maximized ? 0 : y,
+    updatePosition,
+    resetPosition
+  };
 };
 
 export default useDraggable;

@@ -34,7 +34,8 @@ const Titlebar = ({
   icon,
   title,
   ResumeExpand,
-  setResumeExpand
+  setResumeExpand,
+  resetPosition
 }: TitlebarProps) => {
   const userContext = useContext(UserContext);
 
@@ -50,6 +51,12 @@ const Titlebar = ({
       expand: !prevState.expand
     }));
     console.log('handle expand triggered');
+  }
+
+  function handleClose() {
+    // Reset position and handle close actions
+    resetPosition();
+    deleteTap('Resume');
   }
 
   return (
@@ -89,8 +96,9 @@ const Titlebar = ({
           type="button"
           className="close"
           onClick={() => {
-            console.log('closed clicked');
-            deleteTap('Resume');
+            // console.log('closed clicked');
+            // deleteTap('Resume');
+            handleClose();
           }}
         >
           <CloseIcon />

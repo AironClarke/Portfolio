@@ -17,11 +17,11 @@ function ResumeFolder() {
     userContext;
 
   const maximized = ResumeExpand.expand;
+  //  TODO: make window not draggable when its hidden
+  // const test = ResumeExpand.hide;
 
   const { height, width, updateSize } = useResizable(maximized);
-  const { x, y, updatePosition } = useDraggable(maximized);
-
-  console.log(x, y);
+  const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
 
   return (
     <Rnd
@@ -46,6 +46,7 @@ function ResumeFolder() {
           title="test folder"
           ResumeExpand={ResumeExpand}
           setResumeExpand={setResumeExpand}
+          resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <h1>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
