@@ -137,6 +137,7 @@
   position: absolute;
   width: 100%;
   display: none;
+  overflow: hidden;
 }
 
 /* taskbar */
