@@ -120,9 +120,8 @@
   background-color: rgb(26, 26, 26);
 }
 
-.titlebarHeader nav button:hover .close {
+.cancel:hover .close:hover {
   background-color: rgb(232, 17, 35);
-  transition: background-color 0.3s ease;
 }
 
 .titlebarHeader nav button svg {
@@ -189,6 +188,7 @@
   padding: 5px 0;
 }
 
+/* file icon style */
 .fileEntry {
   padding: 2px;
   display: flex;
