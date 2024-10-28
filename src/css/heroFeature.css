@@ -170,6 +170,7 @@
 }
 
 .taskbarEntries {
+  display: flex;
   height: 100%;
   position: absolute;
   left: 36px;
