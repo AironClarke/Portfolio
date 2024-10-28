@@ -175,6 +175,8 @@
   position: absolute;
   left: 36px;
   right: 76px;
+  column-gap: 1px;
+  margin: 0 3px;
 }
 
 /* file manager organise */
