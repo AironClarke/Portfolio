@@ -144,7 +144,10 @@
   border-bottom: 2px solid #76b9ed;
   display: flex;
   height: 100%;
-  max-width: 161px;
+  max-width: 130px;
+  width: 130px;
+  min-width: 0;
+  margin: 0 4px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
