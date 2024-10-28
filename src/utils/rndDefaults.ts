@@ -1,6 +1,8 @@
 const rndDefaults = {
   bounds: '.heroContainer',
   enableUserSelectHack: false,
+  minHeight: '42px',
+  minWidth: '220px',
   resizeHandleStyles: {
     bottom: {
       bottom: '-3px',
