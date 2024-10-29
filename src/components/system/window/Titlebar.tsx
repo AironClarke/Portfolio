@@ -56,7 +56,7 @@ const Titlebar = ({
   function handleClose() {
     // Reset position and handle close actions
     resetPosition();
-    deleteTap('Resume');
+    deleteTap(title);
   }
 
   return (

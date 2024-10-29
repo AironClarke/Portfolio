@@ -7,9 +7,20 @@ import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
 import { transform } from 'typescript';
+import OtherFolder from 'src/folders/OtherFolder';
 
 const HeroFeature = (): JSX.Element => {
   const [ResumeExpand, setResumeExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
+  const [OtherExpand, setOtherExpand] = useState({
     expand: false,
     show: false,
     hide: false,
@@ -23,7 +34,8 @@ const HeroFeature = (): JSX.Element => {
 
   function ObjectState() {
     return [
-      { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand }
+      { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand },
+      { name: 'Other', setter: setOtherExpand, usestate: OtherExpand }
     ];
   }
 
@@ -185,6 +197,8 @@ const HeroFeature = (): JSX.Element => {
   const contextValue = {
     ResumeExpand,
     setResumeExpand,
+    OtherExpand,
+    setOtherExpand,
     inlineStyle,
     inlineStyleExpand,
     deleteTap,
@@ -200,8 +214,11 @@ const HeroFeature = (): JSX.Element => {
   return (
     <UserContext.Provider value={contextValue}>
       <section className="heroContainer">
-        <FileManager />
-        <ResumeFolder />
+        <section className="fullscreen">
+          <FileManager />
+          <ResumeFolder />
+          <OtherFolder />
+        </section>
         <Taskbar />
       </section>
     </UserContext.Provider>
