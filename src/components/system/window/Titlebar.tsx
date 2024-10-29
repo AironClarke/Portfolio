@@ -60,7 +60,7 @@ const Titlebar = ({
   }
 
   return (
-    <header className="titlebarHeader">
+    <header className="titlebarHeader draggable-titlebar">
       <h1
         style={
           ResumeExpand.expand ? inlineStyleExpand('Type') : inlineStyle('Type')

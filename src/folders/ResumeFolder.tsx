@@ -25,6 +25,7 @@ function ResumeFolder() {
 
   return (
     <Rnd
+      dragHandleClassName="draggable-titlebar"
       disableDragging={maximized}
       enableResizing={!maximized}
       size={{ height, width }}
