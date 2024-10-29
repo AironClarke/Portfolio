@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Rnd, RndResizeCallback } from 'react-rnd';
+import { Rnd } from 'react-rnd';
 import Titlebar from 'src/components/system/window/Titlebar';
 import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
@@ -33,18 +33,17 @@ function ResumeFolder() {
       position={{ x, y }}
       onDragStop={updatePosition}
       {...rndDefaults}
+      className="window"
+      style={
+        ResumeExpand.expand
+          ? inlineStyleExpand('Resume')
+          : inlineStyle('Resume')
+      }
     >
-      <section
-        className="window"
-        style={
-          ResumeExpand.expand
-            ? inlineStyleExpand('Resume')
-            : inlineStyle('Resume')
-        }
-      >
+      <section>
         <Titlebar
           icon="folderTest.svg"
-          title="test folder"
+          title="Resume"
           ResumeExpand={ResumeExpand}
           setResumeExpand={setResumeExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
