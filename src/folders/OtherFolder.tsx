@@ -18,7 +18,8 @@ function OtherFolder() {
     ResumeExpand,
     setOtherExpand,
     inlineStyleExpand,
-    inlineStyle
+    inlineStyle,
+    handleSetFocusItemTrue
   } = userContext;
 
   const maximized = OtherExpand.expand;
@@ -42,8 +43,9 @@ function OtherFolder() {
       style={
         OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
       }
+      onDragStart={() => handleSetFocusItemTrue('Other')}
     >
-      <section>
+      <section onClick={() => handleSetFocusItemTrue('Other')}>
         <Titlebar
           icon="thisPC.svg"
           title="Other"

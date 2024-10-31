@@ -13,8 +13,13 @@ function ResumeFolder() {
     throw new Error('userContext is undefined');
   }
 
-  const { ResumeExpand, setResumeExpand, inlineStyleExpand, inlineStyle } =
-    userContext;
+  const {
+    ResumeExpand,
+    setResumeExpand,
+    inlineStyleExpand,
+    inlineStyle,
+    handleSetFocusItemTrue
+  } = userContext;
 
   const maximized = ResumeExpand.expand;
   //  TODO: make window not draggable when its hidden
@@ -39,8 +44,9 @@ function ResumeFolder() {
           ? inlineStyleExpand('Resume')
           : inlineStyle('Resume')
       }
+      onDragStart={() => handleSetFocusItemTrue('Resume')}
     >
-      <section>
+      <section onClick={() => handleSetFocusItemTrue('Resume')}>
         <Titlebar
           icon="folderTest.svg"
           title="Resume"

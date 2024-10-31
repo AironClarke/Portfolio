@@ -39,6 +39,30 @@ const HeroFeature = (): JSX.Element => {
     ];
   }
 
+  function handleSetFocusItemTrue(name: string) {
+    //click on one, other goes false
+
+    const LowerCaseName = name.toLowerCase().split(' ').join('');
+    const setState = ObjectState();
+
+    setState.forEach((item) => {
+      const itemName = item.name.toLowerCase();
+      if (itemName === LowerCaseName) {
+        item.setter((prev) => ({ ...prev, focusItem: true }));
+        console.log('FocusItem: true');
+      } else {
+        item.setter((prev) => ({ ...prev, focusItem: false }));
+      }
+    });
+
+    setIconState((prevIcons) =>
+      prevIcons.map((icon) => ({
+        ...icon,
+        focus: false
+      }))
+    );
+  }
+
   function inlineStyleExpand(name: string) {
     const passedName = name.split(' ').join('').toLowerCase();
     const setState = ObjectState();
@@ -84,8 +108,12 @@ const HeroFeature = (): JSX.Element => {
     if (item) {
       return {
         display: item.usestate.show ? 'block' : '',
-        opacity: item.usestate.hide ? '0' : '1'
-        // zIndex: item.usestate.hide ? '-1' : item.usestate.focusItem ? '999' : '3'
+        opacity: item.usestate.hide ? '0' : '1',
+        zIndex: item.usestate.hide
+          ? '-1'
+          : item.usestate.focusItem
+            ? '999'
+            : '3'
         // pointerEvents: item.usestate.hide ? 'none' : 'auto'
       };
     }
@@ -208,7 +236,8 @@ const HeroFeature = (): JSX.Element => {
     handleShow,
     tap,
     setTap,
-    handleHideFolder
+    handleHideFolder,
+    handleSetFocusItemTrue
   };
 
   return (
