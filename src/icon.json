@@ -1,10 +1,42 @@
 [
   {
     "name": "Resume",
-    "pic": "Resume"
+    "pic": "Resume",
+    "folderId": "Desktop"
   },
   {
     "name": "Other",
-    "pic": "Resume"
+    "pic": "Resume",
+    "folderId": "Desktop"
+  },
+  {
+    "name": "ResumeFile1",
+    "pic": "Resume",
+    "folderId": "Other"
+  },
+  {
+    "name": "ResumeFile2",
+    "pic": "Resume",
+    "folderId": "Other"
+  },
+  {
+    "name": "ResumeFile3",
+    "pic": "Folder2",
+    "folderId": "Other"
+  },
+  {
+    "name": "ResumeFile4",
+    "pic": "Folder2",
+    "folderId": "Other"
+  },
+  {
+    "name": "ResumeFile5",
+    "pic": "Folder2",
+    "folderId": "Other"
+  },
+  {
+    "name": "ResumeFile6",
+    "pic": "Folder2",
+    "folderId": "Other"
   }
 ]
