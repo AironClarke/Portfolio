@@ -223,3 +223,7 @@
   position: relative;
   height: calc(100% - 30px);
 }
+
+.titlebarContainer {
+  height: 100%;
+}

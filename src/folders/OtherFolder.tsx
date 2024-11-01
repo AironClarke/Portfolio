@@ -45,7 +45,10 @@ function OtherFolder() {
       }
       onDragStart={() => handleSetFocusItemTrue('Other')}
     >
-      <section onClick={() => handleSetFocusItemTrue('Other')}>
+      <section
+        className="titlebarContainer"
+        onClick={() => handleSetFocusItemTrue('Other')}
+      >
         <Titlebar
           icon="thisPC.svg"
           title="Other"

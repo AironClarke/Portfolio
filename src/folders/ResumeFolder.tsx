@@ -46,7 +46,10 @@ function ResumeFolder() {
       }
       onDragStart={() => handleSetFocusItemTrue('Resume')}
     >
-      <section onClick={() => handleSetFocusItemTrue('Resume')}>
+      <section
+        className="titlebarContainer"
+        onClick={() => handleSetFocusItemTrue('Resume')}
+      >
         <Titlebar
           icon="folderTest.svg"
           title="Resume"
