@@ -227,3 +227,18 @@
 .titlebarContainer {
   height: 100%;
 }
+
+/* folders stuff */
+.folderFileManager {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 1px;
+  grid-template-columns: repeat(auto-fill, 74px);
+  grid-template-rows: repeat(auto-fill, 70px);
+  height: calc(100% - 30px);
+  padding: 5px 0;
+  row-gap: 28px;
+  /* ${StyledWindow} & {
+    grid-auto-flow: row;
+  } */
+}
