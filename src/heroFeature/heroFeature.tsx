@@ -8,6 +8,13 @@ import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
 import { transform } from 'typescript';
 import OtherFolder from 'src/folders/OtherFolder';
+import { StyleHide } from 'src/functions/StyleHide';
+
+export type ObjectStateItem = {
+  name: string;
+  setter: (value: any) => void; // Adjust the `any` to the specific type as needed
+  usestate: any; // Adjust `any` to the type of state, like `boolean` if it's a boolean state
+};
 
 const HeroFeature = (): JSX.Element => {
   const [ResumeExpand, setResumeExpand] = useState({
@@ -32,7 +39,7 @@ const HeroFeature = (): JSX.Element => {
 
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
-  function ObjectState() {
+  function ObjectState(): ObjectStateItem[] {
     return [
       { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand },
       { name: 'Other', setter: setOtherExpand, usestate: OtherExpand }
@@ -237,7 +244,9 @@ const HeroFeature = (): JSX.Element => {
     tap,
     setTap,
     handleHideFolder,
-    handleSetFocusItemTrue
+    handleSetFocusItemTrue,
+    StyleHide,
+    ObjectState
   };
 
   return (
