@@ -1,13 +1,18 @@
 import { Tap } from 'src/context/UserContext';
-import { ObjectStateItem } from 'src/heroFeature/heroFeature';
+import { useContext } from 'react';
+import { UserContext } from 'src/context/UserContext';
 
 // style function for bg tap
 // we should remove theses = 'none' values when polishing this file
-export function StyleHide(
-  index: number,
-  tap: Tap,
-  ObjectState: ObjectStateItem
-) {
+export function StyleHide(index: number, tap: Tap) {
+  const userContext = useContext(UserContext);
+
+  if (!userContext) {
+    throw new Error('userContext not found');
+  }
+
+  const { ObjectState } = userContext;
+
   console.log(tap, index);
   const boxshadowstyleTrue = 'none';
   const bgStyleTrue = 'rgba(0, 0, 0, 60%)';
@@ -19,7 +24,7 @@ export function StyleHide(
 
   const namePassed = tap[index].title.split(' ').join('').toLowerCase();
 
-  const foundItem = setState.find((item) => {
+  const foundItem = setState.find((item: { name: string }) => {
     const itemName = item.name.split(' ').join('').toLowerCase();
 
     return itemName === namePassed;
