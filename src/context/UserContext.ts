@@ -31,7 +31,11 @@ export type UserContextType = {
   inlineStyle: (name: string) => CSSProperties;
   inlineStyleExpand: (name: string) => CSSProperties;
   deleteTap: (name: string) => void;
-  iconState: { name: string; pic: string }[]; //why?
+  iconState: {
+    folderId: string;
+    name: string;
+    pic: string;
+  }[]; //why?
   setIconState: React.Dispatch<
     React.SetStateAction<{ name: string; pic: string }[]>
   >; // State setter for updating iconState why??

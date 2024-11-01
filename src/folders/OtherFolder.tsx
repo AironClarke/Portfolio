@@ -5,6 +5,8 @@ import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
 import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
+import FileEntry from 'src/files/FileEntry';
+import { imageMapping } from 'src/functions/AppFunction';
 
 function OtherFolder() {
   const userContext = useContext(UserContext);
@@ -19,7 +21,8 @@ function OtherFolder() {
     setOtherExpand,
     inlineStyleExpand,
     inlineStyle,
-    handleSetFocusItemTrue
+    handleSetFocusItemTrue,
+    iconState
   } = userContext;
 
   const maximized = OtherExpand.expand;
@@ -28,6 +31,10 @@ function OtherFolder() {
 
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
+
+  function handleShow(name: string): void {
+    throw new Error('Function not implemented.');
+  }
 
   return (
     <Rnd
@@ -56,7 +63,27 @@ function OtherFolder() {
           setResumeExpand={setOtherExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
-        <h1>test folder no.2</h1>
+        <ol className="folderFileManager">
+          {iconState
+            .filter((icon) => icon.folderId == 'Other')
+            .map((icon) => (
+              // <Rnd
+              //   style={style}
+              //   default={{
+              //     x: 0,
+              //     y: 0,
+              //     width: 320,
+              //     height: 200
+              //   }}
+              // >
+              <FileEntry
+                name={icon.name}
+                icon={imageMapping(icon.pic) || '|| operator test'}
+                onDoubleClick={() => handleShow(icon.name)}
+              />
+              // </Rnd>
+            ))}
+        </ol>
       </section>
     </Rnd>
   );
