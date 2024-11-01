@@ -5,6 +5,8 @@ type TapItem = {
   icon: string;
 };
 
+export type Tap = TapItem[];
+
 export type UserContextType = {
   ResumeExpand: {
     expand: boolean;
