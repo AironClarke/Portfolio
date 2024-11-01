@@ -7,8 +7,8 @@ type Size = {
 };
 
 const defaultWindowSize = {
-  height: '200px',
-  width: '250px'
+  height: '250px',
+  width: '280px'
 };
 
 const useResizable = (maximized: boolean = false) => {
