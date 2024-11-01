@@ -43,7 +43,7 @@ const Titlebar = ({
     throw new Error('userContext is undefined');
   }
 
-  const { inlineStyleExpand, inlineStyle, deleteTap } = userContext;
+  const { inlineStyleExpand, inlineStyle, deleteTap, StyleHide } = userContext;
 
   function handleExpandStateToggle() {
     setResumeExpand((prevState) => ({
@@ -79,7 +79,8 @@ const Titlebar = ({
               ...prev,
               hide: true,
               focusItem: false
-            }));
+            })),
+              StyleHide({ title });
           }}
         >
           <MinimizeIcon />

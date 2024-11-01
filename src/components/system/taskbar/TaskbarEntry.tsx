@@ -18,7 +18,8 @@ const TaskbarEntry = ({
     throw new Error('userContext not found');
   }
 
-  const { handleHideFolder, imageMapping } = userContext;
+  const { handleHideFolder, imageMapping, StyleHide, tap, ObjectState } =
+    userContext;
 
   console.log(icon);
 
@@ -29,6 +30,7 @@ const TaskbarEntry = ({
         handleHideFolder(index);
         e.stopPropagation();
       }}
+      style={StyleHide(index, tap, ObjectState)}
     >
       <figure>
         <img
