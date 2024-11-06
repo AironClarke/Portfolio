@@ -63,14 +63,16 @@ const HeroFeature = (): JSX.Element => {
   function handleSetFocusItemTrue(name: string) {
     //click on one, other goes false
 
-    const LowerCaseName = name.toLowerCase().split(' ').join('');
+    const LowerCaseName = name.toLowerCase().split(' ').join('').trim();
     const setState = ObjectState();
 
+    console.log(LowerCaseName);
+    console.log(setState);
+
     setState.forEach((item) => {
-      const itemName = item.name.toLowerCase();
+      const itemName = item.name.toLowerCase().split(' ').join('').trim();
       if (itemName === LowerCaseName) {
         item.setter((prev) => ({ ...prev, focusItem: true }));
-        console.log('FocusItem: true');
       } else {
         item.setter((prev) => ({ ...prev, focusItem: false }));
       }
@@ -170,12 +172,8 @@ const HeroFeature = (): JSX.Element => {
 
     const allSetItems = ObjectState(); // call all usestate object
 
-    console.log(lowerCaseName);
-
     allSetItems.forEach((item) => {
       const itemName = item.name.toLowerCase().split(' ').join('').trim();
-
-      console.log(itemName);
 
       if (itemName === lowerCaseName) {
         setTimeout(() => {
@@ -196,7 +194,6 @@ const HeroFeature = (): JSX.Element => {
       }
 
       if (lowerCaseName == 'dukenukem3d') {
-        console.log('found nuken');
         openMessage();
       }
     });
