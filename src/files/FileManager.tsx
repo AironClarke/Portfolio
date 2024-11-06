@@ -37,7 +37,9 @@ const FileManager = (): JSX.Element => {
           <FileEntry
             name={icon.name}
             icon={imageMapping(icon.pic) || '|| operator test'}
-            onDoubleClick={() => handleShow(icon.name)}
+            onDoubleClick={() => {
+              handleShow(icon.name);
+            }}
           />
           // </Rnd>
         ))}
