@@ -38,5 +38,10 @@
     "name": "ResumeFile6",
     "pic": "Folder2",
     "folderId": "Other"
+  },
+  {
+    "name": "Duke Nukem 3D",
+    "pic": "DukenNukem3D",
+    "folderId": "Desktop"
   }
 ]
