@@ -11,7 +11,7 @@ const TaskbarEntries = (): JSX.Element => {
   }
 
   const { tap } = userContext;
-  console.log(tap);
+
   return (
     <ol className="taskbarEntries">
       {tap.map(({ title, icon }, index) => (

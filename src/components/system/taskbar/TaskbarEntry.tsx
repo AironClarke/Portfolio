@@ -21,8 +21,6 @@ const TaskbarEntry = ({
   const { handleHideFolder, imageMapping, StyleHide, tap, ObjectState } =
     userContext;
 
-  console.log(icon);
-
   return (
     <li
       className="taskbarEntry"

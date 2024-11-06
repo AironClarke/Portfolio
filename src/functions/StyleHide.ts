@@ -13,7 +13,6 @@ export function StyleHide(index: number, tap: Tap) {
 
   const { ObjectState } = userContext;
 
-  console.log(tap, index);
   const boxshadowstyleTrue = 'none';
   const bgStyleTrue = 'rgba(0, 0, 0, 60%)';
 
