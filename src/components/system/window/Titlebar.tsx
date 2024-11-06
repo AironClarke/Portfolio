@@ -4,6 +4,7 @@ import { CloseIcon } from '../taskbar/icons';
 import { Dispatch, SetStateAction, useContext } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import { motion } from 'framer-motion';
+import { closeMessage } from '../apps/JSDOS/dosFunctions';
 
 type TitlebarProps = {
   icon: string;
@@ -35,7 +36,9 @@ const Titlebar = ({
   title,
   ResumeExpand,
   setResumeExpand,
-  resetPosition
+  resetPosition,
+  dosOpen,
+  dosClose
 }: TitlebarProps) => {
   const userContext = useContext(UserContext);
 
@@ -50,13 +53,16 @@ const Titlebar = ({
       ...prevState,
       expand: !prevState.expand
     }));
-    console.log('handle expand triggered');
   }
 
-  function handleClose() {
-    // Reset position and handle close actions
+  function handleClose(title: string) {
+    // Reset position and handle close action7
     resetPosition();
     deleteTap(title);
+
+    if (title == 'Duke Nukem 3D') {
+      closeMessage();
+    }
   }
 
   return (
@@ -97,9 +103,7 @@ const Titlebar = ({
           type="button"
           className="close"
           onClick={() => {
-            // console.log('closed clicked');
-            // deleteTap('Resume');
-            handleClose();
+            handleClose(title);
           }}
         >
           <CloseIcon />
