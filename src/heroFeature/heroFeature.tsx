@@ -9,6 +9,9 @@ import { imageMapping } from 'src/functions/AppFunction';
 import { transform } from 'typescript';
 import OtherFolder from 'src/folders/OtherFolder';
 import { StyleHide } from 'src/functions/StyleHide';
+import DukeNukem3D from 'src/components/system/apps/JSDOS/DukeNukem3D';
+import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
+import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 
 export type ObjectStateItem = {
   name: string;
@@ -37,12 +40,23 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [Duke3DExpand, setDuke3DExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   function ObjectState(): ObjectStateItem[] {
     return [
       { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand },
-      { name: 'Other', setter: setOtherExpand, usestate: OtherExpand }
+      { name: 'Other', setter: setOtherExpand, usestate: OtherExpand },
+      { name: 'Duke Nukem 3D', setter: setDuke3DExpand, usestate: Duke3DExpand }
     ];
   }
 
@@ -78,8 +92,6 @@ const HeroFeature = (): JSX.Element => {
       const itemName = item.name.split(' ').join('').toLowerCase();
       return itemName === passedName;
     });
-
-    console.log('riggered');
 
     if (item) {
       return {
@@ -142,8 +154,6 @@ const HeroFeature = (): JSX.Element => {
           hide: false
         }));
 
-        console.log('tasaddsasad');
-
         setTap((prevTap) =>
           prevTap.filter((tapItem) => {
             // get prevTap to prevent error
@@ -160,8 +170,12 @@ const HeroFeature = (): JSX.Element => {
 
     const allSetItems = ObjectState(); // call all usestate object
 
+    console.log(lowerCaseName);
+
     allSetItems.forEach((item) => {
-      const itemName = item.name.toLowerCase().trim();
+      const itemName = item.name.toLowerCase().split(' ').join('').trim();
+
+      console.log(itemName);
 
       if (itemName === lowerCaseName) {
         setTimeout(() => {
@@ -173,12 +187,17 @@ const HeroFeature = (): JSX.Element => {
           }));
         }, 100);
       }
+
       if (itemName !== lowerCaseName) {
         item.setter((prev) => ({ ...prev, focusItem: false }));
       }
       if (itemName === lowerCaseName) {
         item.setter((prev) => ({ ...prev, hide: false }));
-        return;
+      }
+
+      if (lowerCaseName == 'dukenukem3d') {
+        console.log('found nuken');
+        openMessage();
       }
     });
     if (tap.some((tapItem) => tapItem.title == name)) return;
@@ -234,6 +253,8 @@ const HeroFeature = (): JSX.Element => {
     setResumeExpand,
     OtherExpand,
     setOtherExpand,
+    Duke3DExpand,
+    setDuke3DExpand,
     inlineStyle,
     inlineStyleExpand,
     deleteTap,
@@ -246,7 +267,9 @@ const HeroFeature = (): JSX.Element => {
     handleHideFolder,
     handleSetFocusItemTrue,
     StyleHide,
-    ObjectState
+    ObjectState,
+    openMessage,
+    closeMessage
   };
 
   return (
@@ -256,6 +279,7 @@ const HeroFeature = (): JSX.Element => {
           <FileManager />
           <ResumeFolder />
           <OtherFolder />
+          <DukeNukem3D />
         </section>
         <Taskbar />
       </section>
