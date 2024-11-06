@@ -239,3 +239,36 @@
   row-gap: 28px;
   grid-auto-flow: row;
 }
+
+/* JS-DOS */
+.canvas {
+  height: calc(100% - 40px);
+  width: 100%;
+}
+
+#dos {
+  height: 100%;
+  top: 0 !important;
+  width: 100%;
+  /* display: none; */
+}
+
+.jsdos-rso .sidebar {
+  display: none !important;
+}
+
+.background-image {
+  display: none;
+}
+
+.relative {
+  flex: none;
+}
+
+.window .flex {
+  display: block;
+}
+
+.canvas .window {
+  display: block;
+}
