@@ -17,7 +17,6 @@ function OtherFolder() {
 
   const {
     OtherExpand,
-    ResumeExpand,
     setOtherExpand,
     inlineStyleExpand,
     inlineStyle,
