@@ -243,6 +243,8 @@
 /* JS-DOS */
 .canvas {
   height: calc(100% - 40px);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   width: 100%;
 }
 
