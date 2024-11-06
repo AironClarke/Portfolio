@@ -199,6 +199,7 @@
   padding: 2px;
   display: flex;
   justify-content: center;
+  height: fit-content;
 }
 
 .fileEntry figure figcaption {
@@ -212,6 +213,7 @@
 .fileEntry button figure img {
   height: 48px;
   width: 48px;
+  margin: 0 auto;
 }
 
 .fileEntry:hover {
