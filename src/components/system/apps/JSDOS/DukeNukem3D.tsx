@@ -48,7 +48,9 @@ function DukeNukem3D() {
     >
       <section
         className="titlebarContainer"
-        onClick={() => handleSetFocusItemTrue('Duke Nukem 3D')}
+        onClick={() => {
+          handleSetFocusItemTrue('Duke Nukem 3D');
+        }}
       >
         <Titlebar
           icon="DukeNukem3DIcon.png"

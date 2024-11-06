@@ -66,7 +66,12 @@ const Titlebar = ({
   }
 
   return (
-    <header className="titlebarHeader draggable-titlebar">
+    <header
+      className="titlebarHeader draggable-titlebar"
+      style={{
+        backgroundColor: ResumeExpand.focusItem ? 'black' : '#444444'
+      }}
+    >
       <h1
         style={
           ResumeExpand.expand ? inlineStyleExpand('Type') : inlineStyle('Type')
