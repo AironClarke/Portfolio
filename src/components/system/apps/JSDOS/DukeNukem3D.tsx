@@ -38,6 +38,7 @@ function DukeNukem3D() {
       position={{ x, y }}
       onDragStop={updatePosition}
       {...rndDefaults}
+      lockAspectRatio={true}
       className="window"
       style={
         Duke3DExpand.expand
