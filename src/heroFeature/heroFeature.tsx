@@ -2,7 +2,7 @@ import FileManager from 'src/files/FileManager';
 import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
 import ResumeFolder from 'src/folders/ResumeFolder';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
@@ -198,6 +198,7 @@ const HeroFeature = (): JSX.Element => {
       }
     });
     if (tap.some((tapItem) => tapItem.title == name)) return;
+    setStartActive(false);
 
     if (name === 'Run') return; // not showing run on tap
 
@@ -247,6 +248,10 @@ const HeroFeature = (): JSX.Element => {
     });
   }
 
+  //start button stuff
+  const [startActive, setStartActive] = useState(false);
+  const startRef = useRef<HTMLButtonElement>(null);
+
   //context
 
   const contextValue = {
@@ -270,7 +275,10 @@ const HeroFeature = (): JSX.Element => {
     StyleHide,
     ObjectState,
     openMessage,
-    closeMessage
+    closeMessage,
+    startActive,
+    setStartActive,
+    startRef
   };
 
   return (
