@@ -82,7 +82,7 @@ const Titlebar = ({
           <figcaption>{title}</figcaption>
         </figure>
       </h1>
-      <nav className="cancel">
+      <nav className="Cancel">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -92,6 +92,7 @@ const Titlebar = ({
               focusItem: false
             })),
               StyleHide({ title });
+            title = 'Minimise';
           }}
         >
           <MinimizeIcon />
@@ -101,6 +102,7 @@ const Titlebar = ({
             handleExpandStateToggle();
           }}
           type="button"
+          title="Maximise"
         >
           <MaximizeIcon />
         </button>
@@ -110,6 +112,7 @@ const Titlebar = ({
           onClick={() => {
             handleClose(title);
           }}
+          title="close"
         >
           <CloseIcon />
         </button>
