@@ -277,3 +277,20 @@
 .canvas .window {
   display: block;
 }
+
+/* startMenu */
+.startMenu {
+  backdrop-filter: blur(10px);
+  background-color: hsla(0, 0%, 12.5%, 70%);
+  bottom: 30px;
+  height: 390px;
+  left: 0;
+  position: absolute;
+  width: 320px;
+  z-index: 1000;
+}
+
+.testSize {
+  width: 30px;
+  height: 30px;
+}
