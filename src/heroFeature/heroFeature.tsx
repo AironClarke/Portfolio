@@ -223,12 +223,16 @@ const HeroFeature = (): JSX.Element => {
   function handleHideFolder(index: number) {
     // unhide icon from tap
 
-    const lowerCaseName = tap[index].title.toLowerCase().split(' ').join('');
+    const lowerCaseName = tap[index].title
+      .toLowerCase()
+      .split(' ')
+      .join('')
+      .trim();
 
     const allSetItems = ObjectState(); // all the usestate name to toggle
 
     allSetItems.forEach((item) => {
-      const itemName = item.name.toLowerCase().trim();
+      const itemName = item.name.toLowerCase().split(' ').join('').trim();
 
       if (itemName === lowerCaseName) {
         item.setter((prev) => ({ ...prev, focusItem: true }));
