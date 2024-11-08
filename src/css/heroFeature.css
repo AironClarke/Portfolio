@@ -280,8 +280,8 @@
 
 /* startMenu */
 .startMenu {
-  backdrop-filter: blur(10px);
-  background-color: hsla(0, 0%, 12.5%, 70%);
+  backdrop-filter: blur(12px);
+  background-color: hsla(0, 0%, 12%, 70%);
   bottom: 30px;
   height: 390px;
   left: 0;
