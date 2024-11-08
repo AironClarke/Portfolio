@@ -17,7 +17,7 @@ export function openMessage() {
     autoStart: true,
     noCloud: true,
     imageRendering: 'smooth',
-    renderAspect: 'Fit'
+    renderAspect: '16/9'
   });
 }
 
