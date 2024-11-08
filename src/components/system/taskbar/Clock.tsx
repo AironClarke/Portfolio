@@ -11,7 +11,11 @@ const Clock = (): JSX.Element => {
     return () => clearInterval(interval);
   }, []);
 
-  return <time className="clock">{time.toLocaleTimeString()}</time>;
+  return (
+    <time className="clock" title="Clock">
+      {time.toLocaleTimeString()}
+    </time>
+  );
 };
 
 export default Clock;
