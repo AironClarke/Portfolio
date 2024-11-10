@@ -8,6 +8,8 @@ import display from '../assets/display.png';
 import project from '/folderTest.svg';
 import resume from '/folderTest.svg';
 import settings from '/folderTest.svg';
+import FileEntry from 'src/files/FileEntry';
+import StartMenuFileEntry from './StartMenuFileEntry';
 
 const StartMenu = (): JSX.Element => {
   const { startActive, setStartActive, handleShow, startRef } =
@@ -15,33 +17,33 @@ const StartMenu = (): JSX.Element => {
 
   const footerItems = [
     {
-      className: 'sidebar_popup',
+      name: 'sidebar_popup',
       imgSrc: sidebar,
       imgAlt: 'sidebar'
     },
     {
-      className: 'linked',
+      name: 'linked',
       imgSrc: linked,
       imgAlt: 'linked',
       style: { borderRadius: '5px' },
       spanText: 'Linked'
     },
     {
-      className: 'project',
+      name: 'project',
       imgSrc: project,
       imgAlt: 'project',
       spanText: 'Project',
       onClick: () => handleShow('Resume')
     },
     {
-      className: 'resume',
+      name: 'resume',
       imgSrc: resume,
       imgAlt: 'resume',
       spanText: 'Resume',
       onClick: () => handleShow('Resume')
     },
     {
-      className: 'shutdownicon',
+      name: 'shutdownicon',
       imgSrc: settings,
       imgAlt: 'shutdownicon',
       spanText: 'Settings',
@@ -71,22 +73,20 @@ const StartMenu = (): JSX.Element => {
           className="startMenu"
           style={{ display: startActive ? '' : 'none' }}
         >
-          {footerItems.map((item, index) => (
-            <li
-              key={index}
-              className={(item.className, 'testSize')}
-              onClick={item.onClick}
-            >
-              {item.imgSrc && (
-                <img
-                  src={item.imgSrc}
+          <ol className="startListFileManager">
+            {footerItems.map((item, index) => (
+              <li key={index} className="startFileEntry" onClick={item.onClick}>
+                <StartMenuFileEntry
+                  name={item.name}
+                  icon={item.imgSrc || '|| operator test'}
                   alt={item.imgAlt}
-                  style={item.style || {}}
+                  onDoubleClick={() => {
+                    handleShow(item.name);
+                  }}
                 />
-              )}
-              {item.spanText && <span>{item.spanText}</span>}
-            </li>
-          ))}
+              </li>
+            ))}
+          </ol>
         </nav>
       )}
     </>
