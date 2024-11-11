@@ -289,6 +289,9 @@
   position: absolute;
   width: 320px;
   z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  padding-right: 7px;
 }
 
 .startListFileManager {
@@ -296,7 +299,11 @@
   flex-direction: column;
   height: calc(100% - 70px);
   margin-left: 7px;
-  margin-top: 7px;
+  overflow: hidden auto;
+  margin-top: 0px;
+  padding-bottom: 24px;
+  padding-top: 7px;
+  width: 100%;
 }
 
 /* stuff */
@@ -412,4 +419,46 @@
   height: 40px;
   width: 40px;
   margin: 0 auto;
+}
+
+.startMenuSidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 7px;
+  margin-top: 4px;
+}
+
+/* Base styles for the element */
+.startMenuSidebarIcon {
+  border: 1px solid transparent;
+  display: flex;
+  height: 48px;
+  place-content: center;
+  place-items: center;
+  width: 48px;
+  position: relative; /* Needed for the ::before pseudo-element */
+}
+
+/* Pseudo-element styles */
+.startMenuSidebarIcon::before {
+  border-left: 4px solid transparent; /* Replace with actual default color if needed */
+  content: '';
+  height: 48px;
+  position: absolute;
+  width: 48px;
+}
+
+/* SVG inside the figure */
+.startMenuSidebarIcon img {
+  height: 16px;
+  margin-bottom: -1px;
+  margin-left: 1px;
+  width: 16px;
+}
+
+/* Hover state */
+.startMenuSidebarIcon:hover {
+  background-color: hsla(0, 0%, 35%, 0.7);
+  border: 1px solid hsla(0, 0%, 45%, 0.7);
 }
