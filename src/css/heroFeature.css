@@ -295,7 +295,8 @@
   display: flex;
   flex-direction: column;
   height: calc(100% - 70px);
-  padding: 5px 0;
+  margin-left: 7px;
+  margin-top: 7px;
 }
 
 /* stuff */
