@@ -50,7 +50,12 @@ const StartListFileManager = () => {
   return (
     <ol className="startListFileManager">
       {footerItems.map((item, index) => (
-        <li key={index} className="startFileEntry" onClick={item.onClick}>
+        <li
+          key={index}
+          className="startFileEntry"
+          onClick={item.onClick}
+          title={item.name}
+        >
           <StartMenuFileEntry
             name={item.name}
             icon={item.imgSrc || '|| operator test'}
