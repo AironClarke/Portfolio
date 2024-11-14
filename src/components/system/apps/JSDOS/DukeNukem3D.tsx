@@ -22,8 +22,6 @@ function DukeNukem3D() {
   } = userContext;
 
   const maximized = Duke3DExpand.expand;
-  //  TODO: make window not draggable when its hidden
-  // const test = ResumeExpand.hide;
 
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
