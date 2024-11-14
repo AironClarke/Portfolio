@@ -34,19 +34,18 @@ function ResumeFolder() {
     if (ResumeExpand.show) {
       if (folderOffset.current === null) {
         setFolderCount((prev) => prev + 1); // Update shared folder count
-        folderOffset.current = folderCount * 100; // Calculate and store unique offset for this instance
+        folderOffset.current = folderCount * 26; // Calculate and store unique offset for this instance
       }
       setIsInitialized(true); // Trigger rendering only after offset is set
-    }
-    return () => {
+    } else {
+      // Reset offset and movement tracking on close
       if (folderOffset.current !== null) {
-        setFolderCount((prev) => prev - 1); // Adjust global folder count if needed when folder closes
+        setFolderCount((prev) => prev - 1);
         folderOffset.current = null;
         setHasMoved(false);
         setIsInitialized(false); // Reset initialization on close
-        console.log('Window closed and offset reset');
       }
-    };
+    }
   }, [ResumeExpand.show]);
 
   const { height, width, updateSize } = useResizable(maximized);
@@ -54,6 +53,7 @@ function ResumeFolder() {
 
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
+  const offsetY = hasMoved ? y : y + (folderOffset.current || 0);
 
   // Render component only after initialization
   if (!isInitialized) return null;
@@ -65,7 +65,7 @@ function ResumeFolder() {
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
-      position={{ x: offsetX, y }}
+      position={{ x: offsetX, y: offsetY }}
       onDragStop={(e, data) => {
         updatePosition(e, data);
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently

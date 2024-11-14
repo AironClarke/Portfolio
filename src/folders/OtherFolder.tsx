@@ -39,8 +39,7 @@ function OtherFolder() {
       // Set the folder offset only if it hasn't been set yet
       if (folderOffset.current === null) {
         setFolderCount((prev) => prev + 1);
-        folderOffset.current = folderCount * 100;
-        console.log('Window opened with initial offset');
+        folderOffset.current = folderCount * 26;
       }
       setIsInitialized(true); // Trigger rendering only after offset is set
     } else {
@@ -50,7 +49,6 @@ function OtherFolder() {
         folderOffset.current = null;
         setHasMoved(false);
         setIsInitialized(false); // Reset initialization on close
-        console.log('Window closed and offset reset');
       }
     }
   }, [OtherExpand.show]);
@@ -61,6 +59,7 @@ function OtherFolder() {
 
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
+  const offsetY = hasMoved ? y : y + (folderOffset.current || 0);
 
   // Render component only after initialization
   if (!isInitialized) return null;
@@ -72,7 +71,7 @@ function OtherFolder() {
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
-      position={{ x: offsetX, y }}
+      position={{ x: offsetX, y: offsetY }}
       onDragStart={() => handleSetFocusItemTrue('Other')}
       onDragStop={(e, data) => {
         updatePosition(e, data);
