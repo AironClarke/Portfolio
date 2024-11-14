@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import Titlebar from 'src/components/system/window/Titlebar';
 import { UserContext } from 'src/context/UserContext';
@@ -21,19 +21,49 @@ function OtherFolder() {
     inlineStyleExpand,
     inlineStyle,
     handleSetFocusItemTrue,
-    iconState
+    iconState,
+    setFolderCount,
+    folderCount
   } = userContext;
 
   const maximized = OtherExpand.expand;
-  //  TODO: make window not draggable when its hidden
-  // const test = ResumeExpand.hide;
-
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
+
+  const folderOffset = useRef<number | null>(null);
+  const [hasMoved, setHasMoved] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false); // New state
+
+  useEffect(() => {
+    if (OtherExpand.show) {
+      // Set the folder offset only if it hasn't been set yet
+      if (folderOffset.current === null) {
+        setFolderCount((prev) => prev + 1);
+        folderOffset.current = folderCount * 100;
+        console.log('Window opened with initial offset');
+      }
+      setIsInitialized(true); // Trigger rendering only after offset is set
+    } else {
+      // Reset offset and movement tracking on close
+      if (folderOffset.current !== null) {
+        setFolderCount((prev) => prev - 1);
+        folderOffset.current = null;
+        setHasMoved(false);
+        setIsInitialized(false); // Reset initialization on close
+        console.log('Window closed and offset reset');
+      }
+    }
+  }, [OtherExpand.show]);
 
   function handleShow(name: string): void {
     throw new Error('Function not implemented.');
   }
+
+  // Conditionally apply the offset only if the window has not been moved
+  const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
+
+  // Render component only after initialization
+  if (!isInitialized) return null;
 
   return (
     <Rnd
@@ -42,14 +72,17 @@ function OtherFolder() {
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
-      position={{ x, y }}
-      onDragStop={updatePosition}
+      position={{ x: offsetX, y }}
+      onDragStart={() => handleSetFocusItemTrue('Other')}
+      onDragStop={(e, data) => {
+        updatePosition(e, data);
+        if (!hasMoved) setHasMoved(true); // Mark as moved permanently
+      }}
       {...rndDefaults}
       className="window"
       style={
         OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
       }
-      onDragStart={() => handleSetFocusItemTrue('Other')}
     >
       <section
         className="titlebarContainer"
@@ -60,27 +93,17 @@ function OtherFolder() {
           title="Other"
           ResumeExpand={OtherExpand}
           setResumeExpand={setOtherExpand}
-          resetPosition={resetPosition} // Pass resetPosition to Titlebar
+          resetPosition={resetPosition}
         />
         <ol className="folderFileManager">
           {iconState
             .filter((icon) => icon.folderId == 'Other')
             .map((icon) => (
-              // <Rnd
-              //   style={style}
-              //   default={{
-              //     x: 0,
-              //     y: 0,
-              //     width: 320,
-              //     height: 200
-              //   }}
-              // >
               <FileEntry
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => handleShow(icon.name)}
               />
-              // </Rnd>
             ))}
         </ol>
       </section>

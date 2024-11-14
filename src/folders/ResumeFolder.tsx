@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import Titlebar from 'src/components/system/window/Titlebar';
 import { UserContext } from 'src/context/UserContext';
@@ -18,15 +18,45 @@ function ResumeFolder() {
     setResumeExpand,
     inlineStyleExpand,
     inlineStyle,
-    handleSetFocusItemTrue
+    handleSetFocusItemTrue,
+    folderCount,
+    setFolderCount
   } = userContext;
 
   const maximized = ResumeExpand.expand;
   //  TODO: make window not draggable when its hidden
   // const test = ResumeExpand.hide;
+  const folderOffset = useRef<number | null>(null);
+  const [hasMoved, setHasMoved] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false); // New state
+
+  useEffect(() => {
+    if (ResumeExpand.show) {
+      if (folderOffset.current === null) {
+        setFolderCount((prev) => prev + 1); // Update shared folder count
+        folderOffset.current = folderCount * 100; // Calculate and store unique offset for this instance
+      }
+      setIsInitialized(true); // Trigger rendering only after offset is set
+    }
+    return () => {
+      if (folderOffset.current !== null) {
+        setFolderCount((prev) => prev - 1); // Adjust global folder count if needed when folder closes
+        folderOffset.current = null;
+        setHasMoved(false);
+        setIsInitialized(false); // Reset initialization on close
+        console.log('Window closed and offset reset');
+      }
+    };
+  }, [ResumeExpand.show]);
 
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
+
+  // Conditionally apply the offset only if the window has not been moved
+  const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
+
+  // Render component only after initialization
+  if (!isInitialized) return null;
 
   return (
     <Rnd
@@ -35,8 +65,11 @@ function ResumeFolder() {
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
-      position={{ x, y }}
-      onDragStop={updatePosition}
+      position={{ x: offsetX, y }}
+      onDragStop={(e, data) => {
+        updatePosition(e, data);
+        if (!hasMoved) setHasMoved(true); // Mark as moved permanently
+      }}
       {...rndDefaults}
       className="window"
       style={
