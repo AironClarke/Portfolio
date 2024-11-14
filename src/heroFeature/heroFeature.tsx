@@ -66,9 +66,6 @@ const HeroFeature = (): JSX.Element => {
     const LowerCaseName = name.toLowerCase().split(' ').join('').trim();
     const setState = ObjectState();
 
-    console.log(LowerCaseName);
-    console.log(setState);
-
     setState.forEach((item) => {
       const itemName = item.name.toLowerCase().split(' ').join('').trim();
       if (itemName === LowerCaseName) {
@@ -252,6 +249,12 @@ const HeroFeature = (): JSX.Element => {
   const [startActive, setStartActive] = useState(false);
   const startRef = useRef<HTMLButtonElement>(null);
 
+  //folderCount
+  const [folderCount, setFolderCount] = useState(0);
+
+  //hasmoved
+  // const [hasMoved, setHasMoved] = useState(false);
+
   //context
 
   const contextValue = {
@@ -278,7 +281,11 @@ const HeroFeature = (): JSX.Element => {
     closeMessage,
     startActive,
     setStartActive,
-    startRef
+    startRef,
+    folderCount,
+    setFolderCount
+    // hasMoved,
+    // setHasMoved
   };
 
   return (
