@@ -82,7 +82,7 @@ const Titlebar = ({
           <figcaption>{title}</figcaption>
         </figure>
       </h1>
-      <nav className="Cancel">
+      <nav className="cancel">
         <button
           onClick={(e) => {
             e.stopPropagation();
