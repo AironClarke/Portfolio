@@ -21,6 +21,9 @@ export function StyleHide(index: number, tap: Tap) {
 
   const setState = ObjectState();
 
+  console.log(`tap length is ${tap.length}`);
+  console.log(` index is ${index}`);
+
   const namePassed = tap[index].title.split(' ').join('').toLowerCase();
 
   const foundItem = setState.find((item: { name: string }) => {
