@@ -2,6 +2,8 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import StartListFileManager from './StartListFileManager';
 import StartMenuSidebar from './StartMenuSidebar';
+import { motion } from 'framer-motion';
+import useStartMenuTransition from 'src/hooks/useStartMenuTransition';
 
 const StartMenu = (): JSX.Element => {
   const { startActive, setStartActive, startRef } = useContext(UserContext);
@@ -24,13 +26,14 @@ const StartMenu = (): JSX.Element => {
   return (
     <>
       {startActive && (
-        <nav
+        <motion.nav
           className="startMenu"
           style={{ display: startActive ? '' : 'none' }}
+          {...useStartMenuTransition()}
         >
           <StartMenuSidebar />
           <StartListFileManager />
-        </nav>
+        </motion.nav>
       )}
     </>
   );

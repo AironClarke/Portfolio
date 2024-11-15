@@ -3,13 +3,16 @@ import StartButton from './StartButton';
 import Clock from './Clock';
 import TaskbarEntries from './TaskbarEntries';
 import StartMenu from './StartMenu';
+import { AnimatePresence } from 'framer-motion';
 
 const Taskbar = (): JSX.Element => (
   <nav className="taskbar">
-    <StartButton />
-    <StartMenu />
-    <TaskbarEntries />
-    <Clock />
+    <AnimatePresence>
+      <StartButton />
+      <StartMenu />
+      <TaskbarEntries />
+      <Clock />
+    </AnimatePresence>
   </nav>
 );
 
