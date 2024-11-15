@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from 'src/context/UserContext';
+import { AnimatePresence } from 'framer-motion';
 
 import TaskbarEntry from './TaskbarEntry';
 
@@ -12,11 +13,15 @@ const TaskbarEntries = (): JSX.Element => {
 
   const { tap } = userContext;
 
+  console.log(`entires ${tap}`);
+
   return (
     <ol className="taskbarEntries">
-      {tap.map(({ title, icon }, index) => (
-        <TaskbarEntry key={index} icon={icon} title={title} index={index} />
-      ))}
+      <AnimatePresence>
+        {tap.map(({ title, icon }) => (
+          <TaskbarEntry key={title} icon={icon} title={title} />
+        ))}
+      </AnimatePresence>
     </ol>
   );
 };
