@@ -5,9 +5,13 @@ import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
 import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
+import { motion } from 'framer-motion';
+import useWindowTransitions from 'src/hooks/useWindowTransitions';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);
+
+  const motionProps = useWindowTransitions();
 
   if (!userContext) {
     throw new Error('userContext is undefined');
@@ -61,6 +65,11 @@ function ResumeFolder() {
   return (
     <Rnd
       dragHandleClassName="draggable-titlebar"
+      style={
+        ResumeExpand.expand
+          ? inlineStyleExpand('Resume')
+          : inlineStyle('Resume')
+      }
       disableDragging={maximized}
       enableResizing={!maximized}
       size={{ height, width }}
@@ -71,16 +80,16 @@ function ResumeFolder() {
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
-      className="window"
-      style={
-        ResumeExpand.expand
-          ? inlineStyleExpand('Resume')
-          : inlineStyle('Resume')
-      }
       onDragStart={() => handleSetFocusItemTrue('Resume')}
     >
-      <section
-        className="titlebarContainer"
+      <motion.section
+        className="titlebarContainer window"
+        style={
+          ResumeExpand.expand
+            ? inlineStyleExpand('Resume')
+            : inlineStyle('Resume')
+        }
+        {...motionProps}
         onClick={() => handleSetFocusItemTrue('Resume')}
       >
         <Titlebar
@@ -95,7 +104,7 @@ function ResumeFolder() {
           nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
           numquam nostrum eius ut necessitatibus sunt autem, animi aliquam.
         </h1>
-      </section>
+      </motion.section>
     </Rnd>
   );
 }
