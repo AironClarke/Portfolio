@@ -25,8 +25,6 @@ const TaskbarEntry = ({ icon, title }: TaskbarEntryProps): JSX.Element => {
     return null; // or return a fallback JSX if the item is not found
   }
 
-  console.log(tap);
-
   // Define variants for motion with an exit state
   const variantsList = {
     active: { width: '160px' },

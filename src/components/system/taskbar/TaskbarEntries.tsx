@@ -13,8 +13,6 @@ const TaskbarEntries = (): JSX.Element => {
 
   const { tap } = userContext;
 
-  console.log(`entires ${tap}`);
-
   return (
     <ol className="taskbarEntries">
       <AnimatePresence>
