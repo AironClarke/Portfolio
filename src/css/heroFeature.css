@@ -161,6 +161,10 @@
 .taskbarEntry figure figcaption {
   color: rgba(255, 255, 255, 80%);
   font-size: 12px;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
