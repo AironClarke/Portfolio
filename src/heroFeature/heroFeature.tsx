@@ -12,6 +12,7 @@ import { StyleHide } from 'src/functions/StyleHide';
 import DukeNukem3D from 'src/components/system/apps/JSDOS/DukeNukem3D';
 import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
+import { AnimatePresence } from 'framer-motion';
 
 export type ObjectStateItem = {
   name: string;
@@ -189,10 +190,6 @@ const HeroFeature = (): JSX.Element => {
       if (itemName === lowerCaseName) {
         item.setter((prev) => ({ ...prev, hide: false }));
       }
-
-      if (lowerCaseName == 'dukenukem3d') {
-        openMessage();
-      }
     });
     if (tap.some((tapItem) => tapItem.title == name)) return;
     setStartActive(false);
@@ -292,10 +289,12 @@ const HeroFeature = (): JSX.Element => {
     <UserContext.Provider value={contextValue}>
       <section className="heroContainer">
         <section className="fullscreen">
+          <AnimatePresence>
+            {ResumeExpand.show && <ResumeFolder key="resumeKey" />}
+            {OtherExpand.show && <OtherFolder key="otherKey" />}
+            {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
+          </AnimatePresence>
           <FileManager />
-          <ResumeFolder />
-          <OtherFolder />
-          <DukeNukem3D />
         </section>
         <Taskbar />
       </section>
