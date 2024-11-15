@@ -7,9 +7,13 @@ import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
 import FileEntry from 'src/files/FileEntry';
 import { imageMapping } from 'src/functions/AppFunction';
+import { motion } from 'framer-motion';
+import useWindowTransitions from 'src/hooks/useWindowTransitions';
 
 function OtherFolder() {
   const userContext = useContext(UserContext);
+
+  const motionProps = useWindowTransitions();
 
   if (!userContext) {
     throw new Error('userContext is undefined');
@@ -78,13 +82,16 @@ function OtherFolder() {
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
-      className="window"
       style={
         OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
       }
     >
-      <section
-        className="titlebarContainer"
+      <motion.section
+        className="titlebarContainer window"
+        style={
+          OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
+        }
+        {...motionProps}
         onClick={() => handleSetFocusItemTrue('Other')}
       >
         <Titlebar
@@ -105,7 +112,7 @@ function OtherFolder() {
               />
             ))}
         </ol>
-      </section>
+      </motion.section>
     </Rnd>
   );
 }
