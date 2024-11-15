@@ -17,7 +17,6 @@ export function StyleHide(index: number, tap: Tap) {
   const bgStyleTrue = 'rgba(0, 0, 0, 60%)';
 
   const boxshadowstyleFalse = 'none';
-  const bgStyleFalse = 'none';
 
   const setState = ObjectState();
 
@@ -35,7 +34,7 @@ export function StyleHide(index: number, tap: Tap) {
   if (foundItem) {
     return foundItem.usestate.focusItem
       ? { boxShadow: boxshadowstyleTrue, background: bgStyleTrue }
-      : { boxShadow: boxshadowstyleFalse, background: bgStyleFalse };
+      : { boxShadow: boxshadowstyleFalse };
   }
 
   return {};
