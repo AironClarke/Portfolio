@@ -10,8 +10,8 @@ const useStartMenuTransition = (): MotionProps => {
       ease: [-0.15, 1, 0, 1]
     },
     variants: {
-      active: { height: '350px' },
-      initial: { height: 0 }
+      active: { height: '350px', paddingTop: 0 },
+      initial: { height: 0, paddingTop: '350px' }
     }
   };
 };
