@@ -292,7 +292,7 @@
 /* startMenu */
 .startMenu {
   backdrop-filter: blur(12px);
-  background-color: hsla(0, 0%, 12%, 70%);
+  background-color: hsla(0, 0%, 10%, 75%);
   box-shadow: 3px 0 10px 3px hsla(0, 0%, 10%, 50%);
   bottom: 30px;
   height: 390px;
