@@ -25,23 +25,15 @@ const FileManager = (): JSX.Element => {
       {iconState
         .filter((icon) => icon.folderId == 'Desktop')
         .map((icon) => (
-          // <Rnd
-          //   style={style}
-          //   default={{
-          //     x: 0,
-          //     y: 0,
-          //     width: 320,
-          //     height: 200
-          //   }}
-          // >
-          <FileEntry
-            name={icon.name}
-            icon={imageMapping(icon.pic) || '|| operator test'}
-            onDoubleClick={() => {
-              handleShow(icon.name);
-            }}
-          />
-          // </Rnd>
+          <Rnd key={icon.name}>
+            <FileEntry
+              name={icon.name}
+              icon={imageMapping(icon.pic) || '|| operator test'}
+              onDoubleClick={() => {
+                handleShow(icon.name);
+              }}
+            />
+          </Rnd>
         ))}
     </ol>
   );
