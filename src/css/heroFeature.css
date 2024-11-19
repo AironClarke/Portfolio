@@ -205,7 +205,8 @@
   padding: 2px;
   display: flex;
   justify-content: center;
-  height: fit-content;
+  height: fit-content !important;
+  position: relative !important;
 }
 
 .fileEntry figure figcaption {

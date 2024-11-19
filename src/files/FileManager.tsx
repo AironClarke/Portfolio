@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import FileEntry from './FileEntry';
 import { UserContext, UserContextType } from 'src/context/UserContext';
 import { Rnd } from 'react-rnd';
+import rndDefaults from 'src/utils/rndDefaults';
 
 const FileManager = (): JSX.Element => {
   const userContext = useContext(UserContext);
@@ -25,7 +26,12 @@ const FileManager = (): JSX.Element => {
       {iconState
         .filter((icon) => icon.folderId == 'Desktop')
         .map((icon) => (
-          <Rnd key={icon.name}>
+          <Rnd
+            key={icon.name}
+            enableResizing={false}
+            bounds={'.fullscreen'}
+            className="fileEntry"
+          >
             <FileEntry
               name={icon.name}
               icon={imageMapping(icon.pic) || '|| operator test'}
