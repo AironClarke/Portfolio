@@ -219,6 +219,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  width: 66px;
 }
 
 .fileEntry button figure img {
