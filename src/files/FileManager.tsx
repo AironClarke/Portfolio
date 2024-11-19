@@ -26,20 +26,22 @@ const FileManager = (): JSX.Element => {
       {iconState
         .filter((icon) => icon.folderId == 'Desktop')
         .map((icon) => (
-          <Rnd
-            key={icon.name}
-            enableResizing={false}
-            bounds={'.fullscreen'}
-            className="fileEntry"
-          >
-            <FileEntry
-              name={icon.name}
-              icon={imageMapping(icon.pic) || '|| operator test'}
-              onDoubleClick={() => {
-                handleShow(icon.name);
-              }}
-            />
-          </Rnd>
+          <div>
+            <Rnd
+              key={icon.name}
+              enableResizing={false}
+              bounds={'.fullscreen'}
+              className="fileEntry"
+            >
+              <FileEntry
+                name={icon.name}
+                icon={imageMapping(icon.pic) || '|| operator test'}
+                onDoubleClick={() => {
+                  handleShow(icon.name);
+                }}
+              />
+            </Rnd>
+          </div>
         ))}
     </ol>
   );
