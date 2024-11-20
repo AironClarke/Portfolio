@@ -2,6 +2,7 @@ import FileManager from 'src/files/FileManager';
 import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
 import ResumeFolder from 'src/folders/ResumeFolder';
+import WordApp from 'src/components/system/apps/Word/WordApp';
 import { useRef, useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
@@ -51,13 +52,28 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [WordExpand, setWordExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   function ObjectState(): ObjectStateItem[] {
     return [
       { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand },
       { name: 'Other', setter: setOtherExpand, usestate: OtherExpand },
-      { name: 'Duke Nukem 3D', setter: setDuke3DExpand, usestate: Duke3DExpand }
+      {
+        name: 'Duke Nukem 3D',
+        setter: setDuke3DExpand,
+        usestate: Duke3DExpand
+      },
+      { name: 'Word', setter: setWordExpand, usestate: WordExpand }
     ];
   }
 
@@ -280,9 +296,9 @@ const HeroFeature = (): JSX.Element => {
     setStartActive,
     startRef,
     folderCount,
-    setFolderCount
-    // hasMoved,
-    // setHasMoved
+    setFolderCount,
+    WordExpand,
+    setWordExpand
   };
 
   return (
@@ -293,6 +309,7 @@ const HeroFeature = (): JSX.Element => {
             {ResumeExpand.show && <ResumeFolder key="resumeKey" />}
             {OtherExpand.show && <OtherFolder key="otherKey" />}
             {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
+            {WordExpand.show && <WordApp key="wordApp" />}
           </AnimatePresence>
           <FileManager />
         </section>

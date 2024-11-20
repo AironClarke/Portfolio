@@ -478,3 +478,21 @@
   background-color: hsla(0, 0%, 35%, 0.7);
   border: 1px solid hsla(0, 0%, 45%, 0.7);
 }
+
+/* word editor */
+.wordEditor {
+  height: 100%;
+}
+
+/* Styles for elements with role="application" inside wordEditor */
+.wordEditor [role='application'] {
+  height: 100% !important;
+}
+
+.wordEditor [role='application'] button:disabled {
+  pointer-events: none;
+}
+
+.wordEditor [role='application'][aria-disabled='true'] .tox-editor-header {
+  cursor: not-allowed;
+}

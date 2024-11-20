@@ -1,6 +1,7 @@
 import icon from '/thisPC.svg';
 import folder2 from '/folderTest.svg';
 import DukeNukem3D from '/DukeNukem3DIcon.png';
+import word from '/wordIcon.svg';
 
 export function imageMapping(name: string): string {
   switch (name) {
@@ -13,6 +14,9 @@ export function imageMapping(name: string): string {
 
     case 'DukenNukem3D':
       return DukeNukem3D;
+
+    case 'Word':
+      return word;
 
     default:
       return '/notfound';
