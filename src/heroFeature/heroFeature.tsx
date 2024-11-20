@@ -62,6 +62,16 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [MonacoExpand, setMonacoExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   function ObjectState(): ObjectStateItem[] {
@@ -73,7 +83,8 @@ const HeroFeature = (): JSX.Element => {
         setter: setDuke3DExpand,
         usestate: Duke3DExpand
       },
-      { name: 'Word', setter: setWordExpand, usestate: WordExpand }
+      { name: 'Word', setter: setWordExpand, usestate: WordExpand },
+      { name: 'Monaco Editor', setter: setMonacoExpand, usestate: MonacoExpand }
     ];
   }
 
@@ -298,7 +309,9 @@ const HeroFeature = (): JSX.Element => {
     folderCount,
     setFolderCount,
     WordExpand,
-    setWordExpand
+    setWordExpand,
+    MonacoExpand,
+    setMonacoExpand
   };
 
   return (
