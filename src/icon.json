@@ -43,5 +43,10 @@
     "name": "Duke Nukem 3D",
     "pic": "DukenNukem3D",
     "folderId": "Desktop"
+  },
+  {
+    "name": "Word",
+    "pic": "Word",
+    "folderId": "Desktop"
   }
 ]

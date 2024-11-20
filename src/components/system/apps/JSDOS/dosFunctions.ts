@@ -5,6 +5,8 @@ declare const Dos: DosFn;
 export function openMessage() {
   let dosFinder = document.getElementById('dos') as HTMLDivElement;
 
+  const DosApi = import.meta.env.VITE_DOS;
+
   if (!dosFinder) {
     console.log('dosFinder failed');
     return;
@@ -12,7 +14,7 @@ export function openMessage() {
 
   dosFinder.style.display = 'block';
   Dos(dosFinder, {
-    url: 'https://pub-0f43c31da6244b9c8d180a4b62a89572.r2.dev/duke3D.jsdos',
+    url: DosApi,
     theme: 'light',
     autoStart: true,
     noCloud: true,
