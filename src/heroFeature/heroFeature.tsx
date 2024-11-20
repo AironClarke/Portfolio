@@ -2,6 +2,7 @@ import FileManager from 'src/files/FileManager';
 import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
 import ResumeFolder from 'src/folders/ResumeFolder';
+import MonacoApp from 'src/components/system/apps/MonacoEditor/MonacoEditor';
 import WordApp from 'src/components/system/apps/Word/WordApp';
 import { useRef, useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
@@ -311,7 +312,8 @@ const HeroFeature = (): JSX.Element => {
     WordExpand,
     setWordExpand,
     MonacoExpand,
-    setMonacoExpand
+    setMonacoExpand,
+    MonacoApp
   };
 
   return (
@@ -322,7 +324,8 @@ const HeroFeature = (): JSX.Element => {
             {ResumeExpand.show && <ResumeFolder key="resumeKey" />}
             {OtherExpand.show && <OtherFolder key="otherKey" />}
             {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
-            {WordExpand.show && <WordApp key="wordApp" />}
+            {WordExpand.show && <WordApp key="wordKey" />}
+            {MonacoExpand.show && <MonacoApp key="monacoKey" />}
           </AnimatePresence>
           <FileManager />
         </section>
