@@ -48,5 +48,10 @@
     "name": "Word",
     "pic": "Word",
     "folderId": "Desktop"
+  },
+  {
+    "name": "Monaco Editor",
+    "pic": "Monaco Editor",
+    "folderId": "Desktop"
   }
 ]
