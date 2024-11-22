@@ -562,19 +562,19 @@
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M16 6.891l15.891 15.891-3.781 3.766-12.109-12.109L3.892 26.548.111 22.782 16.002 6.891z'/%3E%3C/svg%3E");
+  background-image: url('/icons/up.png');
   border-bottom: 0;
   border-top: 0;
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M28.109 5.453l3.781 3.766L15.999 25.11.108 9.219l3.781-3.766 12.109 12.109L28.107 5.453z'/%3E%3C/svg%3E");
+  background-image: url('/icons/down.png');
   border-bottom: 0;
   border-top: 0;
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M26.547 3.891l-12.109 12.109 12.109 12.109-3.766 3.781-15.891-15.891 15.891-15.891 3.766 3.781z'/%3E%3C/svg%3E");
+  background-image: url('/icons/left.png');
   border-bottom: 0;
   background-position: 3px center;
   border-left: 0;
@@ -582,26 +582,26 @@
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:horizontal:increment {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M9.219 0.109l15.891 15.891-15.891 15.891-3.766-3.781 12.109-12.109-12.109-12.109 3.766-3.781z'/%3E%3C/svg%3E");
+  background-image: url('/icons/right.png');
   background-position: 4px center;
   border-left: 0;
   border-right: 0;
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:vertical:decrement:active {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M16 6.891l15.891 15.891-3.781 3.766-12.109-12.109L3.892 26.548.111 22.782 16.002 6.891z'/%3E%3C/svg%3E");
+  background-image: url('/icons/up.png');
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:vertical:increment:active {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M28.109 5.453l3.781 3.766L15.999 25.11.108 9.219l3.781-3.766 12.109 12.109L28.107 5.453z'/%3E%3C/svg%3E");
+  background-image: url('/icons/down.png');
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M26.547 3.891l-12.109 12.109 12.109 12.109-3.766 3.781-15.891-15.891 15.891-15.891 3.766 3.781z'/%3E%3C/svg%3E");
+  background-image: url('/icons/left.png');
 }
 
 .customScrollbar::-webkit-scrollbar-button:single-button:horizontal:increment:active {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='dimgrey' viewBox='0 0 32 32'%3E%3Cpath d='M9.219 0.109l15.891 15.891-15.891 15.891-3.766-3.781 12.109-12.109-12.109-12.109 3.766-3.781z'/%3E%3C/svg%3E");
+  background-image: url('/icons/right.png');
 }
 
 /* resume */
