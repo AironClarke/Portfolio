@@ -101,7 +101,7 @@ function OtherFolder() {
           setResumeExpand={setOtherExpand}
           resetPosition={resetPosition}
         />
-        <ol className="folderFileManager">
+        <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'Other')
             .map((icon) => (
