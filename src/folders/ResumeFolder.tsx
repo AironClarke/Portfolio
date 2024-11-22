@@ -99,7 +99,7 @@ function ResumeFolder() {
           setResumeExpand={setResumeExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
-        <h1>
+        <h1 className="resume customScrollbar">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
           nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
           numquam nostrum eius ut necessitatibus sunt autem, animi aliquam.
