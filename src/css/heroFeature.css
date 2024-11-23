@@ -648,7 +648,6 @@
 .customNavigation button[title^='up'] {
   margin-right: 8px;
   position: relative;
-  right: -8px;
 }
 
 /* Special styling for button with title 'Recent locations' */
@@ -675,9 +674,10 @@
 
 /* Last child button styles */
 .customNavigation button:last-child {
-  background-color: rgb(25, 25, 25);
+  background: transparent;
   height: 28px;
-  margin: 0;
+  margin-top: 6px;
+  margin-right: 0;
   position: absolute;
   right: 13px;
   stroke: rgb(128, 128, 128);
@@ -708,7 +708,7 @@
   font-size: 12px;
   font-weight: 400;
   height: 30px;
-  margin: 6px 12px 6px 5px;
+  margin: 6px 12px 6px 0px;
   padding: 0 22px 2px 24px;
   text-overflow: ellipsis;
   width: 100%;
