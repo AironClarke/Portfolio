@@ -9,6 +9,7 @@ import FileEntry from 'src/files/FileEntry';
 import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
+import Navigation from 'src/components/system/fileExplorer/Navigation';
 
 function OtherFolder() {
   const userContext = useContext(UserContext);
@@ -101,6 +102,7 @@ function OtherFolder() {
           setResumeExpand={setOtherExpand}
           resetPosition={resetPosition}
         />
+        <Navigation />
         <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'Other')

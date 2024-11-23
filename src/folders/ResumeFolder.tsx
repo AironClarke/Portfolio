@@ -7,6 +7,7 @@ import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
+import Navigation from 'src/components/system/fileExplorer/Navigation';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);
@@ -99,6 +100,7 @@ function ResumeFolder() {
           setResumeExpand={setResumeExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
+        <Navigation />
         <h1 className="resume customScrollbar">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
           nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
