@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 
-function OtherFolder() {
+function CloneFolder() {
   const userContext = useContext(UserContext);
 
   const motionProps = useWindowTransitions();
@@ -21,22 +21,18 @@ function OtherFolder() {
   }
 
   const {
-    OtherExpand,
-    setOtherExpand,
+    CloneExpand,
+    setCloneExpand,
     inlineStyleExpand,
     inlineStyle,
     handleSetFocusItemTrue,
     iconState,
     setFolderCount,
     folderCount,
-    handleShow,
-    history,
-    setHistory,
-    currentIndex,
-    setCurrentIndex
+    handleShow
   } = userContext;
 
-  const maximized = OtherExpand.expand;
+  const maximized = CloneExpand.expand;
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
 
@@ -44,18 +40,8 @@ function OtherFolder() {
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
 
-  // Current folder based on history and index
-  const currentFolder = currentIndex >= 0 ? history[currentIndex] : '';
-
-  // Function to navigate to a new folder
-  const navigateToFolder = (newFolder: string) => {
-    const updatedHistory = history.slice(0, currentIndex + 1);
-    setHistory([...updatedHistory, newFolder]);
-    setCurrentIndex(updatedHistory.length);
-  };
-
   useEffect(() => {
-    if (OtherExpand.show) {
+    if (CloneExpand.show) {
       // Set the folder offset only if it hasn't been set yet
       if (folderOffset.current === null) {
         setFolderCount((prev) => prev + 1);
@@ -71,7 +57,7 @@ function OtherFolder() {
         setIsInitialized(false); // Reset initialization on close
       }
     }
-  }, [OtherExpand.show]);
+  }, [CloneExpand.show]);
 
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
@@ -88,29 +74,33 @@ function OtherFolder() {
       size={{ height, width }}
       onResizeStop={updateSize}
       position={{ x: offsetX, y: offsetY }}
-      onDragStart={() => handleSetFocusItemTrue('Other')}
+      onDragStart={() => handleSetFocusItemTrue('CloneFolder')}
       onDragStop={(e, data) => {
         updatePosition(e, data);
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
       style={
-        OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
+        CloneExpand.expand
+          ? inlineStyleExpand('CloneFolder')
+          : inlineStyle('CloneFolder')
       }
     >
       <motion.section
         className="titlebarContainer window"
         style={
-          OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
+          CloneExpand.expand
+            ? inlineStyleExpand('CloneFolder')
+            : inlineStyle('CloneFolder')
         }
         {...motionProps}
-        onClick={() => handleSetFocusItemTrue('Other')}
+        onClick={() => handleSetFocusItemTrue('CloneFolder')}
       >
         <Titlebar
           icon="thisPC.svg"
-          title="Other"
-          ResumeExpand={OtherExpand}
-          setResumeExpand={setOtherExpand}
+          title="CloneFolder"
+          ResumeExpand={CloneExpand}
+          setResumeExpand={setCloneExpand}
           resetPosition={resetPosition}
         />
         <Navigation />
@@ -122,7 +112,6 @@ function OtherFolder() {
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => handleShow(icon.name)}
-                onClick={() => console.log(icon)}
               />
             ))}
         </ol>
@@ -131,4 +120,4 @@ function OtherFolder() {
   );
 }
 
-export default OtherFolder;
+export default CloneFolder;

@@ -15,6 +15,7 @@ import DukeNukem3D from 'src/components/system/apps/JSDOS/DukeNukem3D';
 import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { AnimatePresence } from 'framer-motion';
+import CloneFolder from 'src/folders/CloneFolder';
 
 export type ObjectStateItem = {
   name: string;
@@ -34,6 +35,16 @@ const HeroFeature = (): JSX.Element => {
   });
 
   const [OtherExpand, setOtherExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
+  const [CloneExpand, setCloneExpand] = useState({
     expand: false,
     show: false,
     hide: false,
@@ -85,7 +96,12 @@ const HeroFeature = (): JSX.Element => {
         usestate: Duke3DExpand
       },
       { name: 'Word', setter: setWordExpand, usestate: WordExpand },
-      { name: 'Monaco Editor', setter: setMonacoExpand, usestate: MonacoExpand }
+      {
+        name: 'Monaco Editor',
+        setter: setMonacoExpand,
+        usestate: MonacoExpand
+      },
+      { name: 'CloneFolder', setter: setCloneExpand, usestate: CloneExpand }
     ];
   }
 
@@ -319,7 +335,9 @@ const HeroFeature = (): JSX.Element => {
     history,
     setHistory,
     currentIndex,
-    setCurrentIndex
+    setCurrentIndex,
+    CloneExpand,
+    setCloneExpand
   };
 
   return (
@@ -332,6 +350,7 @@ const HeroFeature = (): JSX.Element => {
             {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
             {WordExpand.show && <WordApp key="wordKey" />}
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}
+            {CloneExpand.show && <CloneFolder key="cloneKey" />}
           </AnimatePresence>
           <FileManager />
         </section>
