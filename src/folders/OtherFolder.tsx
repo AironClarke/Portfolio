@@ -30,11 +30,7 @@ function OtherFolder() {
     iconState,
     setFolderCount,
     folderCount,
-    handleShow,
-    history,
-    setHistory,
-    currentIndex,
-    setCurrentIndex
+    handleShow
   } = userContext;
 
   const maximized = OtherExpand.expand;
@@ -44,16 +40,6 @@ function OtherFolder() {
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
-
-  // Current folder based on history and index
-  const currentFolder = currentIndex >= 0 ? history[currentIndex] : '';
-
-  // Function to navigate to a new folder
-  const navigateToFolder = (newFolder: string) => {
-    const updatedHistory = history.slice(0, currentIndex + 1);
-    setHistory([...updatedHistory, newFolder]);
-    setCurrentIndex(updatedHistory.length);
-  };
 
   const directory = ['OtherFolder', 'Test2'];
   const directoryImg = (
