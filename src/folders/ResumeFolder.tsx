@@ -8,6 +8,7 @@ import useDraggable from 'src/hooks/useDraggable';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
+import directoryImage from 'public/folderTest.svg';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);
@@ -25,7 +26,8 @@ function ResumeFolder() {
     inlineStyle,
     handleSetFocusItemTrue,
     folderCount,
-    setFolderCount
+    setFolderCount,
+    handleShow
   } = userContext;
 
   const maximized = ResumeExpand.expand;
@@ -34,6 +36,18 @@ function ResumeFolder() {
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
+  const [key, setKey] = useState(0); // State to trigger re-render
+
+  const directory = ['ResumeFolder'];
+  const directoryImg = (
+    <img
+      src={directoryImage}
+      className="directoryImg"
+      alt="Directory Icon"
+      width={16}
+      height={16}
+    />
+  );
 
   useEffect(() => {
     if (ResumeExpand.show) {
@@ -53,6 +67,11 @@ function ResumeFolder() {
     }
   }, [ResumeExpand.show]);
 
+  const refreshHandler = () => {
+    console.log('Refresh triggered');
+    setKey((prevKey) => prevKey + 1);
+  }; // Increment key to force re-render
+
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
 
@@ -65,6 +84,7 @@ function ResumeFolder() {
 
   return (
     <Rnd
+      key={key} // Set key to force component re-creati
       dragHandleClassName="draggable-titlebar"
       style={
         ResumeExpand.expand
@@ -100,7 +120,13 @@ function ResumeFolder() {
           setResumeExpand={setResumeExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
-        <Navigation />
+        <Navigation
+          directory={directory}
+          directoryImg={directoryImg}
+          refreshHandler={
+            refreshHandler
+          } /* Pass refreshHandler to Navigation */
+        />
         <h1 className="resume customScrollbar">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
           nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
