@@ -684,6 +684,9 @@
   stroke-width: 3;
   top: calc(var(--title-bar-height) + 6px);
   width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .customNavigation button:last-child:hover {
