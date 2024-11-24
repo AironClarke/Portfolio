@@ -296,10 +296,6 @@ const HeroFeature = (): JSX.Element => {
   //hasmoved
   // const [hasMoved, setHasMoved] = useState(false);
 
-  //folder history
-  const [history, setHistory] = useState([]); // History stack
-  const [currentIndex, setCurrentIndex] = useState(-1); // Pointer to current folder
-
   const contextValue = {
     ResumeExpand,
     setResumeExpand,
@@ -332,10 +328,6 @@ const HeroFeature = (): JSX.Element => {
     MonacoExpand,
     setMonacoExpand,
     MonacoApp,
-    history,
-    setHistory,
-    currentIndex,
-    setCurrentIndex,
     CloneExpand,
     setCloneExpand
   };
