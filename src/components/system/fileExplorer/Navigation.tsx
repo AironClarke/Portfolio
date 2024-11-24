@@ -6,9 +6,14 @@ import { Forward } from './NavigationIcons';
 interface NavigationProps {
   directory: string[]; // Array of text values
   directoryImg: React.ReactNode; // Unique image for the first item
+  refreshHandler: () => void; // New prop to handle refresh
 }
 
-const Navigation: React.FC<NavigationProps> = ({ directory, directoryImg }) => {
+const Navigation: React.FC<NavigationProps> = ({
+  directory,
+  directoryImg,
+  refreshHandler
+}) => {
   const userContext = useContext(UserContext);
 
   if (!userContext) {
@@ -16,8 +21,6 @@ const Navigation: React.FC<NavigationProps> = ({ directory, directoryImg }) => {
   }
 
   const navigateUpOneLevel = () => {};
-
-  const onRefresh = () => {};
 
   return (
     <nav className="customNavigation">
@@ -35,7 +38,7 @@ const Navigation: React.FC<NavigationProps> = ({ directory, directoryImg }) => {
           </React.Fragment>
         ))}
       </div>
-      <button type="button" title="refresh" onClick={onRefresh}>
+      <button type="button" title="refresh" onClick={refreshHandler}>
         <Refresh />
       </button>
     </nav>

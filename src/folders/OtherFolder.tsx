@@ -40,6 +40,7 @@ function OtherFolder() {
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
+  const [key, setKey] = useState(0); // State to trigger re-render
 
   const directory = ['OtherFolder', 'Test2'];
   const directoryImg = (
@@ -71,6 +72,11 @@ function OtherFolder() {
     }
   }, [OtherExpand.show]);
 
+  const refreshHandler = () => {
+    console.log('Refresh triggered');
+    setKey((prevKey) => prevKey + 1);
+  }; // Increment key to force re-render
+
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
   const offsetY = hasMoved ? y : y + (folderOffset.current || 0);
@@ -80,6 +86,7 @@ function OtherFolder() {
 
   return (
     <Rnd
+      key={key} // Set key to force component re-creati
       dragHandleClassName="draggable-titlebar"
       disableDragging={maximized}
       enableResizing={!maximized}
@@ -111,7 +118,13 @@ function OtherFolder() {
           setResumeExpand={setOtherExpand}
           resetPosition={resetPosition}
         />
-        <Navigation directory={directory} directoryImg={directoryImg} />
+        <Navigation
+          directory={directory}
+          directoryImg={directoryImg}
+          refreshHandler={
+            refreshHandler
+          } /* Pass refreshHandler to Navigation */
+        />
         <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'Other')
