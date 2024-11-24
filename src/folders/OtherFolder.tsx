@@ -10,6 +10,7 @@ import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
+import directoryImage from 'public/folderTest.svg';
 
 function OtherFolder() {
   const userContext = useContext(UserContext);
@@ -53,6 +54,17 @@ function OtherFolder() {
     setHistory([...updatedHistory, newFolder]);
     setCurrentIndex(updatedHistory.length);
   };
+
+  const directory = ['OtherFolder', 'Test2'];
+  const directoryImg = (
+    <img
+      src={directoryImage}
+      className="directoryImg"
+      alt="Directory Icon"
+      width={16}
+      height={16}
+    />
+  );
 
   useEffect(() => {
     if (OtherExpand.show) {
@@ -113,7 +125,7 @@ function OtherFolder() {
           setResumeExpand={setOtherExpand}
           resetPosition={resetPosition}
         />
-        <Navigation />
+        <Navigation directory={directory} directoryImg={directoryImg} />
         <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'Other')

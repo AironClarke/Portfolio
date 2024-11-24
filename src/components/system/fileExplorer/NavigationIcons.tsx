@@ -1,6 +1,6 @@
-export const Back = (): JSX.Element => (
-  <svg viewBox="-8 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32 14v4H7.656l7.172 7.172L12 28 0 16 12 4l2.828 2.828L7.656 14H32z" />
+export const Forward = (): JSX.Element => (
+  <svg viewBox="8 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="m20 4 12 12-12 12-2.828-2.828L24.344 18H0v-4h24.344l-7.172-7.172L20 4z" />
   </svg>
 );
 export const Refresh = (): JSX.Element => (
