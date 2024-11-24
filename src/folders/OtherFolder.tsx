@@ -42,7 +42,7 @@ function OtherFolder() {
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['OtherFolder', 'Test2'];
+  const directory = ['OtherFolder'];
   const directoryImg = (
     <img
       src={directoryImage}
