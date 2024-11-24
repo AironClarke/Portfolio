@@ -10,6 +10,7 @@ import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
+import directoryImage from 'public/folderTest.svg';
 
 function CloneFolder() {
   const userContext = useContext(UserContext);
@@ -39,6 +40,18 @@ function CloneFolder() {
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
+  const [key, setKey] = useState(0); // State to trigger re-render
+
+  const directory = ['OtherFolder', 'CloneFolder'];
+  const directoryImg = (
+    <img
+      src={directoryImage}
+      className="directoryImg"
+      alt="Directory Icon"
+      width={16}
+      height={16}
+    />
+  );
 
   useEffect(() => {
     if (CloneExpand.show) {
@@ -59,6 +72,11 @@ function CloneFolder() {
     }
   }, [CloneExpand.show]);
 
+  const refreshHandler = () => {
+    console.log('Refresh triggered');
+    setKey((prevKey) => prevKey + 1);
+  }; // Increment key to force re-render
+
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
   const offsetY = hasMoved ? y : y + (folderOffset.current || 0);
@@ -68,6 +86,7 @@ function CloneFolder() {
 
   return (
     <Rnd
+      key={key} // Set key to force component re-creati
       dragHandleClassName="draggable-titlebar"
       disableDragging={maximized}
       enableResizing={!maximized}
@@ -103,7 +122,13 @@ function CloneFolder() {
           setResumeExpand={setCloneExpand}
           resetPosition={resetPosition}
         />
-        <Navigation />
+        <Navigation
+          directory={directory}
+          directoryImg={directoryImg}
+          refreshHandler={
+            refreshHandler
+          } /* Pass refreshHandler to Navigation */
+        />
         <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'Other')
@@ -112,6 +137,7 @@ function CloneFolder() {
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => handleShow(icon.name)}
+                onClick={() => console.log(icon)}
               />
             ))}
         </ol>
