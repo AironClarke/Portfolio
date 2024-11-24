@@ -30,7 +30,8 @@ function CloneFolder() {
     iconState,
     setFolderCount,
     folderCount,
-    handleShow
+    handleShow,
+    OtherExpand
   } = userContext;
 
   const maximized = CloneExpand.expand;
@@ -128,6 +129,8 @@ function CloneFolder() {
           refreshHandler={
             refreshHandler
           } /* Pass refreshHandler to Navigation */
+          upOneLevel="Other"
+          upOneLevelStyle={OtherExpand}
         />
         <ol className="folderFileManager customScrollbar">
           {iconState

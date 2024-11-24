@@ -29,7 +29,7 @@ const StartListFileManager = () => {
       imgSrc: project,
       imgAlt: 'project',
       spanText: 'Project',
-      onClick: () => handleShow('Resume')
+      onClick: () => handleShow('Other')
     },
     {
       name: 'resume',

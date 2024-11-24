@@ -12,7 +12,8 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({
   directory,
   directoryImg,
-  refreshHandler
+  refreshHandler,
+  upOneLevel
 }) => {
   const userContext = useContext(UserContext);
 
@@ -20,11 +21,21 @@ const Navigation: React.FC<NavigationProps> = ({
     throw new Error('userContext is undefined');
   }
 
+  const { handleShow } = userContext;
+
+  console.log(handleShow); // Log the context value
+
   const navigateUpOneLevel = () => {};
 
   return (
     <nav className="customNavigation">
-      <button type="button" title="upOneLevel" onClick={navigateUpOneLevel}>
+      <button
+        type="button"
+        title="upOneLevel"
+        onClick={() => {
+          handleShow(upOneLevel); // First function call
+        }}
+      >
         <Up />
       </button>
       <div className="addressBar">
