@@ -252,7 +252,7 @@
   column-gap: 15px;
   grid-template-columns: repeat(auto-fill, 74px);
   grid-template-rows: repeat(auto-fill, 70px);
-  height: calc(100% - 45px);
+  height: calc(100% - 109px);
   padding: 5px 10px;
   row-gap: 28px;
   grid-auto-flow: row;
@@ -608,7 +608,7 @@
 .resume {
   overflow: auto;
   margin: 0;
-  height: calc(100% - 45px);
+  height: calc(100% - 105px);
 }
 
 /* Navigation container <<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -732,4 +732,33 @@
 
 .directoryImg {
   margin-right: 3px;
+}
+
+/* status bar */
+.statusBar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(51, 51, 51);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 100;
+  height: 23px;
+  padding: 0 5px;
+  width: 100%;
+  position: relative; /* Ensures that absolute positioning within children is relative to this container */
+}
+
+.statusBar div {
+  margin-top: -1px;
+  padding: 0 10px;
+  position: relative; /* Needed for ::after pseudo-element positioning */
+}
+
+.statusBar div::after {
+  content: '';
+  position: static;
+  bottom: 6px;
+  height: 11px;
+  border-right: 1px solid #fff;
+  margin-left: 10px;
 }

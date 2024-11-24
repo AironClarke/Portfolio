@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/folderTest.svg';
+import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 
 function OtherFolder() {
   const userContext = useContext(UserContext);
@@ -137,6 +138,9 @@ function OtherFolder() {
               />
             ))}
         </ol>
+        <StatusBar
+          count={iconState.filter((icon) => icon.folderId == 'Other').length}
+        />
       </motion.section>
     </Rnd>
   );

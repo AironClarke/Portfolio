@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/folderTest.svg';
+import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 
 function ResumeFolder() {
   const userContext = useContext(UserContext);
@@ -132,6 +133,7 @@ function ResumeFolder() {
           nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
           numquam nostrum eius ut necessitatibus sunt autem, animi aliquam.
         </h1>
+        <StatusBar count={0} />
       </motion.section>
     </Rnd>
   );
