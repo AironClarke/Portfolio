@@ -762,3 +762,8 @@
   border-right: 1px solid #fff;
   margin-left: 10px;
 }
+
+.titleIconSize {
+  width: 39px;
+  height: 39px;
+}
