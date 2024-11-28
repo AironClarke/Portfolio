@@ -53,5 +53,10 @@
     "name": "Monaco Editor",
     "pic": "Monaco Editor",
     "folderId": "Desktop"
+  },
+  {
+    "name": "PDFViewer",
+    "pic": "PDFIcon",
+    "folderId": "Desktop"
   }
 ]

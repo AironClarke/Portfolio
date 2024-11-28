@@ -3,6 +3,7 @@ import folder2 from '/folderTest.svg';
 import DukeNukem3D from '/DukeNukem3DIcon.png';
 import word from '/wordIcon.svg';
 import VSCode from '/VSCodeIcon.svg';
+import PDFIcon from '/pdfIcon.svg';
 
 export function imageMapping(name: string): string {
   switch (name) {
@@ -21,6 +22,9 @@ export function imageMapping(name: string): string {
 
     case 'Monaco Editor':
       return VSCode;
+
+    case 'PDFIcon':
+      return PDFIcon;
 
     default:
       return '/notfound';

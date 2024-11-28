@@ -16,6 +16,7 @@ import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { AnimatePresence } from 'framer-motion';
 import CloneFolder from 'src/folders/CloneFolder';
+import PDFviewer from 'src/components/system/apps/PDFviewer';
 
 export type ObjectStateItem = {
   name: string;
@@ -84,6 +85,16 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [PDFExpand, setPDFExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   function ObjectState(): ObjectStateItem[] {
@@ -101,7 +112,8 @@ const HeroFeature = (): JSX.Element => {
         setter: setMonacoExpand,
         usestate: MonacoExpand
       },
-      { name: 'CloneFolder', setter: setCloneExpand, usestate: CloneExpand }
+      { name: 'CloneFolder', setter: setCloneExpand, usestate: CloneExpand },
+      { name: 'PDFViewer', setter: setPDFExpand, usestate: PDFExpand }
     ];
   }
 
@@ -329,7 +341,9 @@ const HeroFeature = (): JSX.Element => {
     setMonacoExpand,
     MonacoApp,
     CloneExpand,
-    setCloneExpand
+    setCloneExpand,
+    PDFExpand,
+    setPDFExpand
   };
 
   return (
@@ -343,6 +357,7 @@ const HeroFeature = (): JSX.Element => {
             {WordExpand.show && <WordApp key="wordKey" />}
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}
             {CloneExpand.show && <CloneFolder key="cloneKey" />}
+            {PDFExpand.show && <PDFviewer key="pdfKey" />}
           </AnimatePresence>
           <FileManager />
         </section>
