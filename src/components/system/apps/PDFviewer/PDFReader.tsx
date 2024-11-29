@@ -19,6 +19,7 @@ const PDFReader: React.FC = () => {
         const pdfDoc = await loadingTask.promise;
         setPdf(pdfDoc);
         setTotalPages(pdfDoc.numPages);
+        // Initially render the first page after loading
         renderPage(pdfDoc, currentPage);
       } catch (error) {
         console.error('Error loading PDF:', error);
@@ -32,19 +33,44 @@ const PDFReader: React.FC = () => {
     try {
       const page = await pdf.getPage(pageNum);
       const viewport = page.getViewport({ scale });
+
+      // Get the page's rotation (in degrees)
+      const rotation = page.rotate || 0;
+
+      // Get the canvas element and its context
       const canvas = document.getElementById(
         `canvas-page-${pageNum}`
       ) as HTMLCanvasElement;
       const context = canvas.getContext('2d');
+
       if (context) {
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        // Render the page onto the canvas
+        // Reset canvas before applying transformations
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Apply the rotation based on the page's rotation metadata
+        context.save();
+        if (rotation === 90) {
+          context.translate(viewport.height, 0);
+          context.rotate((90 * Math.PI) / 180);
+        } else if (rotation === 180) {
+          context.translate(viewport.width, viewport.height);
+          context.rotate((180 * Math.PI) / 180);
+        } else if (rotation === 270) {
+          context.translate(0, viewport.width);
+          context.rotate((270 * Math.PI) / 180);
+        }
+
+        // Render the page onto the canvas with the correct rotation
         await page.render({
           canvasContext: context,
           viewport
         }).promise;
+
+        // Restore the context state to avoid affecting other renders
+        context.restore();
       }
     } catch (error) {
       console.error('Error rendering PDF page:', error);
@@ -104,9 +130,9 @@ const PDFReader: React.FC = () => {
                 <path
                   d="M6 12L18 12"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
@@ -125,9 +151,9 @@ const PDFReader: React.FC = () => {
                 <path
                   d="M4 12H20M12 4V20"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
