@@ -12,6 +12,7 @@ import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/folderTest.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
+import PDFReader from './PDFReader';
 
 function PDFViewer() {
   const userContext = useContext(UserContext);
@@ -131,10 +132,10 @@ function PDFViewer() {
         {/* <div className="pdfViewer">
           <iframe src="https://drive.google.com/file/d/1Orh0R7ZaMdt6hozwF_JAB__anJq2rrlz/preview"></iframe>
         </div> */}
-
+        {/*
         <div className="pdfViewer">
           {isLoading && (
-            <div className="loading-circle">{/* Loading spinner */}</div>
+            <div className="loading-circle">{}</div>
           )}
           <div
             className="pdfViewer customScrollbar"
@@ -142,14 +143,16 @@ function PDFViewer() {
           >
             <iframe
               src="https://drive.google.com/file/d/18Nj0Es7Nw8nO815kbl5PHJr-rSaSP1Tu/preview"
-              loading="lazy"
-              onLoad={() => setIsLoading(false)} // Set isLoading to false when iframe loads
+              loading='lazy'
+              onLoad={() => setIsLoading(false)}
               style={
                 isLoading ? { visibility: 'hidden' } : { visibility: 'visible' }
-              } // Hide iframe until it's loaded
+              }
             ></iframe>
           </div>
-        </div>
+        </div> */}
+
+        <PDFReader />
       </motion.section>
     </Rnd>
   );

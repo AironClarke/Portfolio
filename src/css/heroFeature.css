@@ -770,12 +770,7 @@
 
 /* pdfViewer */
 
-.pdfViewer iframe {
-  height: calc(100% - 30px);
-  width: 100%;
-}
-
-.pdfViewer {
+.pdfReader {
   height: 100%;
   width: 100%;
 }
