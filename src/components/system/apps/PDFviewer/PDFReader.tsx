@@ -7,12 +7,11 @@ import './PDFWorker'; // Path to the file where the worker is configured
 
 const PDFReader: React.FC = () => {
   const [pdf, setPdf] = useState<pdfjs.PDFDocumentProxy | null>(null);
-  const [scale, setScale] = useState(0.7); // Initial zoom level (scale)
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page
-  const [totalPages, setTotalPages] = useState(0); // Total pages in the PDF
+  const [scale, setScale] = useState(1.0); // Default zoom at 100%
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const pdfUrl = './testpdf.pdf';
 
-  // Load the PDF document
   useEffect(() => {
     const loadPDF = async () => {
       try {
@@ -29,7 +28,6 @@ const PDFReader: React.FC = () => {
     loadPDF();
   }, [pdfUrl]);
 
-  // Function to render a page at the specified scale
   const renderPage = async (pdf: pdfjs.PDFDocumentProxy, pageNum: number) => {
     try {
       const page = await pdf.getPage(pageNum);
@@ -55,46 +53,41 @@ const PDFReader: React.FC = () => {
 
   // Zoom In function
   const handleZoomIn = () => {
-    setScale((prevScale) => Math.min(prevScale + 0.1, 3)); // Max zoom = 3x
+    setScale((prevScale) => Math.min(prevScale + 0.1, 3)); // Max zoom = 300%
   };
 
   // Zoom Out function
   const handleZoomOut = () => {
-    setScale((prevScale) => Math.max(prevScale - 0.1, 0.5)); // Min zoom = 0.5x
+    setScale((prevScale) => Math.max(prevScale - 0.1, 0.5)); // Min zoom = 50%
   };
 
-  // Re-render the page whenever scale or currentPage changes
   useEffect(() => {
     if (pdf) {
       renderPage(pdf, currentPage);
     }
   }, [scale, currentPage, pdf]);
 
-  // Render the canvases for all pages
   const renderAllPages = () => {
     if (pdf) {
-      const pages = [];
-      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-        pages.push(
-          <canvas
-            key={pageNum}
-            id={`canvas-page-${pageNum}`}
-            className="pdfReader"
-            style={{ display: pageNum === currentPage ? 'block' : 'none' }}
-          />
-        );
-      }
-      return pages;
+      return Array.from({ length: totalPages }, (_, idx) => (
+        <canvas
+          key={idx + 1}
+          id={`canvas-page-${idx + 1}`}
+          className="pdfReader"
+          style={{
+            margin: '0 auto' // Center canvas in the container
+          }}
+        />
+      ));
     }
-    return [];
+    return null;
   };
 
-  // Calculate the zoom percentage (scale * 100)
-  const zoomPercentage = Math.round(scale * 100); // Zoom percentage
+  const zoomPercentage = Math.round(scale * 100);
 
   return (
-    <div>
-      {/* Toolbar for zoom and navigation */}
+    <div className="pdfViewer">
+      {/* Toolbar */}
       <div className="toolbar">
         <div className="leftMenu">
           <span>Resume</span>
@@ -147,11 +140,8 @@ const PDFReader: React.FC = () => {
         </div>
       </div>
 
-      {/* Scrollable container for PDF pages */}
-      <div className="pdfContainer customScrollbar">
-        {/* Render all pages */}
-        {renderAllPages()}
-      </div>
+      {/* PDF Container */}
+      <div className="pdfContainer customScrollbar">{renderAllPages()}</div>
     </div>
   );
 };
