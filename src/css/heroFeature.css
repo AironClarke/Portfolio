@@ -771,8 +771,21 @@
 /* pdfViewer */
 
 .pdfReader {
-  height: 100%;
+  margin: 0 auto;
+}
+
+.toolbar {
+  height: 100px;
   width: 100%;
+  border: 10px solid red;
+}
+
+.zoomIn {
+  background: green;
+}
+
+.zoomOut {
+  background: pink;
 }
 
 /* loader */
