@@ -885,7 +885,7 @@
 .pdfViewer {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: calc(100% - 40px);
 }
 
 .toolbar {
