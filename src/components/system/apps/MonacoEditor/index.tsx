@@ -8,6 +8,12 @@ function MonacoEditor() {
       height="90vh"
       defaultLanguage="javascript"
       theme="vs-dark"
+      options={{
+        minimap: {
+          enabled: false // Disable minimap
+        },
+        automaticLayout: true
+      }}
       defaultValue="// What is Lorem Ipsum?
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
