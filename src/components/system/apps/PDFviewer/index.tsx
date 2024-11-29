@@ -45,6 +45,7 @@ function PDFViewer() {
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
+  const [isLoading, setIsLoading] = useState(true);
 
   const directory = ['PDFviewer'];
   const directoryImg = (
@@ -127,8 +128,26 @@ function PDFViewer() {
           resetPosition={resetPosition}
         />
 
-        <div className="pdfViewer">
+        {/* <div className="pdfViewer">
           <iframe src="https://drive.google.com/file/d/1Orh0R7ZaMdt6hozwF_JAB__anJq2rrlz/preview"></iframe>
+        </div> */}
+
+        <div className="pdfViewer">
+          {isLoading && (
+            <div className="loading-circle">{/* Loading spinner */}</div>
+          )}
+          <div
+            className="pdfViewer customScrollbar"
+            style={{ position: 'relative' }}
+          >
+            <iframe
+              src="https://drive.google.com/file/d/18Nj0Es7Nw8nO815kbl5PHJr-rSaSP1Tu/preview"
+              onLoad={() => setIsLoading(false)} // Set isLoading to false when iframe loads
+              style={
+                isLoading ? { visibility: 'hidden' } : { visibility: 'visible' }
+              } // Hide iframe until it's loaded
+            ></iframe>
+          </div>
         </div>
       </motion.section>
     </Rnd>
