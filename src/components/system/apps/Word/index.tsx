@@ -14,7 +14,13 @@ const TinyMCE = (): JSX.Element => {
       <Editor
         apiKey={TinyApi}
         onInit={(_event, activeEditor) => setEditor(activeEditor)}
-        {...config}
+        init={{
+          ...config,
+          plugins: 'lists link', // Add the plugins you need
+          menubar: false, // Disable menubar for faster load
+          branding: false, // Disable TinyMCE branding
+          statusbar: false // Disable statusbar
+        }}
       />
     </div>
   );

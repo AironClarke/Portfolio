@@ -142,6 +142,7 @@ function PDFViewer() {
           >
             <iframe
               src="https://drive.google.com/file/d/18Nj0Es7Nw8nO815kbl5PHJr-rSaSP1Tu/preview"
+              loading="lazy"
               onLoad={() => setIsLoading(false)} // Set isLoading to false when iframe loads
               style={
                 isLoading ? { visibility: 'hidden' } : { visibility: 'visible' }
