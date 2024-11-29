@@ -10,6 +10,7 @@ const PDFReader: React.FC = () => {
   const [scale, setScale] = useState(1.0); // Default zoom at 100%
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [rendering, setRendering] = useState<Map<number, boolean>>(new Map()); // Track rendering status per page
   const pdfUrl = './testpdf.pdf';
 
   useEffect(() => {
@@ -30,7 +31,15 @@ const PDFReader: React.FC = () => {
   }, [pdfUrl]);
 
   const renderPage = async (pdf: pdfjs.PDFDocumentProxy, pageNum: number) => {
+    // Check if this page is already being rendered
+    if (rendering.get(pageNum)) {
+      return; // Do not render if already rendering
+    }
+
     try {
+      // Mark the page as being rendered
+      setRendering(new Map(rendering.set(pageNum, true)));
+
       const page = await pdf.getPage(pageNum);
       const viewport = page.getViewport({ scale });
 
@@ -64,16 +73,23 @@ const PDFReader: React.FC = () => {
         }
 
         // Render the page onto the canvas with the correct rotation
-        await page.render({
+        const renderTask = page.render({
           canvasContext: context,
           viewport
-        }).promise;
+        });
+
+        await renderTask.promise; // Wait for the rendering to complete
 
         // Restore the context state to avoid affecting other renders
         context.restore();
       }
+
+      // Mark the page as rendered
+      setRendering(new Map(rendering.set(pageNum, false)));
     } catch (error) {
       console.error('Error rendering PDF page:', error);
+      // Ensure rendering is marked as complete even if there's an error
+      setRendering(new Map(rendering.set(pageNum, false)));
     }
   };
 
