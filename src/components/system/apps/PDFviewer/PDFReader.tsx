@@ -7,7 +7,7 @@ import './PDFWorker'; // Path to the file where the worker is configured
 
 const PDFReader: React.FC = () => {
   const [pdf, setPdf] = useState<pdfjs.PDFDocumentProxy | null>(null);
-  const [scale, setScale] = useState(1.5); // Initial zoom level (scale)
+  const [scale, setScale] = useState(0.7); // Initial zoom level (scale)
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const [totalPages, setTotalPages] = useState(0); // Total pages in the PDF
   const pdfUrl = './testpdf.pdf';
@@ -63,19 +63,6 @@ const PDFReader: React.FC = () => {
     setScale((prevScale) => Math.max(prevScale - 0.1, 0.5)); // Min zoom = 0.5x
   };
 
-  // Page Navigation functions
-  const handleNextPage = () => {
-    if (pdf && currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
   // Re-render the page whenever scale or currentPage changes
   useEffect(() => {
     if (pdf) {
@@ -102,33 +89,68 @@ const PDFReader: React.FC = () => {
     return [];
   };
 
+  // Calculate the zoom percentage (scale * 100)
+  const zoomPercentage = Math.round(scale * 100); // Zoom percentage
+
   return (
     <div>
       {/* Toolbar for zoom and navigation */}
       <div className="toolbar">
-        <button onClick={handleZoomOut}>-</button>
-        <button onClick={handleZoomIn}>+</button>
-        <button onClick={handlePrevPage}>Previous</button>
-        <button onClick={handleNextPage}>Next</button>
+        <div className="leftMenu">
+          <span>Resume</span>
+        </div>
+        <ol className="controls">
+          <li className="zoomOut">
+            <button onClick={handleZoomOut}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M6 12L18 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </li>
+          <li className="zoomPercentage">
+            <p>{zoomPercentage}%</p>
+          </li>
+          <li className="zoomIn">
+            <button onClick={handleZoomIn}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M4 12H20M12 4V20"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </li>
+        </ol>
+        <div className="rightMenu">
+          <a href={pdfUrl} download="testpdf.pdf">
+            <button>Download</button>
+          </a>
+        </div>
       </div>
 
       {/* Scrollable container for PDF pages */}
-      <div
-        className="pdf-container"
-        style={{
-          maxHeight: '600px', // Set the max height for scrollable container
-          overflowY: 'auto', // Enable vertical scrolling
-          border: '1px solid #ccc' // Optional, for better visibility of the container
-        }}
-      >
+      <div className="pdfContainer customScrollbar">
         {/* Render all pages */}
         {renderAllPages()}
-      </div>
-
-      <div>
-        <p>
-          Page {currentPage} of {totalPages}
-        </p>
       </div>
     </div>
   );

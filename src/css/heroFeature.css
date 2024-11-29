@@ -775,19 +775,119 @@
 }
 
 .toolbar {
-  height: 100px;
+  background-color: rgb(50, 54, 57);
+  box-shadow: 0 0 5px hsla(0, 0%, 10%, 50%);
+  display: flex;
+  height: 40px;
+  position: absolute;
   width: 100%;
-  border: 10px solid red;
+  z-index: 1;
 }
 
-.zoomIn {
-  background: green;
+.toolbar ol {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  place-content: center;
+  place-items: center;
+  width: 100%;
 }
 
-.zoomOut {
-  background: pink;
+.pages {
+  letter-spacing: 1.5px;
+  line-height: 20px;
+  padding-right: 10px;
+  width: max-content;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
 }
 
+.pages::after {
+  background-color: rgb(112, 115, 117);
+  content: '';
+  margin-left: 20px;
+  width: 1px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+}
+
+.toolbar ol li {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1.5px;
+  line-height: 20px;
+}
+
+.zoomOut button,
+.zoomIn button {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoomOut svg,
+.zoomIn svg {
+  fill: rgb(255, 255, 255);
+}
+
+.zoomIn :hover,
+.zoomOut :hover {
+  border-radius: 50%;
+  background-color: rgb(66, 70, 73);
+}
+
+.zoomPercentage {
+  background-color: #202020;
+  height: fit-content;
+  padding: 5px;
+}
+
+.pdfContainer {
+  max-height: 600px;
+  overflow-y: auto;
+  border: '1px solid #ccc';
+}
+
+.zoomPercentage {
+  font-size: 16px;
+  margin: 0;
+}
+
+.leftMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  margin-left: 16px;
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  margin-right: 16px;
+}
+
+.rightMenu a {
+  padding: 5px;
+}
+
+.rightMenu a:hover {
+  background-color: rgb(66, 70, 73);
+}
+
+.pdfContainer {
+}
 /* loader */
 .loading-circle {
   position: absolute;
