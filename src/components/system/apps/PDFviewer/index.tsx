@@ -127,18 +127,9 @@ function PDFViewer() {
           resetPosition={resetPosition}
         />
 
-        <ol className="folderFileManager customScrollbar">
-          {iconState
-            .filter((icon) => icon.folderId == 'PDFViewer')
-            .map((icon) => (
-              <FileEntry
-                name={icon.name}
-                icon={imageMapping(icon.pic) || '|| operator test'}
-                onDoubleClick={() => handleShow(icon.name)}
-                onClick={() => console.log(icon)}
-              />
-            ))}
-        </ol>
+        <div className="pdfViewer">
+          <iframe src="https://drive.google.com/file/d/1Orh0R7ZaMdt6hozwF_JAB__anJq2rrlz/preview"></iframe>
+        </div>
       </motion.section>
     </Rnd>
   );

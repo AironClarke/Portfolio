@@ -767,3 +767,15 @@
   width: 39px;
   height: 39px;
 }
+
+/* pdfViewer */
+
+.pdfViewer iframe {
+  height: calc(100% - 30px);
+  width: 100%;
+}
+
+.pdfViewer {
+  height: 100%;
+  width: 100%;
+}
