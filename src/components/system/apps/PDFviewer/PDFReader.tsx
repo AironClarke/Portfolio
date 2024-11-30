@@ -128,7 +128,7 @@ const PDFReader: React.FC = () => {
   const zoomPercentage = Math.round(scale * 100);
 
   return (
-    <div className="pdfViewer">
+    <div className="Resume">
       {/* Toolbar */}
       <div className="toolbar">
         <div className="leftMenu">

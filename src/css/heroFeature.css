@@ -775,7 +775,7 @@
   height: 39px;
 }
 
-/* pdfViewer */
+/* Resume */
 
 .pdfReader {
   margin: 0 auto;
@@ -889,7 +889,7 @@
   background-color: rgb(66, 70, 73);
 }
 
-.pdfViewer {
+.Resume {
   display: flex;
   flex-direction: column;
   height: calc(100% - 40px);

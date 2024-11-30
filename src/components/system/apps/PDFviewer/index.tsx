@@ -14,12 +14,12 @@ import directoryImage from 'public/folderTest.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 import PDFReader from './PDFReader';
 
-function PDFViewer() {
+function Resume() {
   const userContext = useContext(UserContext);
 
   const motionProps = useWindowTransitions();
 
-  console.log('PDFVIEWER TRIGGERED');
+  console.log('Resume TRIGGERED');
 
   if (!userContext) {
     throw new Error('userContext is undefined');
@@ -48,7 +48,7 @@ function PDFViewer() {
   const [key, setKey] = useState(0); // State to trigger re-render
   const [isLoading, setIsLoading] = useState(true);
 
-  const directory = ['PDFviewer'];
+  const directory = ['Resume'];
   const directoryImg = (
     <img
       src={directoryImage}
@@ -99,46 +99,42 @@ function PDFViewer() {
       size={{ height, width }}
       onResizeStop={updateSize}
       position={{ x: offsetX, y: offsetY }}
-      onDragStart={() => handleSetFocusItemTrue('PDFViewer')}
+      onDragStart={() => handleSetFocusItemTrue('Resume')}
       onDragStop={(e, data) => {
         updatePosition(e, data);
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
       style={
-        PDFExpand.expand
-          ? inlineStyleExpand('PDFViewer')
-          : inlineStyle('PDFViewer')
+        PDFExpand.expand ? inlineStyleExpand('Resume') : inlineStyle('Resume')
       }
     >
       <motion.section
         className="titlebarContainer window"
         style={
-          PDFExpand.expand
-            ? inlineStyleExpand('PDFViewer')
-            : inlineStyle('PDFViewer')
+          PDFExpand.expand ? inlineStyleExpand('Resume') : inlineStyle('Resume')
         }
         {...motionProps}
-        onClick={() => handleSetFocusItemTrue('PDFViewer')}
+        onClick={() => handleSetFocusItemTrue('Resume')}
       >
         <Titlebar
           icon="pdfIcon.svg"
-          title="PDFViewer"
+          title="Resume"
           PortfolioExpand={PDFExpand}
           setPortfolioExpand={setPDFExpand}
           resetPosition={resetPosition}
         />
 
-        {/* <div className="pdfViewer">
+        {/* <div className="Resume">
           <iframe src="https://drive.google.com/file/d/1Orh0R7ZaMdt6hozwF_JAB__anJq2rrlz/preview"></iframe>
         </div> */}
         {/*
-        <div className="pdfViewer">
+        <div className="Resume">
           {isLoading && (
             <div className="loading-circle">{}</div>
           )}
           <div
-            className="pdfViewer customScrollbar"
+            className="Resume customScrollbar"
             style={{ position: 'relative' }}
           >
             <iframe
@@ -158,4 +154,4 @@ function PDFViewer() {
   );
 }
 
-export default PDFViewer;
+export default Resume;

@@ -16,7 +16,7 @@ import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { AnimatePresence } from 'framer-motion';
 import CloneFolder from 'src/folders/CloneFolder';
-import PDFviewer from 'src/components/system/apps/PDFviewer';
+import Resume from 'src/components/system/apps/PDFviewer/index';
 
 export type ObjectStateItem = {
   name: string;
@@ -117,7 +117,7 @@ const HeroFeature = (): JSX.Element => {
         usestate: MonacoExpand
       },
       { name: 'CloneFolder', setter: setCloneExpand, usestate: CloneExpand },
-      { name: 'PDFViewer', setter: setPDFExpand, usestate: PDFExpand }
+      { name: 'Resume', setter: setPDFExpand, usestate: PDFExpand }
     ];
   }
 
@@ -361,7 +361,7 @@ const HeroFeature = (): JSX.Element => {
             {WordExpand.show && <WordApp key="wordKey" />}
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}
             {CloneExpand.show && <CloneFolder key="cloneKey" />}
-            {PDFExpand.show && <PDFviewer key="pdfKey" />}
+            {PDFExpand.show && <Resume key="pdfKey" />}
           </AnimatePresence>
           <FileManager />
         </section>
