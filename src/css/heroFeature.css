@@ -486,6 +486,10 @@
   height: 100%;
 }
 
+.tox-tinymce {
+  border-radius: 0px !important;
+}
+
 /* Styles for elements with role="application" inside wordEditor */
 .wordEditor [role='application'] {
   height: 100% !important;
