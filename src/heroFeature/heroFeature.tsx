@@ -1,7 +1,7 @@
 import FileManager from 'src/files/FileManager';
 import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
-import ResumeFolder from 'src/folders/ResumeFolder';
+import PortfolioFolder from 'src/folders/PortfolioFolder';
 import MonacoApp from 'src/components/system/apps/MonacoEditor/MonacoEditor';
 import WordApp from 'src/components/system/apps/Word/WordApp';
 import { useRef, useState } from 'react';
@@ -9,7 +9,7 @@ import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
 import { transform } from 'typescript';
-import OtherFolder from 'src/folders/OtherFolder';
+import ThisPc from 'src/folders/ThisPc';
 import { StyleHide } from 'src/functions/StyleHide';
 import DukeNukem3D from 'src/components/system/apps/JSDOS/DukeNukem3D';
 import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
@@ -25,7 +25,7 @@ export type ObjectStateItem = {
 };
 
 const HeroFeature = (): JSX.Element => {
-  const [ResumeExpand, setResumeExpand] = useState({
+  const [PortfolioExpand, setPortfolioExpand] = useState({
     expand: false,
     show: false,
     hide: false,
@@ -35,7 +35,7 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
-  const [OtherExpand, setOtherExpand] = useState({
+  const [ThisPcExpand, setThisPcExpand] = useState({
     expand: false,
     show: false,
     hide: false,
@@ -99,8 +99,12 @@ const HeroFeature = (): JSX.Element => {
 
   function ObjectState(): ObjectStateItem[] {
     return [
-      { name: 'Resume', setter: setResumeExpand, usestate: ResumeExpand },
-      { name: 'Other', setter: setOtherExpand, usestate: OtherExpand },
+      {
+        name: 'Portfolio',
+        setter: setPortfolioExpand,
+        usestate: PortfolioExpand
+      },
+      { name: 'ThisPc', setter: setThisPcExpand, usestate: ThisPcExpand },
       {
         name: 'Duke Nukem 3D',
         setter: setDuke3DExpand,
@@ -118,7 +122,7 @@ const HeroFeature = (): JSX.Element => {
   }
 
   function handleSetFocusItemTrue(name: string) {
-    //click on one, other goes false
+    //click on one, ThisPc goes false
 
     const LowerCaseName = name.toLowerCase().split(' ').join('').trim();
     const setState = ObjectState();
@@ -309,10 +313,10 @@ const HeroFeature = (): JSX.Element => {
   // const [hasMoved, setHasMoved] = useState(false);
 
   const contextValue = {
-    ResumeExpand,
-    setResumeExpand,
-    OtherExpand,
-    setOtherExpand,
+    PortfolioExpand,
+    setPortfolioExpand,
+    ThisPcExpand,
+    setThisPcExpand,
     Duke3DExpand,
     setDuke3DExpand,
     inlineStyle,
@@ -351,8 +355,8 @@ const HeroFeature = (): JSX.Element => {
       <section className="heroContainer">
         <section className="fullscreen">
           <AnimatePresence>
-            {ResumeExpand.show && <ResumeFolder key="resumeKey" />}
-            {OtherExpand.show && <OtherFolder key="otherKey" />}
+            {PortfolioExpand.show && <PortfolioFolder key="PortfolioKey" />}
+            {ThisPcExpand.show && <ThisPc key="ThisPcKey" />}
             {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
             {WordExpand.show && <WordApp key="wordKey" />}
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}

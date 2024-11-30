@@ -1,43 +1,43 @@
 [
   {
-    "name": "Resume",
-    "pic": "Resume",
+    "name": "Portfolio",
+    "pic": "Portfolio",
     "folderId": "Desktop"
   },
   {
-    "name": "Other",
-    "pic": "Resume",
+    "name": "This PC",
+    "pic": "ThisPC",
     "folderId": "Desktop"
   },
   {
     "name": "CloneFolder",
-    "pic": "Resume",
-    "folderId": "Other"
+    "pic": "Portfolio",
+    "folderId": "ThisPc"
   },
   {
-    "name": "ResumeFile2",
-    "pic": "Resume",
-    "folderId": "Other"
+    "name": "PortfolioFile2",
+    "pic": "Portfolio",
+    "folderId": "ThisPc"
   },
   {
-    "name": "ResumeFile3",
+    "name": "PortfolioFile3",
     "pic": "Folder2",
-    "folderId": "Other"
+    "folderId": "ThisPc"
   },
   {
-    "name": "ResumeFile4",
+    "name": "PortfolioFile4",
     "pic": "Folder2",
-    "folderId": "Other"
+    "folderId": "ThisPc"
   },
   {
-    "name": "ResumeFile5",
+    "name": "PortfolioFile5",
     "pic": "Folder2",
-    "folderId": "Other"
+    "folderId": "ThisPc"
   },
   {
-    "name": "ResumeFile6",
+    "name": "PortfolioFile6",
     "pic": "Folder2",
-    "folderId": "Other"
+    "folderId": "ThisPc"
   },
   {
     "name": "Duke Nukem 3D",

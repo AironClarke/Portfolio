@@ -32,7 +32,7 @@ function CloneFolder() {
     setFolderCount,
     folderCount,
     handleShow,
-    OtherExpand
+    ThisPcExpand
   } = userContext;
 
   const maximized = CloneExpand.expand;
@@ -44,7 +44,7 @@ function CloneFolder() {
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['OtherFolder', 'CloneFolder'];
+  const directory = ['ThisPc', 'CloneFolder'];
   const directoryImg = (
     <img
       src={directoryImage}
@@ -120,8 +120,8 @@ function CloneFolder() {
         <Titlebar
           icon="thisPC.svg"
           title="CloneFolder"
-          ResumeExpand={CloneExpand}
-          setResumeExpand={setCloneExpand}
+          PortfolioExpand={CloneExpand}
+          setPortfolioExpand={setCloneExpand}
           resetPosition={resetPosition}
         />
         <Navigation
@@ -130,12 +130,12 @@ function CloneFolder() {
           refreshHandler={
             refreshHandler
           } /* Pass refreshHandler to Navigation */
-          upOneLevel="Other"
-          upOneLevelStyle={OtherExpand}
+          upOneLevel="ThisPc"
+          upOneLevelStyle={ThisPcExpand}
         />
         <ol className="folderFileManager customScrollbar">
           {iconState
-            .filter((icon) => icon.folderId == 'Other')
+            .filter((icon) => icon.folderId == 'ThisPc')
             .map((icon) => (
               <FileEntry
                 name={icon.name}
@@ -146,7 +146,7 @@ function CloneFolder() {
             ))}
         </ol>
         <StatusBar
-          count={iconState.filter((icon) => icon.folderId == 'Other').length}
+          count={iconState.filter((icon) => icon.folderId == 'ThisPc').length}
         />
       </motion.section>
     </Rnd>

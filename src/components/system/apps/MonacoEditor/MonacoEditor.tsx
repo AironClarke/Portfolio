@@ -64,8 +64,8 @@ function MonacoApp() {
         <Titlebar
           icon="VSCodeIcon.svg"
           title="Monaco Editor"
-          ResumeExpand={MonacoExpand}
-          setResumeExpand={setMonacoExpand}
+          PortfolioExpand={MonacoExpand}
+          setPortfolioExpand={setMonacoExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <MonacoEditor />

@@ -72,8 +72,8 @@ function DukeNukem3D() {
         <Titlebar
           icon="DukeNukem3DIcon.png"
           title="Duke Nukem 3D"
-          ResumeExpand={Duke3DExpand}
-          setResumeExpand={setDuke3DExpand}
+          PortfolioExpand={Duke3DExpand}
+          setPortfolioExpand={setDuke3DExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <div className="canvas">

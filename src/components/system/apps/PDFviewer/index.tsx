@@ -124,8 +124,8 @@ function PDFViewer() {
         <Titlebar
           icon="pdfIcon.svg"
           title="PDFViewer"
-          ResumeExpand={PDFExpand}
-          setResumeExpand={setPDFExpand}
+          PortfolioExpand={PDFExpand}
+          setPortfolioExpand={setPDFExpand}
           resetPosition={resetPosition}
         />
 

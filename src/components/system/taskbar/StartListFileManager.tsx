@@ -4,7 +4,7 @@ import { UserContext } from 'src/context/UserContext';
 import linked from '/folderTest.svg';
 import sidebar from '/folderTest.svg';
 import project from '/folderTest.svg';
-import resume from '/folderTest.svg';
+import Portfolio from '/folderTest.svg';
 import settings from '/folderTest.svg';
 import StartMenuFileEntry from './StartMenuFileEntry';
 
@@ -29,21 +29,21 @@ const StartListFileManager = () => {
       imgSrc: project,
       imgAlt: 'project',
       spanText: 'Project',
-      onClick: () => handleShow('Other')
+      onClick: () => handleShow('ThisPc')
     },
     {
-      name: 'resume',
-      imgSrc: resume,
-      imgAlt: 'resume',
-      spanText: 'Resume',
-      onClick: () => handleShow('Resume')
+      name: 'Portfolio',
+      imgSrc: Portfolio,
+      imgAlt: 'Portfolio',
+      spanText: 'Portfolio',
+      onClick: () => handleShow('Portfolio')
     },
     {
       name: 'shutdownicon',
       imgSrc: settings,
       imgAlt: 'shutdownicon',
       spanText: 'Settings',
-      onClick: () => handleShow('Resume')
+      onClick: () => handleShow('Portfolio')
     }
   ];
 

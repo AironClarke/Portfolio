@@ -8,7 +8,7 @@ type TapItem = {
 export type Tap = TapItem[];
 
 export type UserContextType = {
-  ResumeExpand: {
+  PortfolioExpand: {
     expand: boolean;
     show: boolean;
     hide: boolean;
@@ -17,7 +17,7 @@ export type UserContextType = {
     y: number;
     item_1Focus: boolean;
   };
-  setResumeExpand: Dispatch<
+  setPortfolioExpand: Dispatch<
     SetStateAction<{
       expand: boolean;
       show: boolean;

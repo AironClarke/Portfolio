@@ -61,8 +61,8 @@ function WordApp() {
         <Titlebar
           icon="wordIcon.svg"
           title="Word"
-          ResumeExpand={WordExpand}
-          setResumeExpand={setWordExpand}
+          PortfolioExpand={WordExpand}
+          setPortfolioExpand={setWordExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <TinyMCE />

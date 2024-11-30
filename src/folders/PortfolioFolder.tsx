@@ -5,15 +5,13 @@ import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
 import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
-import FileEntry from 'src/files/FileEntry';
-import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/folderTest.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 
-function OtherFolder() {
+function PortfolioFolder() {
   const userContext = useContext(UserContext);
 
   const motionProps = useWindowTransitions();
@@ -23,27 +21,25 @@ function OtherFolder() {
   }
 
   const {
-    OtherExpand,
-    setOtherExpand,
+    PortfolioExpand,
+    setPortfolioExpand,
     inlineStyleExpand,
     inlineStyle,
     handleSetFocusItemTrue,
-    iconState,
-    setFolderCount,
     folderCount,
+    setFolderCount,
     handleShow
   } = userContext;
 
-  const maximized = OtherExpand.expand;
-  const { height, width, updateSize } = useResizable(maximized);
-  const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
-
+  const maximized = PortfolioExpand.expand;
+  //  TODO: make window not draggable when its hidden
+  // const test = PortfolioExpand.hide;
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['OtherFolder'];
+  const directory = ['PortfolioFolder'];
   const directoryImg = (
     <img
       src={directoryImage}
@@ -55,11 +51,10 @@ function OtherFolder() {
   );
 
   useEffect(() => {
-    if (OtherExpand.show) {
-      // Set the folder offset only if it hasn't been set yet
+    if (PortfolioExpand.show) {
       if (folderOffset.current === null) {
-        setFolderCount((prev) => prev + 1);
-        folderOffset.current = folderCount * 26;
+        setFolderCount((prev) => prev + 1); // Update shared folder count
+        folderOffset.current = folderCount * 26; // Calculate and store unique offset for this instance
       }
       setIsInitialized(true); // Trigger rendering only after offset is set
     } else {
@@ -71,12 +66,15 @@ function OtherFolder() {
         setIsInitialized(false); // Reset initialization on close
       }
     }
-  }, [OtherExpand.show]);
+  }, [PortfolioExpand.show]);
 
   const refreshHandler = () => {
     console.log('Refresh triggered');
     setKey((prevKey) => prevKey + 1);
   }; // Increment key to force re-render
+
+  const { height, width, updateSize } = useResizable(maximized);
+  const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
 
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
@@ -89,35 +87,39 @@ function OtherFolder() {
     <Rnd
       key={key} // Set key to force component re-creati
       dragHandleClassName="draggable-titlebar"
+      style={
+        PortfolioExpand.expand
+          ? inlineStyleExpand('Portfolio')
+          : inlineStyle('Portfolio')
+      }
       disableDragging={maximized}
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
       position={{ x: offsetX, y: offsetY }}
-      onDragStart={() => handleSetFocusItemTrue('Other')}
       onDragStop={(e, data) => {
         updatePosition(e, data);
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
-      style={
-        OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
-      }
+      onDragStart={() => handleSetFocusItemTrue('Portfolio')}
     >
       <motion.section
         className="titlebarContainer window"
         style={
-          OtherExpand.expand ? inlineStyleExpand('Other') : inlineStyle('Other')
+          PortfolioExpand.expand
+            ? inlineStyleExpand('Portfolio')
+            : inlineStyle('Portfolio')
         }
         {...motionProps}
-        onClick={() => handleSetFocusItemTrue('Other')}
+        onClick={() => handleSetFocusItemTrue('Portfolio')}
       >
         <Titlebar
-          icon="thisPC.svg"
-          title="Other"
-          ResumeExpand={OtherExpand}
-          setResumeExpand={setOtherExpand}
-          resetPosition={resetPosition}
+          icon="folderTest.svg"
+          title="Portfolio"
+          PortfolioExpand={PortfolioExpand}
+          setPortfolioExpand={setPortfolioExpand}
+          resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <Navigation
           directory={directory}
@@ -126,24 +128,15 @@ function OtherFolder() {
             refreshHandler
           } /* Pass refreshHandler to Navigation */
         />
-        <ol className="folderFileManager customScrollbar">
-          {iconState
-            .filter((icon) => icon.folderId == 'Other')
-            .map((icon) => (
-              <FileEntry
-                name={icon.name}
-                icon={imageMapping(icon.pic) || '|| operator test'}
-                onDoubleClick={() => handleShow(icon.name)}
-                onClick={() => console.log(icon)}
-              />
-            ))}
-        </ol>
-        <StatusBar
-          count={iconState.filter((icon) => icon.folderId == 'Other').length}
-        />
+        <h1 className="Portfolio customScrollbar">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
+          nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
+          numquam nostrum eius ut necessitatibus sunt autem, animi aliquam.
+        </h1>
+        <StatusBar count={0} />
       </motion.section>
     </Rnd>
   );
 }
 
-export default OtherFolder;
+export default PortfolioFolder;

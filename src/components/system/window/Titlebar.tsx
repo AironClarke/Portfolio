@@ -9,7 +9,7 @@ import { closeMessage } from '../apps/JSDOS/dosFunctions';
 type TitlebarProps = {
   icon: string;
   title: string;
-  ResumeExpand: {
+  PortfolioExpand: {
     expand: boolean;
     show: boolean;
     hide: boolean;
@@ -18,7 +18,7 @@ type TitlebarProps = {
     y: number;
     item_1Focus: boolean;
   };
-  setResumeExpand: Dispatch<
+  setPortfolioExpand: Dispatch<
     SetStateAction<{
       expand: boolean;
       show: boolean;
@@ -34,8 +34,8 @@ type TitlebarProps = {
 const Titlebar = ({
   icon,
   title,
-  ResumeExpand,
-  setResumeExpand,
+  PortfolioExpand,
+  setPortfolioExpand,
   resetPosition,
   dosOpen,
   dosClose
@@ -49,7 +49,7 @@ const Titlebar = ({
   const { inlineStyleExpand, inlineStyle, deleteTap, StyleHide } = userContext;
 
   function handleExpandStateToggle() {
-    setResumeExpand((prevState) => ({
+    setPortfolioExpand((prevState) => ({
       ...prevState,
       expand: !prevState.expand
     }));
@@ -69,12 +69,14 @@ const Titlebar = ({
     <header
       className="titlebarHeader draggable-titlebar"
       style={{
-        backgroundColor: ResumeExpand.focusItem ? 'black' : '#444444'
+        backgroundColor: PortfolioExpand.focusItem ? 'black' : '#444444'
       }}
     >
       <h1
         style={
-          ResumeExpand.expand ? inlineStyleExpand('Type') : inlineStyle('Type')
+          PortfolioExpand.expand
+            ? inlineStyleExpand('Type')
+            : inlineStyle('Type')
         }
       >
         <figure>
@@ -91,7 +93,7 @@ const Titlebar = ({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            setResumeExpand((prev) => ({
+            setPortfolioExpand((prev) => ({
               ...prev,
               hide: true,
               focusItem: false

@@ -80,7 +80,7 @@ const PDFReader: React.FC = () => {
 
         await renderTask.promise; // Wait for the rendering to complete
 
-        // Restore the context state to avoid affecting other renders
+        // Restore the context state to avoid affecting ThisPc renders
         context.restore();
       }
 
@@ -132,7 +132,7 @@ const PDFReader: React.FC = () => {
       {/* Toolbar */}
       <div className="toolbar">
         <div className="leftMenu">
-          <span>Resume</span>
+          <span>Portfolio</span>
         </div>
         <ol className="controls">
           <li className="zoomOut">

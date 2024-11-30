@@ -5,13 +5,15 @@ import { UserContext } from 'src/context/UserContext';
 import useResizable from 'src/hooks/useResizable';
 import rndDefaults from 'src/utils/rndDefaults';
 import useDraggable from 'src/hooks/useDraggable';
+import FileEntry from 'src/files/FileEntry';
+import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/folderTest.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 
-function ResumeFolder() {
+function ThisPc() {
   const userContext = useContext(UserContext);
 
   const motionProps = useWindowTransitions();
@@ -21,25 +23,27 @@ function ResumeFolder() {
   }
 
   const {
-    ResumeExpand,
-    setResumeExpand,
+    ThisPcExpand,
+    setThisPcExpand,
     inlineStyleExpand,
     inlineStyle,
     handleSetFocusItemTrue,
-    folderCount,
+    iconState,
     setFolderCount,
+    folderCount,
     handleShow
   } = userContext;
 
-  const maximized = ResumeExpand.expand;
-  //  TODO: make window not draggable when its hidden
-  // const test = ResumeExpand.hide;
+  const maximized = ThisPcExpand.expand;
+  const { height, width, updateSize } = useResizable(maximized);
+  const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
+
   const folderOffset = useRef<number | null>(null);
   const [hasMoved, setHasMoved] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['ResumeFolder'];
+  const directory = ['ThisPc'];
   const directoryImg = (
     <img
       src={directoryImage}
@@ -51,10 +55,11 @@ function ResumeFolder() {
   );
 
   useEffect(() => {
-    if (ResumeExpand.show) {
+    if (ThisPcExpand.show) {
+      // Set the folder offset only if it hasn't been set yet
       if (folderOffset.current === null) {
-        setFolderCount((prev) => prev + 1); // Update shared folder count
-        folderOffset.current = folderCount * 26; // Calculate and store unique offset for this instance
+        setFolderCount((prev) => prev + 1);
+        folderOffset.current = folderCount * 26;
       }
       setIsInitialized(true); // Trigger rendering only after offset is set
     } else {
@@ -66,15 +71,12 @@ function ResumeFolder() {
         setIsInitialized(false); // Reset initialization on close
       }
     }
-  }, [ResumeExpand.show]);
+  }, [ThisPcExpand.show]);
 
   const refreshHandler = () => {
     console.log('Refresh triggered');
     setKey((prevKey) => prevKey + 1);
   }; // Increment key to force re-render
-
-  const { height, width, updateSize } = useResizable(maximized);
-  const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
 
   // Conditionally apply the offset only if the window has not been moved
   const offsetX = hasMoved ? x : x + (folderOffset.current || 0);
@@ -87,39 +89,39 @@ function ResumeFolder() {
     <Rnd
       key={key} // Set key to force component re-creati
       dragHandleClassName="draggable-titlebar"
-      style={
-        ResumeExpand.expand
-          ? inlineStyleExpand('Resume')
-          : inlineStyle('Resume')
-      }
       disableDragging={maximized}
       enableResizing={!maximized}
       size={{ height, width }}
       onResizeStop={updateSize}
       position={{ x: offsetX, y: offsetY }}
+      onDragStart={() => handleSetFocusItemTrue('ThisPc')}
       onDragStop={(e, data) => {
         updatePosition(e, data);
         if (!hasMoved) setHasMoved(true); // Mark as moved permanently
       }}
       {...rndDefaults}
-      onDragStart={() => handleSetFocusItemTrue('Resume')}
+      style={
+        ThisPcExpand.expand
+          ? inlineStyleExpand('ThisPc')
+          : inlineStyle('ThisPc')
+      }
     >
       <motion.section
         className="titlebarContainer window"
         style={
-          ResumeExpand.expand
-            ? inlineStyleExpand('Resume')
-            : inlineStyle('Resume')
+          ThisPcExpand.expand
+            ? inlineStyleExpand('ThisPc')
+            : inlineStyle('ThisPc')
         }
         {...motionProps}
-        onClick={() => handleSetFocusItemTrue('Resume')}
+        onClick={() => handleSetFocusItemTrue('ThisPc')}
       >
         <Titlebar
-          icon="folderTest.svg"
-          title="Resume"
-          ResumeExpand={ResumeExpand}
-          setResumeExpand={setResumeExpand}
-          resetPosition={resetPosition} // Pass resetPosition to Titlebar
+          icon="thisPC.svg"
+          title="ThisPc"
+          PortfolioExpand={ThisPcExpand}
+          setPortfolioExpand={setThisPcExpand}
+          resetPosition={resetPosition}
         />
         <Navigation
           directory={directory}
@@ -128,15 +130,24 @@ function ResumeFolder() {
             refreshHandler
           } /* Pass refreshHandler to Navigation */
         />
-        <h1 className="resume customScrollbar">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
-          nesciunt error odit, magni quam id dolorum, dolore expedita iste cum
-          numquam nostrum eius ut necessitatibus sunt autem, animi aliquam.
-        </h1>
-        <StatusBar count={0} />
+        <ol className="folderFileManager customScrollbar">
+          {iconState
+            .filter((icon) => icon.folderId == 'ThisPc')
+            .map((icon) => (
+              <FileEntry
+                name={icon.name}
+                icon={imageMapping(icon.pic) || '|| operator test'}
+                onDoubleClick={() => handleShow(icon.name)}
+                onClick={() => console.log(icon)}
+              />
+            ))}
+        </ol>
+        <StatusBar
+          count={iconState.filter((icon) => icon.folderId == 'ThisPc').length}
+        />
       </motion.section>
     </Rnd>
   );
 }
 
-export default ResumeFolder;
+export default ThisPc;
