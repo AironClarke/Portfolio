@@ -1,4 +1,4 @@
-import { DosFn } from './DosType';
+import { DosFn } from './dosType';
 
 declare const Dos: DosFn;
 
