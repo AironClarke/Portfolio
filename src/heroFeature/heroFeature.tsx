@@ -3,7 +3,7 @@ import '../css/heroFeature.css';
 import Taskbar from 'src/components/system/taskbar';
 import PortfolioFolder from 'src/folders/PortfolioFolder';
 import MonacoApp from 'src/components/system/apps/MonacoEditor/MonacoEditor';
-import WordApp from 'src/components/system/apps/Word/WordApp';
+import TinyMCEApp from 'src/components/system/apps/Word/WordApp';
 import { useRef, useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
@@ -65,7 +65,7 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
-  const [WordExpand, setWordExpand] = useState({
+  const [TinyMCEExpand, setTinyMCEExpand] = useState({
     expand: false,
     show: false,
     hide: false,
@@ -110,7 +110,7 @@ const HeroFeature = (): JSX.Element => {
         setter: setDuke3DExpand,
         usestate: Duke3DExpand
       },
-      { name: 'Word', setter: setWordExpand, usestate: WordExpand },
+      { name: 'TinyMCE', setter: setTinyMCEExpand, usestate: TinyMCEExpand },
       {
         name: 'Monaco Editor',
         setter: setMonacoExpand,
@@ -339,8 +339,8 @@ const HeroFeature = (): JSX.Element => {
     startRef,
     folderCount,
     setFolderCount,
-    WordExpand,
-    setWordExpand,
+    TinyMCEExpand,
+    setTinyMCEExpand,
     MonacoExpand,
     setMonacoExpand,
     MonacoApp,
@@ -358,7 +358,7 @@ const HeroFeature = (): JSX.Element => {
             {PortfolioExpand.show && <PortfolioFolder key="PortfolioKey" />}
             {ThisPcExpand.show && <ThisPc key="ThisPcKey" />}
             {Duke3DExpand.show && <DukeNukem3D key="dukeNukem3DKey" />}
-            {WordExpand.show && <WordApp key="wordKey" />}
+            {TinyMCEExpand.show && <TinyMCEApp key="TinyMCEKey" />}
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}
             {CloneExpand.show && <CloneFolder key="cloneKey" />}
             {PDFExpand.show && <Resume key="pdfKey" />}

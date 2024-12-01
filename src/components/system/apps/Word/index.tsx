@@ -11,7 +11,7 @@ const TinyMCE = (): JSX.Element => {
   const TinyApi = import.meta.env.VITE_TINYNCE;
 
   return (
-    <div className="wordEditor">
+    <div className="TinyMCEEditor">
       {isLoading && <ContentLoader />}
       <Editor
         apiKey={TinyApi}

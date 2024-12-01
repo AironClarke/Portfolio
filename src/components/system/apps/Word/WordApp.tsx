@@ -10,7 +10,7 @@ import useWindowTransitions from '../../../../../src/hooks/useWindowTransitions'
 import TextEditor from './index';
 import TinyMCE from './index';
 
-function WordApp() {
+function TinyMCEApp() {
   const userContext = useContext(UserContext);
 
   const motionProps = useWindowTransitions();
@@ -20,14 +20,14 @@ function WordApp() {
   }
 
   const {
-    WordExpand,
-    setWordExpand,
+    TinyMCEExpand,
+    setTinyMCEExpand,
     inlineStyleExpand,
     inlineStyle,
     handleSetFocusItemTrue
   } = userContext;
 
-  const maximized = WordExpand.expand;
+  const maximized = TinyMCEExpand.expand;
 
   const { height, width, updateSize } = useResizable(maximized);
   const { x, y, updatePosition, resetPosition } = useDraggable(maximized);
@@ -36,7 +36,9 @@ function WordApp() {
     <Rnd
       dragHandleClassName="draggable-titlebar"
       style={
-        WordExpand.expand ? inlineStyleExpand('Word') : inlineStyle('Word')
+        TinyMCEExpand.expand
+          ? inlineStyleExpand('TinyMCE')
+          : inlineStyle('TinyMCE')
       }
       disableDragging={maximized}
       enableResizing={!maximized}
@@ -46,23 +48,25 @@ function WordApp() {
       onDragStop={updatePosition}
       {...rndDefaults}
       lockAspectRatio={true}
-      onDragStart={() => handleSetFocusItemTrue('Word')}
+      onDragStart={() => handleSetFocusItemTrue('TinyMCE')}
     >
       <motion.section
         className="titlebarContainer window"
         style={
-          WordExpand.expand ? inlineStyleExpand('Word') : inlineStyle('Word')
+          TinyMCEExpand.expand
+            ? inlineStyleExpand('TinyMCE')
+            : inlineStyle('TinyMCE')
         }
         {...motionProps}
         onClick={() => {
-          handleSetFocusItemTrue('Word');
+          handleSetFocusItemTrue('TinyMCE');
         }}
       >
         <Titlebar
-          icon="wordIcon.svg"
-          title="Word"
-          PortfolioExpand={WordExpand}
-          setPortfolioExpand={setWordExpand}
+          icon="tinymcelogo.svg"
+          title="TinyMCE"
+          PortfolioExpand={TinyMCEExpand}
+          setPortfolioExpand={setTinyMCEExpand}
           resetPosition={resetPosition} // Pass resetPosition to Titlebar
         />
         <TinyMCE />
@@ -71,4 +75,4 @@ function WordApp() {
   );
 }
 
-export default WordApp;
+export default TinyMCEApp;

@@ -1,7 +1,7 @@
 import ThisPc from '/thisPC.svg';
 import folder2 from '/folderTest.svg';
 import DukeNukem3D from '/DukeNukem3DIcon.png';
-import word from '/wordIcon.svg';
+import TinyMCE from '/tinymcelogo.svg';
 import VSCode from '/VSCodeIcon.svg';
 import PDFIcon from '/pdfIcon.svg';
 import Portfolio from '/folderFilled.ico';
@@ -21,8 +21,8 @@ export function imageMapping(name: string): string {
     case 'DukenNukem3D':
       return DukeNukem3D;
 
-    case 'Word':
-      return word;
+    case 'TinyMCE':
+      return TinyMCE;
 
     case 'Monaco Editor':
       return VSCode;
