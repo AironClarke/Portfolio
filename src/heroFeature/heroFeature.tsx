@@ -4,7 +4,7 @@ import Taskbar from 'src/components/system/taskbar';
 import PortfolioFolder from 'src/folders/PortfolioFolder';
 import MonacoApp from 'src/components/system/apps/MonacoEditor/MonacoEditor';
 import TinyMCEApp from 'src/components/system/apps/Word/WordApp';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { UserContext } from 'src/context/UserContext';
 import iconInfo from 'src/icon.json';
 import { imageMapping } from 'src/functions/AppFunction';
@@ -96,6 +96,13 @@ const HeroFeature = (): JSX.Element => {
   });
 
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
+
+  useEffect(() => {
+    document.addEventListener('gesturestart', function (e) {
+      // prevent zooming on mobile
+      e.preventDefault();
+    });
+  }, []);
 
   function ObjectState(): ObjectStateItem[] {
     return [
