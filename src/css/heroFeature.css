@@ -206,6 +206,41 @@
   padding: 5px 0;
 }
 
+.fileManager div:nth-child(1) {
+  grid-column: 1; /* First column */
+  grid-row: 1; /* First box */
+}
+
+.fileManager div:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.fileManager div:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.fileManager div:nth-child(4) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.fileManager div:nth-child(5) {
+  grid-column: 2; /* Second column */
+  grid-row: 1; /* First box in the second column */
+}
+
+.fileManager div:nth-child(6) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.fileManager div:nth-child(7) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
 /* file icon style */
 .fileEntry {
   padding: 2px;
@@ -378,7 +413,7 @@
   overflow: hidden;
   padding: 2px;
   /*text-shadow:  Replace with actual shadow */
-  word-break: break-word;
+  tinymce-break: break-TinyMCE;
 }
 
 /* Image inside the figure */
@@ -482,8 +517,8 @@
   border: 1px solid hsla(0, 0%, 45%, 0.7);
 }
 
-/* word editor */
-.wordEditor {
+/* TinyMCE editor */
+.TinyMCEEditor {
   height: 100%;
 }
 
@@ -491,16 +526,16 @@
   border-radius: 0px !important;
 }
 
-/* Styles for elements with role="application" inside wordEditor */
-.wordEditor [role='application'] {
+/* Styles for elements with role="application" inside TinyMCEEditor */
+.TinyMCEEditor [role='application'] {
   height: 100% !important;
 }
 
-.wordEditor [role='application'] button:disabled {
+.TinyMCEEditor [role='application'] button:disabled {
   pointer-events: none;
 }
 
-.wordEditor [role='application'][aria-disabled='true'] .tox-editor-header {
+.TinyMCEEditor [role='application'][aria-disabled='true'] .tox-editor-header {
   cursor: not-allowed;
 }
 
