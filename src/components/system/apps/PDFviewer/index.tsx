@@ -19,8 +19,6 @@ function Resume() {
 
   const motionProps = useWindowTransitions();
 
-  console.log('Resume TRIGGERED');
-
   if (!userContext) {
     throw new Error('userContext is undefined');
   }
