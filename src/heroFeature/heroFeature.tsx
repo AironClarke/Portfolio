@@ -100,6 +100,10 @@ const HeroFeature = (): JSX.Element => {
   const [lastTapTime, setLastTapTime] = useState(0);
 
   useEffect(() => {
+    //touch support
+    const onTouchStartSupported = 'ontouchstart' in document.documentElement;
+    setIsTouchDevice(onTouchStartSupported);
+
     document.addEventListener('gesturestart', function (e) {
       // prevent zooming on mobile
       e.preventDefault();
@@ -364,8 +368,8 @@ const HeroFeature = (): JSX.Element => {
   //folderCount
   const [folderCount, setFolderCount] = useState(0);
 
-  //hasmoved
-  // const [hasMoved, setHasMoved] = useState(false);
+  //mobile touch
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const contextValue = {
     PortfolioExpand,
@@ -405,7 +409,9 @@ const HeroFeature = (): JSX.Element => {
     setPDFExpand,
     handleShowMobile,
     lastTapTime,
-    setLastTapTime
+    setLastTapTime,
+    setIsTouchDevice,
+    isTouchDevice
   };
 
   return (
