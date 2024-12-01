@@ -37,6 +37,10 @@ const FileManager = (): JSX.Element => {
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => {
+                  console.log(icon.name);
+                  if (icon.name == 'Duke Nukem 3D') {
+                    handleShow('Monaco Editor');
+                  }
                   handleShow(icon.name);
                 }}
               />
