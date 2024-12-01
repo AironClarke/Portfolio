@@ -11,7 +11,13 @@ const FileManager = (): JSX.Element => {
     throw new Error('no user context found');
   }
 
-  const { iconState, imageMapping, handleShow } = userContext;
+  const {
+    iconState,
+    imageMapping,
+    handleShow,
+    isTouchDevice,
+    handleShowMobile
+  } = userContext;
 
   const style = {
     display: 'flex',
@@ -42,6 +48,10 @@ const FileManager = (): JSX.Element => {
                     handleShow('Monaco Editor');
                   }
                   handleShow(icon.name);
+                }}
+                onTouchStart={() => {
+                  console.log('ON TOUCH WORSK !!!!!!!!!!11');
+                  handleShowMobile(icon.name);
                 }}
               />
             </Rnd>
