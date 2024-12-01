@@ -97,6 +97,8 @@ const HeroFeature = (): JSX.Element => {
 
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
+  const [lastTapTime, setLastTapTime] = useState(0);
+
   useEffect(() => {
     document.addEventListener('gesturestart', function (e) {
       // prevent zooming on mobile
@@ -273,6 +275,52 @@ const HeroFeature = (): JSX.Element => {
     );
   }
 
+  function handleShowMobile(name: string) {
+    const now = Date.now();
+
+    if (now - lastTapTime < 300) {
+      const lowerCaseName = name.toLowerCase().split(' ').join('');
+
+      const allSetItems = ObjectState(); // call all usestate object
+
+      allSetItems.forEach((item) => {
+        const itemName = item.name.toLowerCase().split(' ').join('').trim();
+
+        if (itemName === lowerCaseName) {
+          setTimeout(() => {
+            item.setter((prev) => ({
+              ...prev,
+              show: true,
+              focusItem: true,
+              hide: false
+            }));
+          }, 100);
+        }
+
+        if (itemName !== lowerCaseName) {
+          item.setter((prev) => ({ ...prev, focusItem: false }));
+        }
+        if (itemName === lowerCaseName) {
+          item.setter((prev) => ({ ...prev, hide: false }));
+        }
+      });
+      if (tap.some((tapItem) => tapItem.title == name)) return;
+      setStartActive(false);
+
+      if (name === 'Run') return; // not showing run on tap
+
+      setTap((prevTap) => [
+        ...prevTap,
+        { title: name, icon: name } // create a new object for tap
+      ]);
+
+      setIconState((prevIcons) =>
+        prevIcons.map((icon) => ({ ...icon, focus: false }))
+      );
+    }
+    setLastTapTime(now);
+  }
+
   //getting icons to work
   const [iconState, setIconState] = useState(() =>
     iconInfo.map((icon) => ({
@@ -354,7 +402,10 @@ const HeroFeature = (): JSX.Element => {
     CloneExpand,
     setCloneExpand,
     PDFExpand,
-    setPDFExpand
+    setPDFExpand,
+    handleShowMobile,
+    lastTapTime,
+    setLastTapTime
   };
 
   return (
