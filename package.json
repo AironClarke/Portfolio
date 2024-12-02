@@ -10,7 +10,8 @@
     "eslint": "eslint .",
     "preview": "vite preview",
     "prettier": "prettier --write .",
-    "stylelint": "stylelint **/*.tsx"
+    "stylelint": "stylelint **/*.tsx",
+    "start": "vite --host 192.168.85.170"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
