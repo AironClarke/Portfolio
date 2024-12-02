@@ -110,6 +110,16 @@ const HeroFeature = (): JSX.Element => {
     });
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = () => setHoveredIcon(null);
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, []);
+
+  // Track which icon is hovered
+  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
+
   function ObjectState(): ObjectStateItem[] {
     return [
       {
@@ -411,7 +421,9 @@ const HeroFeature = (): JSX.Element => {
     lastTapTime,
     setLastTapTime,
     setIsTouchDevice,
-    isTouchDevice
+    isTouchDevice,
+    hoveredIcon,
+    setHoveredIcon
   };
 
   return (

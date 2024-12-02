@@ -8,14 +8,17 @@ const FileEntry = ({
   name,
   icon,
   onDoubleClick,
-  onTouchStart
+  onTouchStart,
+  onClick,
+  className
 }: FileEntryProps) => {
   return (
-    <li className="fileEntry">
+    <li className={className}>
       <button
         type="button"
         onDoubleClick={onDoubleClick}
         onTouchStart={onTouchStart}
+        onClick={onClick}
       >
         <figure>
           <img src={icon} alt={name} draggable={false} />

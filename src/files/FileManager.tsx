@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FileEntry from './FileEntry';
 import { UserContext, UserContextType } from 'src/context/UserContext';
 import { Rnd } from 'react-rnd';
@@ -16,7 +16,11 @@ const FileManager = (): JSX.Element => {
     imageMapping,
     handleShow,
     isTouchDevice,
-    handleShowMobile
+    handleShowMobile,
+    hoveredIcon,
+    setHoveredIcon,
+    lastTapTime,
+    setLastTapTime
   } = userContext;
 
   const style = {
@@ -27,31 +31,79 @@ const FileManager = (): JSX.Element => {
     background: '#f0f0f0'
   };
 
+  // Ensure no item is hovered after a refresh
+  useEffect(() => {
+    setHoveredIcon(null);
+  }, []); // Runs only once on component mount
+
+  const [openedIcon, setOpenedIcon] = useState<string | null>(null);
+
+  const handleOpenIcon = (iconName: string) => {
+    // Briefly change background color for opened icon
+    setOpenedIcon(iconName);
+
+    // Reset the background color after a short delay (500ms)
+    setTimeout(() => {
+      setOpenedIcon(null);
+    }, 500);
+
+    // Open the icon content
+    if (iconName === 'Duke Nukem 3D') {
+      handleShow('Monaco Editor');
+    } else {
+      handleShow(iconName);
+    }
+  };
+
+  const handleOpenIconMobile = (iconName: string) => {
+    // const now = Date.now();
+
+    // if (now - lastTapTime < 300) {
+    // Briefly change background color for opened icon
+    // setOpenedIcon(iconName);
+
+    // Reset the background color after a short delay (500ms)
+    // setTimeout(() => {
+    //   setOpenedIcon(null);
+    // }, 500);
+
+    // Open the icon content
+    console.log('ON TOUCH WORSK !!!!!!!!!!11');
+    if (iconName == 'Duke Nukem 3D') {
+      setHoveredIcon(iconName); // Update hovered icon
+      handleShowMobile('Monaco Editor');
+    }
+    setHoveredIcon(iconName); // Update hovered icon
+    handleShowMobile(iconName);
+    // }
+    // setLastTapTime(now);
+  };
+
   return (
-    <ol className="fileManager">
+    <ol className={`fileManager ${isTouchDevice ? 'touchDevice' : ''}`}>
       {iconState
         .filter((icon) => icon.folderId == 'Desktop')
         .map((icon) => (
           <div>
-            <Rnd
-              key={icon.name}
-              enableResizing={false}
-              bounds={'.fullscreen'}
-              className="fileEntry"
-            >
+            <Rnd key={icon.name} enableResizing={false} bounds={'.fullscreen'}>
               <FileEntry
+                className={`fileEntry ${hoveredIcon === icon.name ? 'hovered' : ''} ${openedIcon === icon.name ? 'opened' : ''}`}
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => {
                   console.log(icon.name);
-                  if (icon.name == 'Duke Nukem 3D') {
-                    handleShow('Monaco Editor');
-                  }
-                  handleShow(icon.name);
+                  handleOpenIcon(icon.name);
                 }}
+                onClick={
+                  !isTouchDevice
+                    ? (e) => {
+                        e.stopPropagation();
+                        setHoveredIcon(icon.name); // Update hovered icon
+                      }
+                    : undefined
+                }
                 onTouchStart={() => {
-                  console.log('ON TOUCH WORSK !!!!!!!!!!11');
-                  handleShowMobile(icon.name);
+                  handleOpenIconMobile(icon.name);
                 }}
               />
             </Rnd>
