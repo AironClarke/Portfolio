@@ -20,7 +20,9 @@ const FileManager = (): JSX.Element => {
     hoveredIcon,
     setHoveredIcon,
     lastTapTime,
-    setLastTapTime
+    setLastTapTime,
+    openedIcon,
+    setOpenedIcon
   } = userContext;
 
   const style = {
@@ -36,8 +38,6 @@ const FileManager = (): JSX.Element => {
     setHoveredIcon(null);
   }, []); // Runs only once on component mount
 
-  const [openedIcon, setOpenedIcon] = useState<string | null>(null);
-
   const handleOpenIcon = (iconName: string) => {
     // Briefly change background color for opened icon
     setOpenedIcon(iconName);
@@ -45,7 +45,7 @@ const FileManager = (): JSX.Element => {
     // Reset the background color after a short delay (500ms)
     setTimeout(() => {
       setOpenedIcon(null);
-    }, 500);
+    }, 200);
 
     // Open the icon content
     if (iconName === 'Duke Nukem 3D') {
@@ -56,17 +56,6 @@ const FileManager = (): JSX.Element => {
   };
 
   const handleOpenIconMobile = (iconName: string) => {
-    // const now = Date.now();
-
-    // if (now - lastTapTime < 300) {
-    // Briefly change background color for opened icon
-    // setOpenedIcon(iconName);
-
-    // Reset the background color after a short delay (500ms)
-    // setTimeout(() => {
-    //   setOpenedIcon(null);
-    // }, 500);
-
     // Open the icon content
     console.log('ON TOUCH WORSK !!!!!!!!!!11');
     if (iconName == 'Duke Nukem 3D') {
@@ -75,8 +64,6 @@ const FileManager = (): JSX.Element => {
     }
     setHoveredIcon(iconName); // Update hovered icon
     handleShowMobile(iconName);
-    // }
-    // setLastTapTime(now);
   };
 
   return (

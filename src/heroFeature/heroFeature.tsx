@@ -144,6 +144,8 @@ const HeroFeature = (): JSX.Element => {
     ];
   }
 
+  const [openedIcon, setOpenedIcon] = useState<string | null>(null);
+
   function handleSetFocusItemTrue(name: string) {
     //click on one, ThisPc goes false
 
@@ -293,6 +295,14 @@ const HeroFeature = (): JSX.Element => {
     const now = Date.now();
 
     if (now - lastTapTime < 300) {
+      //  Briefly change background color for opened icon
+      setOpenedIcon(name);
+
+      // Reset the background color after a short delay (500ms)
+      setTimeout(() => {
+        setOpenedIcon(null);
+      }, 200);
+
       const lowerCaseName = name.toLowerCase().split(' ').join('');
 
       const allSetItems = ObjectState(); // call all usestate object
@@ -423,7 +433,9 @@ const HeroFeature = (): JSX.Element => {
     setIsTouchDevice,
     isTouchDevice,
     hoveredIcon,
-    setHoveredIcon
+    setHoveredIcon,
+    openedIcon,
+    setOpenedIcon
   };
 
   return (
