@@ -1,23 +1,28 @@
 import { useContext } from 'react';
 import { UserContext } from 'src/context/UserContext';
 
-import linked from '/folderTest.svg';
-import sidebar from '/folderTest.svg';
-import StartMenuFileEntry from './StartMenuFileEntry';
+import Github from '/githubLogo.svg';
+import Linkedin from '/linkedinLogo.svg';
+import OffButton from '/offIcon.svg';
 
 const StartMenuSidebar = () => {
   const { handleShow } = useContext(UserContext);
 
   const footerSidebarItems = [
     {
-      name: 'Folder',
-      imgSrc: linked,
-      imgAlt: 'linked'
+      name: 'Github',
+      imgSrc: Github,
+      imgAlt: 'Github Icon'
     },
     {
-      name: 'Power',
-      imgSrc: sidebar,
-      imgAlt: 'placeholder'
+      name: 'Linkedin',
+      imgSrc: Linkedin,
+      imgAlt: 'Linkedin Icon'
+    },
+    {
+      name: 'Restart',
+      imgSrc: OffButton,
+      imgAlt: 'Off Button Logo'
     }
   ];
 

@@ -503,8 +503,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-right: 7px;
-  margin-top: 4px;
 }
 
 /* Base styles for the element */
