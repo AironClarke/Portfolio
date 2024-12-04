@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { UserContext } from 'src/context/UserContext';
 
-import linked from '/folderTest.svg';
-import sidebar from '/folderTest.svg';
-import project from '/folderTest.svg';
-import Portfolio from '/folderTest.svg';
-import settings from '/folderTest.svg';
+import DukeNukem from '/DukeNukem3DIcon.png';
+import Portfolio from '/folderFilled.ico';
+import TinyMCE from '/tinymcelogo.svg';
+import VsCode from '/VSCodeIcon.svg';
+import Resume from '/pdfIcon.svg';
 import StartMenuFileEntry from './StartMenuFileEntry';
 
 const StartListFileManager = () => {
@@ -13,37 +13,36 @@ const StartListFileManager = () => {
 
   const footerItems = [
     {
-      name: 'sidebar_popup',
-      imgSrc: sidebar,
-      imgAlt: 'sidebar'
-    },
-    {
-      name: 'linked',
-      imgSrc: linked,
-      imgAlt: 'linked',
-      style: { borderRadius: '5px' },
-      spanText: 'Linked'
-    },
-    {
-      name: 'project',
-      imgSrc: project,
-      imgAlt: 'project',
-      spanText: 'Project',
-      onClick: () => handleShow('ThisPc')
-    },
-    {
       name: 'Portfolio',
       imgSrc: Portfolio,
-      imgAlt: 'Portfolio',
-      spanText: 'Portfolio',
+      imgAlt: 'Portfolio Image',
       onClick: () => handleShow('Portfolio')
     },
     {
-      name: 'shutdownicon',
-      imgSrc: settings,
-      imgAlt: 'shutdownicon',
-      spanText: 'Settings',
-      onClick: () => handleShow('Portfolio')
+      name: 'Resume',
+      imgSrc: Resume,
+      imgAlt: 'PDF Icon Image',
+      onClick: () => handleShow('Resume')
+    },
+    {
+      name: 'Duke Nukem 3D',
+      imgSrc: DukeNukem,
+      imgAlt: 'Duke Nukem Logo',
+      onClick: () => {
+        handleShow('TinyMCE'), handleShow('Duke Nukem 3D');
+      }
+    },
+    {
+      name: 'TinyMCE',
+      imgSrc: TinyMCE,
+      imgAlt: 'TinyMCE Logo',
+      onClick: () => handleShow('TinyMCE')
+    },
+    {
+      name: 'Monaco Editor',
+      imgSrc: VsCode,
+      imgAlt: 'Monaco Editor Logo',
+      onClick: () => handleShow('Monaco Editor')
     }
   ];
 
