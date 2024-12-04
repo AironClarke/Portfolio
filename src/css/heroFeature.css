@@ -389,9 +389,10 @@
 /* Base styles for the file entry */
 .startFileEntry {
   display: flex;
-  height: min-content;
+  height: 40px;
   padding: 2px;
   width: 100%;
+  align-items: center;
 }
 
 /* Styles for hover and focus-within states */
@@ -416,29 +417,27 @@
 /* Button inside the file entry */
 .startFileEntry button {
   position: relative;
+  height: 30px;
 }
 
 /* Figure inside the button */
 .startFileEntry button figure {
   display: flex;
   flex-direction: row;
-  margin-bottom: -3px;
   place-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 /* Figcaption inside the figure */
 .startFileEntry button figure figcaption {
   -webkit-box-orient: vertical;
   color: '#FFF';
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: -0.1px;
   line-height: 15px;
   margin: 1px 0;
   overflow: hidden;
   padding: 2px;
-  /*text-shadow:  Replace with actual shadow */
-  tinymce-break: break-TinyMCE;
 }
 
 /* Image inside the figure */
@@ -495,8 +494,8 @@
 }
 
 .startMenuFileEntry button figure img {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   margin: 0 auto;
 }
 
