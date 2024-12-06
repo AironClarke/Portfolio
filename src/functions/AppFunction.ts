@@ -13,12 +13,14 @@ export function imageMapping(name: string): string {
       return Portfolio;
 
     case 'ThisPC':
+    case 'This PC':
       return ThisPc;
 
     case 'Folder2':
       return folder2;
 
     case 'DukenNukem3D':
+    case 'Duke Nukem 3D':
       return DukeNukem3D;
 
     case 'TinyMCE':
@@ -28,6 +30,7 @@ export function imageMapping(name: string): string {
       return VSCode;
 
     case 'PDFIcon':
+    case 'Resume':
       return PDFIcon;
 
     default:
