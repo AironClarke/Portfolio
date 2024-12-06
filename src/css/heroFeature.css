@@ -70,7 +70,7 @@
 
 .clock {
   height: 100%;
-  width: 76px;
+  width: 70px;
   position: absolute;
   right: 0;
   display: flex;
@@ -151,11 +151,18 @@
 .taskbarEntry {
   border-bottom: 2px solid #76b9ed;
   display: flex;
+  min-width: 20px;
   height: 100%;
   max-width: 130px;
   width: 130px;
-  min-width: 0;
-  margin: 0 4px;
+  overflow: hidden;
+  margin-right: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .taskbarEntry {
+    margin-right: 4px;
+  }
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -189,9 +196,10 @@
   height: 100%;
   position: absolute;
   left: 36px;
-  right: 76px;
+  right: 63px;
   column-gap: 1px;
   margin: 0 3px;
+  overflow-x: auto;
 }
 
 /* file manager organise */
