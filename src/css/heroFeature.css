@@ -327,6 +327,8 @@
   padding: 5px 10px;
   row-gap: 28px;
   grid-auto-flow: row;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* JS-DOS */
@@ -573,10 +575,6 @@
 .customScrollbar::-webkit-scrollbar {
   height: 17px;
   width: 17px;
-}
-
-.folderFileManager {
-  overflow: auto;
 }
 
 .customScrollbar::-webkit-scrollbar-corner,
