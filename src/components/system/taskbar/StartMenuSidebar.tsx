@@ -6,23 +6,26 @@ import Linkedin from '/linkedinLogo.svg';
 import OffButton from '/offIcon.svg';
 
 const StartMenuSidebar = () => {
-  const { handleShow } = useContext(UserContext);
+  const { handleDoubleClickEnterLink } = useContext(UserContext);
 
   const footerSidebarItems = [
     {
       name: 'Github',
       imgSrc: Github,
-      imgAlt: 'Github Icon'
+      imgAlt: 'Github Icon',
+      onClick: () => handleDoubleClickEnterLink('Github')
     },
     {
       name: 'Linkedin',
       imgSrc: Linkedin,
-      imgAlt: 'Linkedin Icon'
+      imgAlt: 'Linkedin Icon',
+      onClick: () => handleDoubleClickEnterLink('Linkedin')
     },
     {
       name: 'Restart',
       imgSrc: OffButton,
-      imgAlt: 'Off Button Logo'
+      imgAlt: 'Off Button Logo',
+      onClick: () => window.location.reload() // Refresh the whole app
     }
   ];
 

@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "prettier": "prettier --write .",
     "stylelint": "stylelint **/*.tsx",
-    "start": "vite --host 192.168.85.170"
+    "start": "vite --host 192.168.148.170"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",

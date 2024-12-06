@@ -34,3 +34,43 @@ export function imageMapping(name: string): string {
       return '/notfound';
   }
 }
+
+export function handleDoubleClickEnterLink(
+  name,
+  setOpenProjectExpand,
+  setProjectUrl
+) {
+  switch (name) {
+    case 'Linkedin':
+      window.open('https://www.linkedin.com/feed/', '_blank');
+      break;
+    case 'Github':
+      window.open('https://github.com/', '_blank');
+      break;
+    default:
+      break;
+  }
+}
+
+export function handleDoubleTapEnterMobile(
+  name,
+  lastTapTime,
+  setLastTapTime,
+  setOpenProjectExpand,
+  setProjectUrl
+) {
+  const now = Date.now();
+  if (now - lastTapTime < 300) {
+    switch (name) {
+      case 'Linkedin':
+        window.open('https://www.linkedin.com/feed/', '_blank');
+        break;
+      case 'Github':
+        window.open('https://github.com/', '_blank');
+        break;
+      default:
+        break;
+    }
+  }
+  setLastTapTime(now);
+}

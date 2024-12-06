@@ -17,6 +17,10 @@ import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { AnimatePresence } from 'framer-motion';
 import CloneFolder from 'src/folders/CloneFolder';
 import Resume from 'src/components/system/apps/PDFviewer/index';
+import {
+  handleDoubleClickEnterLink,
+  handleDoubleTapEnterMobile
+} from 'src/functions/AppFunction';
 
 export type ObjectStateItem = {
   name: string;
@@ -435,7 +439,9 @@ const HeroFeature = (): JSX.Element => {
     hoveredIcon,
     setHoveredIcon,
     openedIcon,
-    setOpenedIcon
+    setOpenedIcon,
+    handleDoubleClickEnterLink,
+    handleDoubleTapEnterMobile
   };
 
   return (
