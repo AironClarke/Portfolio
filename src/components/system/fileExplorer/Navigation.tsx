@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { act, useContext, useState } from 'react';
 import { Refresh, Up } from './NavigationIcons';
 import { UserContext } from 'src/context/UserContext';
 import { Forward } from './NavigationIcons';
@@ -13,7 +13,8 @@ const Navigation: React.FC<NavigationProps> = ({
   directory,
   directoryImg,
   refreshHandler,
-  upOneLevel
+  upOneLevel,
+  active
 }) => {
   const userContext = useContext(UserContext);
 
@@ -23,9 +24,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const { handleShow } = userContext;
 
-  console.log(handleShow); // Log the context value
-
   const navigateUpOneLevel = () => {};
+
+  console.log(active);
 
   return (
     <nav className="customNavigation">
@@ -36,7 +37,7 @@ const Navigation: React.FC<NavigationProps> = ({
           handleShow(upOneLevel); // First function call
         }}
       >
-        <Up />
+        <Up active={active} />
       </button>
       <div className="addressBar">
         {directory.map((text, index) => (
