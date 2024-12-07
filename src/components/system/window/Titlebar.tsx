@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { MinimizeIcon } from '../taskbar/icons';
 import { MaximizeIcon } from '../taskbar/icons';
 import { CloseIcon } from '../taskbar/icons';
@@ -38,7 +39,8 @@ const Titlebar = ({
   setPortfolioExpand,
   resetPosition,
   dosOpen,
-  dosClose
+  dosClose,
+  isTouchDevice
 }: TitlebarProps) => {
   const userContext = useContext(UserContext);
 
@@ -46,7 +48,21 @@ const Titlebar = ({
     throw new Error('userContext is undefined');
   }
 
-  const { inlineStyleExpand, inlineStyle, deleteTap, StyleHide } = userContext;
+  const {
+    inlineStyleExpand,
+    inlineStyle,
+    deleteTap,
+    StyleHide,
+    hoveredIcon,
+    setHoveredIcon,
+    openedIcon,
+    setOpenedIcon
+  } = userContext;
+
+  // Ensure no item is hovered after a refresh
+  useEffect(() => {
+    setHoveredIcon(false);
+  }, []); // Runs only once on component mount
 
   function handleExpandStateToggle() {
     setPortfolioExpand((prevState) => ({
@@ -90,22 +106,48 @@ const Titlebar = ({
         </figure>
       </h1>
       <nav className="cancel">
+        {/* Minimize Button */}
         <button
-          onClick={(e) => {
+          className={`${hoveredIcon === 'hoveredMin' ? 'hoveredMin' : ''} ${openedIcon ? 'opened' : ''}`}
+          onClick={
+            !isTouchDevice
+              ? (e) => {
+                  e.stopPropagation();
+                  setPortfolioExpand((prev) => ({
+                    ...prev,
+                    hide: true,
+                    focusItem: false
+                  }));
+                  StyleHide({ title });
+                  title = 'Minimise';
+                }
+              : undefined
+          }
+          onTouchStart={() => {
+            setHoveredIcon('hoveredMin'); // Update hovered icon
+          }}
+          onTouchEnd={(e) => {
             e.stopPropagation();
             setPortfolioExpand((prev) => ({
               ...prev,
               hide: true,
               focusItem: false
-            })),
-              StyleHide({ title });
+            }));
+            StyleHide({ title });
             title = 'Minimise';
           }}
         >
           <MinimizeIcon />
         </button>
+
+        {/* Maximize Button */}
         <button
-          onClick={() => {
+          className={`${hoveredIcon === 'hoveredMax' ? 'hoveredMax' : ''} ${openedIcon ? 'opened' : ''}`}
+          onClick={!isTouchDevice ? () => handleExpandStateToggle() : undefined}
+          onTouchStart={() => {
+            setHoveredIcon('hoveredMax'); // Update hovered icon
+          }}
+          onTouchEnd={() => {
             handleExpandStateToggle();
           }}
           type="button"
@@ -113,10 +155,22 @@ const Titlebar = ({
         >
           <MaximizeIcon />
         </button>
+
+        {/* Close Button */}
         <button
           type="button"
-          className="close"
-          onClick={() => {
+          className={`close ${hoveredIcon === 'hoveredCancel' ? 'hoveredCancel' : ''} ${openedIcon ? 'opened' : ''}`}
+          onClick={
+            !isTouchDevice
+              ? () => {
+                  handleClose(title);
+                }
+              : undefined
+          }
+          onTouchStart={() => {
+            setHoveredIcon('hoveredCancel'); // Update hovered icon
+          }}
+          onTouchEnd={() => {
             handleClose(title);
           }}
           title="close"

@@ -138,7 +138,6 @@ function ThisPc() {
                 name={icon.name}
                 icon={imageMapping(icon.pic) || '|| operator test'}
                 onDoubleClick={() => handleShow(icon.name)}
-                onClick={() => console.log(icon)}
               />
             ))}
         </ol>
