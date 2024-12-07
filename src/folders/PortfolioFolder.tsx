@@ -39,7 +39,7 @@ function PortfolioFolder() {
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['PortfolioFolder'];
+  const directory = ['Portfolio'];
   const directoryImg = (
     <img
       src={directoryImage}
@@ -127,6 +127,7 @@ function PortfolioFolder() {
           refreshHandler={
             refreshHandler
           } /* Pass refreshHandler to Navigation */
+          active={false}
         />
         <h1 className="Portfolio customScrollbar">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio culpa
