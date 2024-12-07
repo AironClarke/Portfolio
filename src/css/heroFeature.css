@@ -364,6 +364,134 @@
   margin: 1px 0px;
 }
 
+.folderFileManagerList {
+  height: calc(100% - 100px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.fileManagerList {
+  display: flex;
+  height: 25px;
+}
+
+.fileManagerList li:first-child {
+  padding-left: 17px;
+  min-width: 133px;
+}
+
+.name {
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  top: -1px;
+  white-space: nowrap;
+  color: rgb(222, 222, 222);
+  display: flex;
+  font-size: 12px;
+}
+
+.fileListHeader {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.resize {
+  background-color: rgb(99, 99, 99);
+  cursor: col-resize;
+  height: 25px;
+  padding-left: 1px;
+  position: absolute;
+  right: -7px;
+  z-index: 1;
+  width: 1px;
+}
+
+.fileManagerList li:nth-child(2) {
+  padding-left: 17px;
+  min-width: 133px;
+}
+
+.fileManagerList li:nth-child(3) {
+  padding-left: 17px;
+  min-width: 100px;
+}
+
+.fileManagerList li:nth-child(4) {
+  padding-left: 17px;
+  width: 90px;
+}
+
+.fileListItem {
+  margin-bottom: -1px;
+  margin-left: 14px;
+  width: fit-content;
+  outline: 1px solid green;
+}
+
+.fileListItem button {
+  display: flex;
+  padding-left: 4px;
+  text-align: left;
+  background-color: transparent;
+  font-family: inherit;
+  width: 100%;
+}
+
+.fileListItem button figure {
+  max-width: 133px;
+  min-width: 133px;
+  bottom: 1px;
+  display: flex;
+  flex-direction: row;
+  height: 22px;
+  padding-right: 16px;
+  place-items: center;
+  position: relative;
+}
+
+.fileListItem button figure figcaption {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  overflow: hidden;
+  padding-left: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+.fileListItemDetails {
+  display: flex;
+  font-size: 12px;
+  height: 22px;
+  place-items: center;
+}
+
+.fileListItemDetails div {
+  color: rgb(222, 222, 222);
+  overflow: hidden;
+  padding-right: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dateMod {
+  width: 133px;
+}
+
+.type {
+  width: 100px;
+}
+
+.width {
+  width: 90px;
+}
+
+.size {
+  width: 79px;
+  text-align: end;
+}
 /* JS-DOS */
 .canvas {
   height: calc(100% - 40px);

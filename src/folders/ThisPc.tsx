@@ -130,7 +130,7 @@ function ThisPc() {
             refreshHandler
           } /* Pass refreshHandler to Navigation */
         />
-        <ol className="folderFileManager customScrollbar">
+        {/* <ol className="folderFileManager customScrollbar">
           {iconState
             .filter((icon) => icon.folderId == 'ThisPc')
             .map((icon) => (
@@ -140,7 +140,70 @@ function ThisPc() {
                 onDoubleClick={() => handleShow(icon.name)}
               />
             ))}
+        </ol> */}
+        <ol className="folderFileManagerList customScrollbar">
+          <span>
+            <ol className="fileManagerList">
+              <li className="fileListHeader">
+                <div className="name">Name</div>
+                <span className="resize"></span>
+              </li>
+              <li className="fileListHeader">
+                <div className="name">Date modified</div>
+                <span className="resize"></span>
+              </li>
+              <li className="fileListHeader">
+                <div className="name">Type</div>
+                <span className="resize"></span>
+              </li>
+              <li className="fileListHeader">
+                <div className="name">Size</div>
+                <span className="resize"></span>
+              </li>
+            </ol>
+          </span>
+          <li className="fileListItem">
+            <button>
+              <figure>
+                <picture>
+                  <img
+                    src="/public/githubLogo.svg"
+                    alt=""
+                    width="16px"
+                    height="16px"
+                  />
+                </picture>
+                <figcaption>Tester Name</figcaption>
+              </figure>
+              <div className="fileListItemDetails">
+                <div className="dateMod">2024-12-02 7:19 AM</div>
+                <div className="type">XML File</div>
+                <div className="size">62 KB</div>
+              </div>
+            </button>
+          </li>
+          <li className="fileListItem">
+            <button>
+              <figure>
+                <picture>
+                  <img
+                    src="/public/githubLogo.svg"
+                    alt=""
+                    width="16px"
+                    height="16px"
+                  />
+                </picture>
+                <figcaption>Tester Name</figcaption>
+              </figure>
+              <div className="fileListItemDetails">
+                <div className="dateMod">2024-12-02 7:19 AM</div>
+                <div className="type">XML File</div>
+                <div className="size">62 KB</div>
+              </div>
+            </button>
+          </li>
         </ol>
+
         <StatusBar
           count={iconState.filter((icon) => icon.folderId == 'ThisPc').length}
         />
