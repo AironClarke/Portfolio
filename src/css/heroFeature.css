@@ -329,7 +329,7 @@
   column-gap: 15px;
   grid-template-columns: repeat(auto-fill, 74px);
   grid-template-rows: repeat(auto-fill, 70px);
-  height: calc(100% - 109px);
+  height: calc(100% - 100px);
   padding: 5px 10px;
   row-gap: 28px;
   grid-auto-flow: row;
@@ -684,7 +684,7 @@
 .Portfolio {
   overflow: auto;
   margin: 0;
-  height: calc(100% - 109px);
+  height: calc(100% - 100px);
 }
 
 /* Navigation container <<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -825,6 +825,8 @@
 }
 
 .statusBar div {
+  display: flex;
+  align-items: center;
   margin-top: -1px;
   padding: 0 10px;
   position: relative; /* Needed for ::after pseudo-element positioning */
