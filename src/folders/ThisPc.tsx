@@ -10,7 +10,7 @@ import { imageMapping } from 'src/functions/AppFunction';
 import { motion } from 'framer-motion';
 import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
-import directoryImage from 'public/folderTest.svg';
+import directoryImage from 'public/thisPC.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
 
 function ThisPc() {
@@ -43,14 +43,14 @@ function ThisPc() {
   const [isInitialized, setIsInitialized] = useState(false); // New state
   const [key, setKey] = useState(0); // State to trigger re-render
 
-  const directory = ['ThisPc'];
+  const directory = ['This PC'];
   const directoryImg = (
     <img
       src={directoryImage}
       className="directoryImg"
       alt="Directory Icon"
-      width={16}
-      height={16}
+      width={18}
+      height={18}
     />
   );
 
@@ -118,7 +118,7 @@ function ThisPc() {
       >
         <Titlebar
           icon="thisPC.svg"
-          title="ThisPc"
+          title="This PC"
           PortfolioExpand={ThisPcExpand}
           setPortfolioExpand={setThisPcExpand}
           resetPosition={resetPosition}
