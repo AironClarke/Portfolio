@@ -85,6 +85,8 @@ function ThisPc() {
   // Render component only after initialization
   if (!isInitialized) return null;
 
+  console.log(iconState);
+
   return (
     <Rnd
       key={key} // Set key to force component re-creati
@@ -163,44 +165,33 @@ function ThisPc() {
             </ol>
           </span>
           <li className="fileListItem">
-            <button>
-              <figure>
-                <picture>
-                  <img
-                    src="/public/githubLogo.svg"
-                    alt=""
-                    width="16px"
-                    height="16px"
-                  />
-                </picture>
-                <figcaption>Tester Name</figcaption>
-              </figure>
-              <div className="fileListItemDetails">
-                <div className="dateMod">2024-12-02 7:19 AM</div>
-                <div className="type">XML File</div>
-                <div className="size">62 KB</div>
-              </div>
-            </button>
-          </li>
-          <li className="fileListItem">
-            <button>
-              <figure>
-                <picture>
-                  <img
-                    src="/public/githubLogo.svg"
-                    alt=""
-                    width="16px"
-                    height="16px"
-                  />
-                </picture>
-                <figcaption>Tester Name</figcaption>
-              </figure>
-              <div className="fileListItemDetails">
-                <div className="dateMod">2024-12-02 7:19 AM</div>
-                <div className="type">XML File</div>
-                <div className="size">62 KB</div>
-              </div>
-            </button>
+            {iconState
+              .filter((icon) => icon.folderId == 'ThisPc')
+              .map((icon) => (
+                // <FileEntry
+                //   name={icon.name}
+                //   icon={imageMapping(icon.pic) || '|| operator test'}
+                //   onDoubleClick={() => handleShow(icon.name)}
+                // />
+                <button onDoubleClick={() => handleShow(icon.name)}>
+                  <figure>
+                    <picture>
+                      <img
+                        src={imageMapping(icon.pic) || '|| operator test'}
+                        alt={icon.name}
+                        width="16px"
+                        height="16px"
+                      />
+                    </picture>
+                    <figcaption>{icon.name}</figcaption>
+                  </figure>
+                  <div className="fileListItemDetails">
+                    <div className="dateMod">{icon.dateMod}</div>
+                    <div className="type">{icon.type}</div>
+                    <div className="size">{icon.size}</div>
+                  </div>
+                </button>
+              ))}
           </li>
         </ol>
 

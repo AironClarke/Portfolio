@@ -12,32 +12,50 @@
   {
     "name": "CloneFolder",
     "pic": "Portfolio",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2024-05-03 10:06 PM",
+    "type": "HTML File",
+    "size": "22 KB"
   },
   {
     "name": "PortfolioFile2",
     "pic": "Portfolio",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2023-15-09 01:06 AM",
+    "type": "HTML File",
+    "size": "68 KB"
   },
   {
     "name": "PortfolioFile3",
     "pic": "Folder2",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2023-02-03 04:18 PM",
+    "type": "XML File",
+    "size": "51 KB"
   },
   {
     "name": "PortfolioFile4",
     "pic": "Folder2",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2024-10-21 09:27 PM",
+    "type": "HTML File",
+    "size": "2 KB"
   },
   {
     "name": "PortfolioFile5",
     "pic": "Folder2",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2022-01-06 10:00 AM",
+    "type": "XML File",
+    "size": "33 KB"
   },
   {
     "name": "PortfolioFile6",
     "pic": "Folder2",
-    "folderId": "ThisPc"
+    "folderId": "ThisPc",
+    "dateMod": "2022-11-29 04:57 PM",
+    "type": "XML File",
+    "size": "89 KB"
   },
   {
     "name": "Duke Nukem 3D",
