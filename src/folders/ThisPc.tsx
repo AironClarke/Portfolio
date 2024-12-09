@@ -12,6 +12,9 @@ import useWindowTransitions from 'src/hooks/useWindowTransitions';
 import Navigation from 'src/components/system/fileExplorer/Navigation';
 import directoryImage from 'public/thisPC.svg';
 import StatusBar from 'src/components/system/fileExplorer/StatusBar';
+import FileEntryList from 'src/files/FileEntryList';
+import FileManagerContainer from './FolderManagerContainer';
+import FileManagerContainerList from './FileManagerContainerList';
 
 function ThisPc() {
   const userContext = useContext(UserContext);
@@ -31,7 +34,10 @@ function ThisPc() {
     iconState,
     setFolderCount,
     folderCount,
-    handleShow
+    handleShow,
+    viewStyle,
+    setViewStyle,
+    handleViewStyleChange
   } = userContext;
 
   const maximized = ThisPcExpand.expand;
@@ -85,8 +91,6 @@ function ThisPc() {
   // Render component only after initialization
   if (!isInitialized) return null;
 
-  console.log(iconState);
-
   return (
     <Rnd
       key={key} // Set key to force component re-creati
@@ -128,75 +132,27 @@ function ThisPc() {
         <Navigation
           directory={directory}
           directoryImg={directoryImg}
-          refreshHandler={
-            refreshHandler
-          } /* Pass refreshHandler to Navigation */
+          refreshHandler={refreshHandler}
         />
-        {/* <ol className="folderFileManager customScrollbar">
-          {iconState
-            .filter((icon) => icon.folderId == 'ThisPc')
-            .map((icon) => (
-              <FileEntry
-                name={icon.name}
-                icon={imageMapping(icon.pic) || '|| operator test'}
-                onDoubleClick={() => handleShow(icon.name)}
-              />
-            ))}
-        </ol> */}
-        <ol className="folderFileManagerList customScrollbar">
-          <span>
-            <ol className="fileManagerList">
-              <li className="fileListHeader">
-                <div className="name">Name</div>
-                <span className="resize"></span>
-              </li>
-              <li className="fileListHeader">
-                <div className="name">Date modified</div>
-                <span className="resize"></span>
-              </li>
-              <li className="fileListHeader">
-                <div className="name">Type</div>
-                <span className="resize"></span>
-              </li>
-              <li className="fileListHeader">
-                <div className="name">Size</div>
-                <span className="resize"></span>
-              </li>
-            </ol>
-          </span>
-          <li className="fileListItem">
-            {iconState
-              .filter((icon) => icon.folderId == 'ThisPc')
-              .map((icon) => (
-                // <FileEntry
-                //   name={icon.name}
-                //   icon={imageMapping(icon.pic) || '|| operator test'}
-                //   onDoubleClick={() => handleShow(icon.name)}
-                // />
-                <button onDoubleClick={() => handleShow(icon.name)}>
-                  <figure>
-                    <picture>
-                      <img
-                        src={imageMapping(icon.pic) || '|| operator test'}
-                        alt={icon.name}
-                        width="16px"
-                        height="16px"
-                      />
-                    </picture>
-                    <figcaption>{icon.name}</figcaption>
-                  </figure>
-                  <div className="fileListItemDetails">
-                    <div className="dateMod">{icon.dateMod}</div>
-                    <div className="type">{icon.type}</div>
-                    <div className="size">{icon.size}</div>
-                  </div>
-                </button>
-              ))}
-          </li>
-        </ol>
+
+        {viewStyle === 'list' ? (
+          <FileManagerContainer
+            iconState={iconState}
+            imageMapping={imageMapping}
+            handleShow={handleShow}
+          />
+        ) : (
+          <FileManagerContainerList
+            iconState={iconState}
+            imageMapping={imageMapping}
+            handleShow={handleShow}
+          />
+        )}
 
         <StatusBar
           count={iconState.filter((icon) => icon.folderId == 'ThisPc').length}
+          onChangeViewStyle={handleViewStyleChange}
+          activeViewStyle={viewStyle}
         />
       </motion.section>
     </Rnd>
