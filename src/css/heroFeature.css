@@ -1186,9 +1186,34 @@ button.hoveredCancel {
   transition: background-color 0.3s ease;
 }
 
+.viewStyle {
+  display: flex;
+  position: absolute;
+  right: 4px;
+}
+
 /* titlebar */
 button.hoveredMin,
 button.hoveredMax {
   background-color: rgba(255, 255, 255, 0.1);
   outline: 1px solid rgba(255, 255, 225, 0.5);
+}
+
+.viewStyle button:hover {
+  background-color: rgb(77, 77, 77);
+  border: 1px solid rgb(99, 99, 99);
+}
+
+.viewStyle button.active {
+  background-color: rgb(102, 102, 102);
+  border: 1px solid rgb(131, 131, 131);
+}
+
+.viewStyle button {
+  border: 1px solid transparent;
+  display: flex;
+  height: 23px;
+  place-content: center;
+  place-items: center;
+  width: 22px;
 }

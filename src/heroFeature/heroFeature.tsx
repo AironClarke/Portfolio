@@ -99,6 +99,12 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [viewStyle, setViewStyle] = useState('list'); // New state to track view style
+
+  const handleViewStyleChange = (style) => {
+    setViewStyle(style);
+  };
+
   const [tap, setTap] = useState<{ title: string; icon: string }[]>([]);
 
   const [lastTapTime, setLastTapTime] = useState(0);
@@ -441,7 +447,10 @@ const HeroFeature = (): JSX.Element => {
     openedIcon,
     setOpenedIcon,
     handleDoubleClickEnterLink,
-    handleDoubleTapEnterMobile
+    handleDoubleTapEnterMobile,
+    handleViewStyleChange,
+    viewStyle,
+    setViewStyle
   };
 
   return (
