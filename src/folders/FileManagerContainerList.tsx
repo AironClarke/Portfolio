@@ -6,20 +6,28 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
       <span>
         <ol className="fileManagerList">
           <li className="fileListHeader">
-            <div className="name">Name</div>
-            <span className="resize"></span>
+            <button>
+              <div className="name">Name</div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div className="name">Date modified</div>
-            <span className="resize"></span>
+            <button>
+              <div className="name">Date modified</div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div className="name">Type</div>
-            <span className="resize"></span>
+            <button>
+              <div className="name">Type</div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div className="name">Size</div>
-            <span className="resize"></span>
+            <button>
+              <div className="name">Size</div>
+              <span className="resize"></span>
+            </button>
           </li>
         </ol>
       </span>

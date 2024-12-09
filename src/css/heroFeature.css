@@ -1217,3 +1217,8 @@ button.hoveredMax {
   place-items: center;
   width: 22px;
 }
+
+.fileListHeader button {
+  height: 100%;
+  width: 100%;
+}
