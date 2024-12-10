@@ -368,6 +368,7 @@
   height: calc(100% - 100px);
   overflow-y: auto;
   overflow-x: hidden;
+  margin-left: 14px;
 }
 
 .fileManagerList {
@@ -376,7 +377,6 @@
 }
 
 .fileManagerList li:first-child {
-  padding-left: 17px;
   min-width: 133px;
 }
 
@@ -403,9 +403,14 @@
   height: 25px;
   padding-left: 1px;
   position: absolute;
-  right: -7px;
+  right: -1px;
   z-index: 1;
   width: 1px;
+}
+
+.fileManagerList li:nth-child(1) {
+  padding-left: 17px;
+  min-width: 133px;
 }
 
 .fileManagerList li:nth-child(2) {
@@ -425,7 +430,7 @@
 
 .fileListItem {
   margin-bottom: -1px;
-  margin-left: 14px;
+  margin-left: 1px;
   width: fit-content;
   outline: 1px solid green;
 }
@@ -471,7 +476,6 @@
 .fileListItemDetails div {
   color: rgb(222, 222, 222);
   overflow: hidden;
-  padding-right: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1219,6 +1223,12 @@ button.hoveredMax {
 }
 
 .fileListHeader button {
+  display: flex;
+  align-items: center;
   height: 100%;
   width: 100%;
+}
+
+.fileListHeader:hover {
+  background-color: rgb(67, 67, 67);
 }

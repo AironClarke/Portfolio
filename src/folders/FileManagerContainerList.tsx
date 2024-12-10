@@ -45,44 +45,48 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
       <span>
         <ol className="fileManagerList">
           <li className="fileListHeader">
-            <div
-              className="name"
-              onClick={() => handleSort('name')}
-              style={{ cursor: 'pointer' }}
-            >
-              Name
-            </div>
-            <span className="resize"></span>
+            <button>
+              <div
+                className="name"
+                onClick={() => handleSort('name')}
+                style={{ cursor: 'pointer' }}
+              >
+                Name
+              </div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div
-              className="name"
-              onClick={() => handleSort('dateMod')}
-              style={{ cursor: 'pointer' }}
-            >
-              Date modified
-            </div>
-            <span className="resize"></span>
+            <button>
+              <div className="name" onClick={() => handleSort('dateMod')}>
+                Date modified
+              </div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div
-              className="name"
-              onClick={() => handleSort('type')}
-              style={{ cursor: 'pointer' }}
-            >
-              Type
-            </div>
-            <span className="resize"></span>
+            <button>
+              <div
+                className="name"
+                onClick={() => handleSort('type')}
+                style={{ cursor: 'pointer' }}
+              >
+                Type
+              </div>
+              <span className="resize"></span>
+            </button>
           </li>
           <li className="fileListHeader">
-            <div
-              className="name"
-              onClick={() => handleSort('size')}
-              style={{ cursor: 'pointer' }}
-            >
-              Size
-            </div>
-            <span className="resize"></span>
+            <button>
+              <div
+                className="name"
+                onClick={() => handleSort('size')}
+                style={{ cursor: 'pointer' }}
+              >
+                Size
+              </div>
+              <span className="resize"></span>
+            </button>
           </li>
         </ol>
       </span>
