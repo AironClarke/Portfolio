@@ -49,7 +49,7 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
               <div
                 className="name"
                 onClick={() => handleSort('name')}
-                style={{ cursor: 'pointer' }}
+                title="Sort by name"
               >
                 Name
               </div>
@@ -58,7 +58,11 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
           </li>
           <li className="fileListHeader">
             <button>
-              <div className="name" onClick={() => handleSort('dateMod')}>
+              <div
+                className="name"
+                onClick={() => handleSort('dateMod')}
+                title="Sort by date created"
+              >
                 Date modified
               </div>
               <span className="resize"></span>
@@ -69,7 +73,7 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
               <div
                 className="name"
                 onClick={() => handleSort('type')}
-                style={{ cursor: 'pointer' }}
+                title="Sort by type"
               >
                 Type
               </div>
@@ -81,7 +85,7 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
               <div
                 className="name"
                 onClick={() => handleSort('size')}
-                style={{ cursor: 'pointer' }}
+                title="Sort by size"
               >
                 Size
               </div>
