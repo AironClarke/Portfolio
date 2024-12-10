@@ -26,8 +26,6 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const navigateUpOneLevel = () => {};
 
-  console.log(active);
-
   return (
     <nav className="customNavigation">
       <button

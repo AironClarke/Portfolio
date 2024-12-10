@@ -11,11 +11,12 @@
     "preview": "vite preview",
     "prettier": "prettier --write .",
     "stylelint": "stylelint **/*.tsx",
-    "start": "vite --host 192.168.128.170"
+    "start": "vite --host 192.168.27.170"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@tinymce/tinymce-react": "^5.1.1",
+    "date-fns": "^4.1.0",
     "pdfjs-dist": "^4.8.69",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

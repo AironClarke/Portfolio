@@ -1,5 +1,4 @@
 const FileEntryList = ({ onDoubleClick, image, icon }) => {
-  console.log(image);
   return (
     <button onDoubleClick={onDoubleClick}>
       <figure>
