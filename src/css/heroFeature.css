@@ -367,7 +367,7 @@
 .folderFileManagerList {
   height: calc(100% - 100px);
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   margin-left: 14px;
 }
 
@@ -396,6 +396,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .resize {
@@ -429,7 +430,6 @@
   margin-bottom: -1px;
   margin-left: 1px;
   width: fit-content;
-  outline: 1px solid green;
 }
 
 .fileListItem button {
@@ -741,6 +741,7 @@
 .customScrollbar::-webkit-scrollbar {
   height: 17px;
   width: 17px;
+  color: red;
 }
 
 .customScrollbar::-webkit-scrollbar-corner,
