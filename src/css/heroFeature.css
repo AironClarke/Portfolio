@@ -441,6 +441,10 @@
   width: 100%;
 }
 
+.fileListItem button:hover {
+  background-color: rgb(67, 67, 67);
+}
+
 .fileListItem button figure {
   max-width: 133px;
   min-width: 133px;
@@ -1228,4 +1232,15 @@ button.hoveredMax {
 
 .fileListHeader:hover {
   background-color: rgb(67, 67, 67);
+}
+
+button.selected {
+  background-color: rgb(67, 67, 67);
+}
+
+/* Highlight the selected button */
+button.selected {
+  background-color: #007bff; /* Blue background for active button */
+  color: white; /* White text */
+  border-color: #0056b3; /* Darker border when selected */
 }

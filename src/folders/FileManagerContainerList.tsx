@@ -16,7 +16,6 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
 
         if (key === 'size') {
           // Ensure sizes are numeric (in KB)
-          // Extract numeric value from size strings (e.g., "22 KB" -> 22)
           const sizeA = parseInt(a[key], 10) || 0; // Use 0 if undefined or invalid
           const sizeB = parseInt(b[key], 10) || 0; // Use 0 if undefined or invalid
 
@@ -37,7 +36,7 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
 
     console.log('Sorted Array:', sorted);
     setSortedIcons(sorted);
-    setSortKey(key);
+    setSortKey(key); // Update the active sort key
   };
 
   return (
@@ -45,50 +44,42 @@ function FileManagerContainerList({ iconState, imageMapping, handleShow }) {
       <span>
         <ol className="fileManagerList">
           <li className="fileListHeader">
-            <button>
-              <div
-                className="name"
-                onClick={() => handleSort('name')}
-                title="Sort by name"
-              >
-                Name
-              </div>
+            <button
+              className={sortKey === 'name' ? 'selected' : ''}
+              onClick={() => handleSort('name')}
+              title="Sort by name"
+            >
+              <div className="name">Name</div>
               <span className="resize"></span>
             </button>
           </li>
           <li className="fileListHeader">
-            <button>
-              <div
-                className="name"
-                onClick={() => handleSort('dateMod')}
-                title="Sort by date created"
-              >
-                Date modified
-              </div>
+            <button
+              className={sortKey === 'dateMod' ? 'selected' : ''}
+              onClick={() => handleSort('dateMod')}
+              title="Sort by date created"
+            >
+              <div className="name">Date modified</div>
               <span className="resize"></span>
             </button>
           </li>
           <li className="fileListHeader">
-            <button>
-              <div
-                className="name"
-                onClick={() => handleSort('type')}
-                title="Sort by type"
-              >
-                Type
-              </div>
+            <button
+              className={sortKey === 'type' ? 'selected' : ''}
+              onClick={() => handleSort('type')}
+              title="Sort by type"
+            >
+              <div className="name">Type</div>
               <span className="resize"></span>
             </button>
           </li>
           <li className="fileListHeader">
-            <button>
-              <div
-                className="name"
-                onClick={() => handleSort('size')}
-                title="Sort by size"
-              >
-                Size
-              </div>
+            <button
+              className={sortKey === 'size' ? 'selected' : ''}
+              onClick={() => handleSort('size')}
+              title="Sort by size"
+            >
+              <div className="name">Size</div>
               <span className="resize"></span>
             </button>
           </li>
