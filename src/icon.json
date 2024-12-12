@@ -76,5 +76,10 @@
     "name": "Resume",
     "pic": "PDFIcon",
     "folderId": "Desktop"
+  },
+  {
+    "name": "About Me",
+    "pic": "AboutMe",
+    "folderId": "Desktop"
   }
 ]

@@ -5,6 +5,7 @@ import TinyMCE from '/tinymcelogo.svg';
 import VSCode from '/VSCodeIcon.svg';
 import PDFIcon from '/pdfIcon.svg';
 import Portfolio from '/folderFilled.ico';
+import AboutMeIcon from '/aboutMeIcon.ico';
 
 export function imageMapping(name: string): string {
   switch (name) {
@@ -32,6 +33,9 @@ export function imageMapping(name: string): string {
     case 'PDFIcon':
     case 'Resume':
       return PDFIcon;
+
+    case 'AboutMe':
+      return AboutMeIcon;
 
     default:
       return '/notfound';

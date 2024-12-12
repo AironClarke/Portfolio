@@ -16,6 +16,7 @@ import { openMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { closeMessage } from 'src/components/system/apps/JSDOS/dosFunctions';
 import { AnimatePresence } from 'framer-motion';
 import CloneFolder from 'src/folders/CloneFolder';
+import AboutMe from 'src/components/system/AboutMe/AboutMe';
 import Resume from 'src/components/system/apps/PDFviewer/index';
 import {
   handleDoubleClickEnterLink,
@@ -99,6 +100,16 @@ const HeroFeature = (): JSX.Element => {
     item_1Focus: false
   });
 
+  const [AboutMeExpand, setAboutMeExpand] = useState({
+    expand: false,
+    show: false,
+    hide: false,
+    focusItem: true,
+    x: 0,
+    y: 0,
+    item_1Focus: false
+  });
+
   const [viewStyle, setViewStyle] = useState('list'); // New state to track view style
 
   const handleViewStyleChange = (style) => {
@@ -150,7 +161,8 @@ const HeroFeature = (): JSX.Element => {
         usestate: MonacoExpand
       },
       { name: 'CloneFolder', setter: setCloneExpand, usestate: CloneExpand },
-      { name: 'Resume', setter: setPDFExpand, usestate: PDFExpand }
+      { name: 'Resume', setter: setPDFExpand, usestate: PDFExpand },
+      { name: 'About Me', setter: setAboutMeExpand, usestate: AboutMe }
     ];
   }
 
@@ -450,7 +462,9 @@ const HeroFeature = (): JSX.Element => {
     handleDoubleTapEnterMobile,
     handleViewStyleChange,
     viewStyle,
-    setViewStyle
+    setViewStyle,
+    setAboutMeExpand,
+    AboutMeExpand
   };
 
   return (
@@ -465,6 +479,7 @@ const HeroFeature = (): JSX.Element => {
             {MonacoExpand.show && <MonacoApp key="monacoKey" />}
             {CloneExpand.show && <CloneFolder key="cloneKey" />}
             {PDFExpand.show && <Resume key="pdfKey" />}
+            {AboutMeExpand.show && <AboutMe key="aboutMeKey" />}
           </AnimatePresence>
           <FileManager />
         </section>
