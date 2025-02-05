@@ -1,9 +1,9 @@
 import express from "express"
 import dotenv from "dotenv"
-import path from "path";
-import { fileURLToPath } from "url"
 
+import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./lib/db.js";
+
 
 import userRoutes from "./routes/user.route.js"
 import adminRoutes from "./routes/admin.route.js"
@@ -18,6 +18,8 @@ const app = express()
 const PORT = process.env.PORT
 
 app.use(express.json())
+
+app.use(clerkMiddleware()) // adds auth to req obj
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
