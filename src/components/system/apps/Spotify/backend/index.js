@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import path from "path"
 import { fileURLToPath } from "url";
+import cors from "cors"
 
 
 import { clerkMiddleware } from '@clerk/express'
@@ -25,6 +26,13 @@ const PORT = process.env.PORT
 // Fix for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(cors(
+  {
+    origin: "http://localhost:3000",
+    credentials: true
+  }
+))
 
 app.use(express.json())
 app.use(clerkMiddleware()) // adds auth to req obj
