@@ -4,7 +4,10 @@ import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/songs", protectRoute, requireAdmin ,createSong)
-router.delete("/songs/:id", protectRoute, requireAdmin, deleteSong)  )
+router.post("/songs", protectRoute, requireAdmin ,createSong)
+router.delete("/songs/:id", protectRoute, requireAdmin, deleteSong)
+
+router.post("/albums", protectRoute, requireAdmin ,createSong)
+router.delete("/albums/:id", protectRoute, requireAdmin ,deleteSong)
 
 export default router
