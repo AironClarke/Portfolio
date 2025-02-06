@@ -8,4 +8,6 @@ router.get("/like", protectRoute, (req,res) => {
   res.send("User route with GET method")
 })
 
+router.get("/", protectRoute, getAllUsers)
+
 export default router
