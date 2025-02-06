@@ -1,5 +1,8 @@
 import express from "express"
 import dotenv from "dotenv"
+import path from "path"
+import { fileURLToPath } from "url";
+
 
 import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./lib/db.js"
@@ -12,12 +15,16 @@ import authRoutes from "./routes/auth.route.js"
 import songRoutes from "./routes/song.route.js"
 import albumRoutes from "./routes/album.route.js"
 import statRoutes from "./routes/stat.route.js"
-import path from "path"
+
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT
+
+// Fix for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json())
 app.use(clerkMiddleware()) // adds auth to req obj
