@@ -1,9 +1,9 @@
 import { Album } from "lucide-react"
-import { Song } from "../models/song.model"
+import { Song } from "../models/song.model.js"
 
 const uploadToCloudinary = async (file) => {
   try {
-    const result = await cloudinary.uploader.upload(file.tempFilePath. {
+    const result = await cloudinary.uploader.upload(file.tempFilePath,{
       resource_type: "auto",
     })
     return result.secure_url
@@ -107,4 +107,8 @@ export const deleteAlbum = async ( req, res, next) => {
     console.log("Error in deleteAlbum", error)
     next(error)
   }
+}
+
+export const checkAdmin = async (req, res, next) => {
+  res.status(200).json({ admin: true })
 }
