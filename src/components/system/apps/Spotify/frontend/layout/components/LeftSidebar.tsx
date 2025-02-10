@@ -79,13 +79,13 @@ const LeftSidebar = () => {
                         Album • {album.artist}
                       </p>
                     </div>
-
                   </Link>
+
                 ))
                )}
             </div>
           </ScrollArea>
-        </div>@
+        </div>
 
       </div>
   )
