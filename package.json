@@ -12,7 +12,9 @@
     "prettier": "prettier --write .",
     "stylelint": "stylelint **/*.tsx",
     "start": "vite --host 192.168.173.170",
-    "spotifyDev": "nodemon src/components/system/apps/Spotify/backend/index.js"
+    "spotifyDev": "nodemon src/components/system/apps/Spotify/backend/index.js",
+    "seed:songs": "node src/components/system/apps/Spotify/backend/seeds/songs.js",
+    "seed:albums": "node src/components/system/apps/Spotify/backend/seeds/albums.js"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.22.10",
