@@ -16,6 +16,7 @@ const FriendsActivty = () => {
   const isPlaying = true
 
   return (
+
     <div className="h-full bg-zinc-900 rounded-lg flex flex-col">
       <div className="p-4 flex justify-between items-center border-b border-zinc-800">
         <div className="flex items-center gap-2">
@@ -33,8 +34,8 @@ const FriendsActivty = () => {
               key={user.id}
               className="cursor-pointer hover:bg-zinc-800/50 p-3 rounded-md
               transition-colors group">
-                <div className="flex items-start gap-3">
-                  <div className="relative">
+                <div className="relative">
+                  <div className="flex items-start gap-3">
                     <Avatar className="size-10 border border-zinc-800">
                       <AvatarImage
                         src={user.imageUrl}
@@ -50,9 +51,7 @@ const FriendsActivty = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-sm text-white">
-                          {user.fullName}
-                        </span>
+                        <span className="font-medium text-sm text-white">{user.fullName}</span>
                         {isPlaying && <Music className="size-3.5 text-emerald-400 shrink-0" /> }
                       </div>
 
@@ -79,7 +78,6 @@ const FriendsActivty = () => {
         </div>
       </ScrollArea>
 
-      <LoginPrompt />
     </div>
   )
 
