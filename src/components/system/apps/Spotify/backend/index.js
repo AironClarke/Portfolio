@@ -54,7 +54,7 @@ app.use("/api/stats", statRoutes);
 
 // error handler
 app.use((error, req, res, next) => {
-  res.status(500).json({ message: process.env.NODE_ENV == "production" ? "Internal server error" : err.message})
+  res.status(500).json({ message: process.env.NODE_ENV == "production" ? "Internal server error" : error.message})
 })
 
 app.listen(PORT, () => {
