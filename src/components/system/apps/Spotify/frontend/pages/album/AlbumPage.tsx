@@ -5,6 +5,12 @@ import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { Button } from "@/components/ui/button"
 import { Clock, Play } from "lucide-react"
 
+const formatDuration = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`
+}
+
 const AlbumPage = () => {
   const {albumId} = useParams()
   const { fetchAlbumById, currentAlbum, isLoading } = useMusicStore()
@@ -96,7 +102,7 @@ const AlbumPage = () => {
 
 												</div>
 												<div className='flex items-center'>{song.createdAt.split("T")[0]}</div>
-												<div className='flex items-center'>{song.duration}</div>
+												<div className='flex items-center'>{formatDuration(song.duration)}</div>
 											</div>
 
                   ))}
