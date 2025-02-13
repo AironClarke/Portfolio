@@ -3,7 +3,7 @@ import { useMusicStore } from "../../stores/useMusicStore"
 import { useEffect } from "react"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { Button } from "@/components/ui/button"
-import { Clock, Play } from "lucide-react"
+import { Clock, Pause, Play } from "lucide-react"
 import { usePlayerStore } from "../../stores/usePlayerStore"
 
 const formatDuration = (seconds: number) => {
@@ -79,7 +79,11 @@ const AlbumPage = () => {
                 className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 hover:scale-105
                 transition-all"
               >
-                <Play className="h-7 w-7 text-black" />
+                {isPlaying && currentAlbum?.songs.some((song) => song._id === currentSong?._id) ? (
+                  <Pause className="h-7 w-7 text-black" />
+                ): (
+                  <Play className="h-7 w-7 text-black" />
+                )}
               </Button>
             </div>
 
