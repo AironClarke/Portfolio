@@ -84,7 +84,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
 
 
   fetchTrendingSongs: async() => {
-    set({ isLoading: true, error: null})
+    set({ isLoading: true, error: null })
     try {
       const response = await axiosInstance.get("/songs/trending")
       set({ trendingSongs: response.data })
