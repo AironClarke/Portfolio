@@ -19,10 +19,8 @@ const HomePage = () => {
   useEffect(() => {
     fetchFeaturedSongs()
     fetchMadeForYouSongs()
-    fetchTrendingSongs
+    fetchTrendingSongs()
   },[fetchFeaturedSongs,fetchMadeForYouSongs,fetchTrendingSongs])
-
-  console.log({isLoading, madeForYouSongs, featuredSongs, trendingSongs})
 
   return (
     <main className="rounded-md overflow-hidden h-full bg-gradient-to-b
