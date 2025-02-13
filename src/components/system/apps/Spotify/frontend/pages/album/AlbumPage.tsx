@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { Button } from "@/components/ui/button"
 import { Clock, Play } from "lucide-react"
+import { usePlayerStore } from "../../stores/usePlayerStore"
 
 const formatDuration = (seconds: number) => {
   const minutes = Math.floor(seconds / 60)
@@ -14,6 +15,7 @@ const formatDuration = (seconds: number) => {
 const AlbumPage = () => {
   const {albumId} = useParams()
   const { fetchAlbumById, currentAlbum, isLoading } = useMusicStore()
+  const { currentSong, isPlaying, playAlbum, togglePlay } = usePlayerStore()
 
   useEffect(() => {
     if(albumId) fetchAlbumById(albumId)
@@ -21,6 +23,22 @@ const AlbumPage = () => {
 )
 
   if(isLoading) return null
+
+  const handlePlayAlbum = () => {
+    if(!currentAlbum) return
+
+    const isCurrentAlbumPlayin = currentAlbum?.songs.some(song => song._id === currentSong?._id)
+    if(isCurrentAlbumPlayin) togglePlay()
+    else {
+      // start playling the album from the start
+      playAlbum(currentAlbum?.songs, 0)
+    }
+  }
+
+  const handlePlaySong = (index: number) => {
+    if(!currentAlbum) return
+    playAlbum(currentAlbum?.songs, index)
+  }
 
 
   return (
@@ -56,6 +74,7 @@ const AlbumPage = () => {
             {/* play button */}
             <div className="px-6 pb-4 flex items-center gap-6">
               <Button
+                onClick={handlePlayAlbum}
                 size="icon"
                 className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 hover:scale-105
                 transition-all"
@@ -80,16 +99,25 @@ const AlbumPage = () => {
               {/* songs list */}
               <div className='px-6'>
 								<div className='space-y-2 py-4'>
-									{currentAlbum?.songs.map((song, index) => (
+									{currentAlbum?.songs.map((song, index) => {
+										const isCurrentSong = currentSong?._id === song._id;
+										return (
 											<div
 												key={song._id}
+                        onClick={() => handlePlaySong(index)}
 												className={`grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-4 py-2 text-sm
                       text-zinc-400 hover:bg-white/5 rounded-md group cursor-pointer
                       `}
 											>
 												<div className='flex items-center justify-center'>
+													{isCurrentSong && isPlaying ? (
+														<div className='size-4 text-green-500'>♫</div>
+													) : (
 														<span className='group-hover:hidden'>{index + 1}</span>
+													)}
+													{!isCurrentSong && (
 														<Play className='h-4 w-4 hidden group-hover:block' />
+													)}
 												</div>
 
 												<div className='flex items-center gap-3'>
@@ -99,16 +127,15 @@ const AlbumPage = () => {
 														<div className={`font-medium text-white`}>{song.title}</div>
 														<div>{song.artist}</div>
 													</div>
-
 												</div>
 												<div className='flex items-center'>{song.createdAt.split("T")[0]}</div>
 												<div className='flex items-center'>{formatDuration(song.duration)}</div>
 											</div>
-
-                  ))}
-								</div>
-
+										);
+									})}
+			          </div>
               </div>
+
             </div>
           </div>
 
