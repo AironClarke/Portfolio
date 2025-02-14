@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { usePlayerStore } from "../../stores/usePlayerStore"
 import { Button } from "@/components/ui/button"
-import { Pause, Play, Repeat, Shuffle, SkipBack, SkipForward } from "lucide-react"
+import { Laptop2, ListMusic, Mic2, Pause, Play, Repeat, Shuffle, SkipBack, SkipForward, Volume1 } from "lucide-react"
 import { Slider } from "@/components/ui/slider"
 import { formatDuration } from "../../pages/album/AlbumPage"
 
@@ -126,6 +126,39 @@ export const PlaybackControls = () => {
 							onValueChange={handleSeek}
 						/>
 						<div className='text-xs text-zinc-400'>{formatDuration(duration)}</div>
+					</div>
+				</div>
+
+
+        {/* volume controls */}
+				<div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%] justify-end'>
+					<Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
+						<Mic2 className='h-4 w-4' />
+					</Button>
+					<Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
+						<ListMusic className='h-4 w-4' />
+					</Button>
+					<Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
+						<Laptop2 className='h-4 w-4' />
+					</Button>
+
+					<div className='flex items-center gap-2'>
+						<Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
+							<Volume1 className='h-4 w-4' />
+						</Button>
+
+						<Slider
+							value={[volume]}
+							max={100}
+							step={1}
+							className='w-24 hover:cursor-grab active:cursor-grabbing'
+							onValueChange={(value) => {
+								setVolume(value[0]);
+								if (audioRef.current) {
+									audioRef.current.volume = value[0] / 100;
+								}
+							}}
+						/>
 					</div>
 				</div>
 
