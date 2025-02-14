@@ -4,7 +4,7 @@ import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage"
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react"
 import MainLayout from "./layout/MainLayout"
 import ChatPage from "./pages/chat/chatPage"
-import AlbumPage from "./pages/album/AlbumPage"
+import { AlbumPage } from "./pages/album/AlbumPage"
 import "index.css"
 
 function App() {
