@@ -20,8 +20,8 @@ const Topbar = () => {
       <div className="flex items-center gap-4">
         {isAdmin && (
           <Link to={"/admin"}
-          className={cn(buttonVariants({variant:"outline"}))}>
-            <LayoutDashboardIcon className="size-4 mr-4"/>
+          className={cn(buttonVariants({ variant: "outline" }), "bg-zinc-900 text-white hover:bg-zinc-700 hover:text-white")}>
+            <LayoutDashboardIcon className="size-4 mr-4 "/>
             Admin Dashboard
           </Link>
         )}
