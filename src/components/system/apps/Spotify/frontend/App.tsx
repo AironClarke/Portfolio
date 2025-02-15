@@ -7,6 +7,7 @@ import ChatPage from "./pages/chat/chatPage"
 import { AlbumPage } from "./pages/album/AlbumPage"
 import "index.css"
 import AdminPage from "./pages/admin/AdminPages"
+import { Toaster } from "react-hot-toast"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/albums/:albumId" element={<AlbumPage />} />
         </Route>
       </Routes>
+      <Toaster />
     </>
   )
 }
