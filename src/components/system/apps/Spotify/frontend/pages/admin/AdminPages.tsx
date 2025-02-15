@@ -25,6 +25,7 @@ const AdminPage = () => {
   return <div className="min-h-screen bg-gradient-to-b from-zinc-900
    to-black text-zinc-100 p-8">
       <Header />
+
       <DashboardStats />
 
       <Tabs defaultValue="songs" className="space-y-6">
