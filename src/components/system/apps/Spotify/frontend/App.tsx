@@ -6,6 +6,7 @@ import MainLayout from "./layout/MainLayout"
 import ChatPage from "./pages/chat/chatPage"
 import { AlbumPage } from "./pages/album/AlbumPage"
 import "index.css"
+import AdminPage from "./pages/admin/AdminPages"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
 
         <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback/>} />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
+        <Route path="/admin" element={<AdminPage />} />
 
         <Route element={<MainLayout />} >
           <Route path="/" element={<HomePage />} />
