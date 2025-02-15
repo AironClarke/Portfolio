@@ -24,7 +24,6 @@ const AdminPage = () => {
 
   return <div className="min-h-screen bg-gradient-to-b from-zinc-900
    to-black text-zinc-100 p-8">
-      <h1 className="text-3xl font-bold mb-4">Admin Page</h1>
       <Header />
       <DashboardStats />
 
