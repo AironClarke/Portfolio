@@ -5,6 +5,7 @@ import FriendsActivty from "./components/FriendsActivity"
 import AudioPlayer from "./components/AudioPlayer"
 import { PlaybackControls } from "./components/PaybackControls"
 import { useState, useEffect } from "react"
+import { ModeToggle } from "./components/modeToggle"
 
 const MainLayout = () => {
   const [isMobile, setIsMobile] = useState(false)
