@@ -1,5 +1,6 @@
 import { Album } from "lucide-react"
 import { Song } from "../models/song.model.js"
+import cloudinary from "../lib/cloudinary.js"
 
 const uploadToCloudinary = async (file) => {
   try {
@@ -23,8 +24,8 @@ export const createSong = async (req, res, next) => {
     const audioFiles = req.files.audioFiles
     const imageFiles = req.files.imageFiles
 
-    const audioUrl = await uploadToCloudinary(audioFile)
-    const imageUrl = await uploadToCloudinary(imageFile)
+    const audioUrl = await uploadToCloudinary(audioFiles)
+    const imageUrl = await uploadToCloudinary(imageFiles)
 
     const song = new Song({
       title,
@@ -78,7 +79,7 @@ export const deleteSong = async (req, res, next) => {
 export const createAlbum = async ( req, res, next) => {
   try {
     const {title, artist, releaseYear} = req.body
-    const {imgFile} = req.files
+    const {imageFile} = req.files
 
     const imageUrl = await uploadToCloudinary(imageFile)
 
@@ -90,6 +91,8 @@ export const createAlbum = async ( req, res, next) => {
     })
 
     await album.save()
+
+    res.status(201).json(album);
 
   } catch (error) {
     console.log("Error in createAlbum", error)

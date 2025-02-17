@@ -51,7 +51,7 @@ const AddAlbumDialog = () => {
 			await axiosInstance.post("/admin/albums", formData, {
 				headers: {
 					"Content-Type": "multipart/form-data",
-				},
+				}
 			});
 
 			setNewAlbum({
