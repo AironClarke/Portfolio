@@ -6,7 +6,7 @@ export const getStats = async (req, res, next) => {
 
   try {
 
-    const [totalSongs, totalUsers, totalAlbum, uniqueArtist] = await Promise.all([
+    const [totalSongs, totalUsers, totalAlbum, uniqueArtists] = await Promise.all([
       Song.countDocuments(),
       User.countDocuments(),
       Album.countDocuments(),
@@ -37,7 +37,8 @@ export const getStats = async (req, res, next) => {
     })
 
   } catch (error) {
-
+    console.log(error)
+    next(error)
   }
 
 }
