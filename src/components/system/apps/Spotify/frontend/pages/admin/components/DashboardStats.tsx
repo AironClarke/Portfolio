@@ -3,9 +3,11 @@ import { useMusicStore } from "../../../stores/useMusicStore"
 import StatsCard from "./StatsCard";
 
 const DashboardStats = () => {
-  const {stats} = useMusicStore()
+	const { stats } = useMusicStore();
 
-  const statsData = [
+  console.log(stats)
+
+	const statsData = [
 		{
 			icon: ListMusic,
 			label: "Total Songs",
@@ -36,20 +38,19 @@ const DashboardStats = () => {
 		},
 	];
 
-  return (
-    <div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-4 gap-4 mb-8">
-      {statsData.map((stat) => (
-        <StatsCard
-          key={stat.label}
-          icon={stat.icon}
-          label={stat.label}
-          value={stat.value}
-          bgColor={stat.bgColor}
-          iconColor={stat.iconColor}
-        />
-      ))}
-    </div>
-  )
-}
-
-export default DashboardStats
+	return (
+		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 '>
+			{statsData.map((stat) => (
+				<StatsCard
+					key={stat.label}
+					icon={stat.icon}
+					label={stat.label}
+					value={stat.value}
+					bgColor={stat.bgColor}
+					iconColor={stat.iconColor}
+				/>
+			))}
+		</div>
+	);
+};
+export default DashboardStats;

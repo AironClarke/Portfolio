@@ -22,14 +22,6 @@ const SongsTable = () => {
     )
   }
 
-  console.log("Songs data:", songs);
-
-  if (!Array.isArray(songs)) {
-    console.error("songs is not an array:", songs);
-    return <div>Error: Invalid songs data</div>;
-  }
-
-
   return (
 		<Table>
 			<TableHeader>

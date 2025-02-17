@@ -6,7 +6,7 @@ export const getStats = async (req, res, next) => {
 
   try {
 
-    const [totalSongs, totalUsers, totalAlbum, uniqueArtists] = await Promise.all([
+    const [totalSongs, totalUsers, totalAlbums, uniqueArtists] = await Promise.all([
       Song.countDocuments(),
       User.countDocuments(),
       Album.countDocuments(),
@@ -30,7 +30,7 @@ export const getStats = async (req, res, next) => {
     ])
 
     res.status(200).json({
-      totalAlbum,
+      totalAlbums,
       totalSongs,
       totalUsers,
       totalArtists: uniqueArtists[0]?.count || 0
