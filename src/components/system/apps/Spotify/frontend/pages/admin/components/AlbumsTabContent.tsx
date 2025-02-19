@@ -2,8 +2,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Library } from "lucide-react";
 import AlbumsTable from "./AlbumsTable";
 import AddAlbumDialog from "./AddAlbumDialog";
+import { TabContentProps } from "../../../types";
 
-const AlbumsTabContent = () => {
+const AlbumsTabContent = ({ onRefresh }: TabContentProps) => {
 	return (
 		<Card className='bg-zinc-800/50 border-zinc-700/50'>
 			<CardHeader>
@@ -15,7 +16,7 @@ const AlbumsTabContent = () => {
 						</CardTitle>
 						<CardDescription>Manage your album collection</CardDescription>
 					</div>
-					<AddAlbumDialog />
+					<AddAlbumDialog onRefresh={onRefresh} />
 				</div>
 			</CardHeader>
 

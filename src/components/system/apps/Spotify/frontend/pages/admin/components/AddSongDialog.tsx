@@ -7,8 +7,9 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem , SelectTrigger, SelectValue } from "@/components/ui/select"
 import toast from "react-hot-toast"
 import { axiosInstance } from "@/lib/axios"
+import { TabContentProps } from "../../../types"
 
-const AddSongDialog = () => {
+const AddSongDialog = ({ onRefresh }: TabContentProps) => {
   const { albums } = useMusicStore()
   const [ songDialogOpen, setSongDialogOpen ] = useState(false)
   const [ isLoading, setIsLoading ] = useState(false)
@@ -67,6 +68,7 @@ const AddSongDialog = () => {
 			});
 			toast.success("Song added successfully");
       setSongDialogOpen(false)
+      onRefresh();
 
 		} catch (error: any) {
 			toast.error("Failed to add song: " + error.message);

@@ -13,8 +13,9 @@ import { axiosInstance } from "@/lib/axios";
 import { Plus, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { TabContentProps } from "../../../types";
 
-const AddAlbumDialog = () => {
+const AddAlbumDialog = ({ onRefresh }: TabContentProps) => {
 	const [albumDialogOpen, setAlbumDialogOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -62,7 +63,9 @@ const AddAlbumDialog = () => {
 			setImageFile(null);
 			setAlbumDialogOpen(false);
 			toast.success("Album created successfully");
-		} catch (error: any) {
+      onRefresh();
+
+    } catch (error: any) {
 			toast.error("Failed to create album: " + error.message);
 		} finally {
 			setIsLoading(false);

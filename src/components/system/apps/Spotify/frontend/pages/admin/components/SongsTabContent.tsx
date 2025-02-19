@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Music } from "lucide-react"
 import SongsTable from "./SongsTable"
 import AddSongDialog from "./AddSongDialog"
+import { TabContentProps } from "../../../types"
 
-const SongsTabContent = () => {
+const SongsTabContent = ({ onRefresh }: TabContentProps) => {
   return (
 
     <Card className="bg-zinc-800/50 border-zinc-700/50">
@@ -17,7 +17,7 @@ const SongsTabContent = () => {
             </CardTitle>
             <CardDescription>Manage your music tracks</CardDescription>
           </div>
-          <AddSongDialog />
+          <AddSongDialog onRefresh={onRefresh} />
         </div>
       </CardHeader>
       <CardContent>

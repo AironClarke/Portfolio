@@ -5,20 +5,25 @@ import Header from "./components/Header"
 import { Album, Music } from "lucide-react"
 import AlbumsTabContent from "./components/AlbumsTabContent"
 import SongsTabContent from "./components/SongsTabContent"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useMusicStore } from "../../stores/useMusicStore"
 
 const AdminPage = () => {
 
   const {isAdmin, isLoading} = useAuthStore()
+  const [refresh, setRefresh] = useState(0);
 
   const {fetchAlbums, fetchSongs, fetchStats} = useMusicStore()
+
+  const handleRefresh = async () => {
+    setRefresh((prev) => prev + 1);
+  };
 
   useEffect(() => {
     fetchAlbums()
     fetchSongs()
     fetchStats()
-  }, [])
+  }, [refresh])
 
   if(!isAdmin && isLoading) return <div>Unauthorized</div>
 
@@ -44,10 +49,10 @@ const AdminPage = () => {
         </TabsList>
 
         <TabsContent value="songs">
-          <SongsTabContent />
+          <SongsTabContent onRefresh={handleRefresh} />
         </TabsContent>
         <TabsContent value="albums">
-          <AlbumsTabContent />
+          <AlbumsTabContent onRefresh={handleRefresh} />
         </TabsContent>
 
       </Tabs>

@@ -25,3 +25,7 @@ export interface Stats {
   totalUsers: number;
   totalArtists: number
 }
+
+export type TabContentProps = {
+  onRefresh: () => Promise<void>;
+};
