@@ -8,6 +8,7 @@ import cors from "cors"
 import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./lib/db.js"
 import fileUpload from "express-fileupload"
+import { createServer } from "http"
 
 
 import userRoutes from "./routes/user.route.js"
@@ -19,6 +20,9 @@ import statRoutes from "./routes/stat.route.js"
 
 
 dotenv.config()
+
+const httpServer = createServer(app)
+initalizeSocket(httpServer)
 
 const app = express()
 const PORT = process.env.PORT
@@ -57,7 +61,7 @@ app.use((error, req, res, next) => {
   res.status(500).json({ message: process.env.NODE_ENV == "production" ? "Internal server error" : error.message})
 })
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log("Server is running on port " + PORT)
   connectDB()
 })
