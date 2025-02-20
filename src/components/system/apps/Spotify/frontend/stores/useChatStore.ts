@@ -4,7 +4,7 @@ import { Message, User } from "../types";
 import { io } from "socket.io-client";
 
 interface ChatStore {
-  users: any[];
+  users: User[];
   isLoading: boolean;
   socket: any;
   isConnected: boolean;
