@@ -29,3 +29,19 @@ export interface Stats {
 export type TabContentProps = {
   onRefresh: () => Promise<void>;
 };
+
+export interface Message {
+  _id: string;
+  senderId: string;
+  receiverId: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string
+}
+
+export interface User {
+  _id: String;
+  clerkId: string;
+  fullName: string;
+  imageUrl: string;
+}
