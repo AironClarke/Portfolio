@@ -10,6 +10,7 @@ import { connectDB } from "./lib/db.js"
 import fileUpload from "express-fileupload"
 import { createServer } from "http"
 
+import initalizeSocket from "./lib/socket.js"
 
 import userRoutes from "./routes/user.route.js"
 import adminRoutes from "./routes/admin.route.js"
@@ -21,15 +22,15 @@ import statRoutes from "./routes/stat.route.js"
 
 dotenv.config()
 
-const httpServer = createServer(app)
-initalizeSocket(httpServer)
-
 const app = express()
 const PORT = process.env.PORT
 
 // Fix for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const httpServer = createServer(app)
+initalizeSocket(httpServer)
 
 app.use(cors(
   {
