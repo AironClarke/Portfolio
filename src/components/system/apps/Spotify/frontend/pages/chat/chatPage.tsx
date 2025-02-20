@@ -22,9 +22,28 @@ const ChatPage = () => {
 
       <div className='grid lg:grid-cols-[300px_1fr] grid-cols-[80px_1fr] h-[calc(100vh-180px)]'>
         <UserList />
+
+        {/* chat message */}
+        <div className="flex flex-col h-full">
+          {selectedUser ?
+            "selected user existed"
+          :
+            <NoConversationPlaceholder />
+          }
+        </div>
       </div>
     </main>
   )
 }
 
 export default ChatPage
+
+const NoConversationPlaceholder = () => (
+	<div className='flex flex-col items-center justify-center h-full space-y-6'>
+		<img src='/spotify.png' alt='Spotify' className='size-16 animate-bounce' />
+		<div className='text-center'>
+			<h3 className='text-zinc-300 text-lg font-medium mb-1'>No conversation selected</h3>
+			<p className='text-zinc-500 text-sm'>Choose a friend to start chatting</p>
+		</div>
+	</div>
+);
