@@ -48,7 +48,7 @@ const initalizeSocket = (server) => {
           io.to(receiverSocketId).emit("receiver_message", message)
         }
 
-        socket.emit("message_send",message)
+        socket.emit("message_sent",message)
       } catch (error) {
         console.error("Message error:", error);
 				socket.emit("message_error", error.message);
