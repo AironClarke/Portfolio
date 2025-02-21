@@ -4,6 +4,8 @@ import { useUser } from "@clerk/clerk-react"
 import { useEffect } from "react"
 import UserList from "./components/UserList"
 import ChatHeader from "./components/chatHeader"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Avatar } from "@/components/ui/avatar"
 
 const ChatPage = () => {
   const {user} = useUser()
@@ -29,6 +31,24 @@ const ChatPage = () => {
           {selectedUser ? (
             <>
               <ChatHeader />
+
+              {/* Messages */}
+              <ScrollArea className="h=[calc(100vh-340px)]">
+                <div className="p-4 space-y-4">
+                  {messages.map((message) => (
+                    <div
+                      key={message._id}
+                      className={`flex items-start gap-3 ${message.senderId == user?.id ? "flex-row-reverse"
+                      : "" }`}
+                    >
+                      <Avatar className="size-8">
+
+                      </Avatar>
+                    </div>
+
+                  ))}
+                </div>
+              </ScrollArea>
             </>
           ) : <NoConversationPlaceholder />
           }
